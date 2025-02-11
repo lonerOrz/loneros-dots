@@ -1,0 +1,16 @@
+[color]
+  ui = "auto"
+[commit]
+  gpgsign = true
+[gpg]
+  format = "ssh"
+[user]
+  name = lonerOrz
+  email = 2788892716@qq.com
+  signingkey = "~/.ssh/id_pub"
+[init]
+  defaultBranch = main
+[push]
+  default = "simple"
+[core]
+  sshCommand = "ssh -i ~/.ssh/id_rsa"

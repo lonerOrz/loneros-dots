@@ -5,6 +5,8 @@ if status is-interactive
     fastfetch -c ~/.config/fastfetch/config-compact.jsonc
     # Initialize starship prompt
     starship init fish | source
+    # direnv
+    # direnv hook fish | source
 end
 
 # fcitx5 on wayland env
@@ -15,9 +17,9 @@ set -x INPUT_METHOD fcitx
 set -x SDL_IM_MODULE fcitx
 set -x GLFW_IM_MODULE ibus
 
-# direnv
-# status --is-interactive; and 
-#direnv hook fish | source
+# gitconfig
+set -x GIT_CONFIG $HOME/.config/git/.gitconfig
+
 
 # Custom aliases
 alias ls 'eza -a --icons'
