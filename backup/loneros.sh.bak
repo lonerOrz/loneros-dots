@@ -1,0 +1,248 @@
+#!/usr/bin/env bash
+
+# Check if running as root. If root, script will exit
+if [[ $EUID -eq 0 ]]; then
+  echo "This script should not be executed as root! Exiting......."
+  exit 1
+fi
+
+# Print the custom loneros banner
+printf "\n%.0s" {1..2}
+echo '.__                                                        .___      __          '
+echo '|  |   ____   ____   ___________  ____  ______           __| _/_____/  |_  ______'
+echo '|  |  /  _ \ /    \_/ __ \_  __ \/  _ \/  ___/  ______  / __ |/  _ \   __\/  ___/'
+echo '|  |_(  <_> )   |  \  ___/|  | \(  <_> )___ \  /_____/ / /_/ (  <_> )  |  \___ \ '
+echo '|____/\____/|___|  /\___  >__|   \____/____  >         \____ |\____/|__| /____  >'
+echo '                 \/     \/                 \/               \/                \/ '
+printf "\n%.0s" {1..2}
+
+# Set some colors for output messages
+OK="$(tput setaf 2)[OK]$(tput sgr0)"
+ERROR="$(tput setaf 1)[ERROR]$(tput sgr0)"
+NOTE="$(tput setaf 3)[NOTE]$(tput sgr0)"
+INFO="$(tput setaf 4)[INFO]$(tput sgr0)"
+WARN="$(tput setaf 5)[WARN]$(tput sgr0)"
+CAT="$(tput setaf 6)[ACTION]$(tput sgr0)"
+ORANGE=$(tput setaf 166)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+RESET=$(tput sgr0)
+
+# Create Directory for Copy Logs
+# if [ ! -d loneros-logs ]; then
+#   mkdir loneros-logs
+# fi
+
+# Function to print colorful text
+print_color() {
+  printf "%b%s%b\n" "$1" "$2" "$CLEAR"
+}
+
+# Set the name of the log file to include the current date and time
+LOG="loneros-logs/install-$(date +%d-%H%M%S)_dotfiles.log"
+
+# Run the original copy script from the upstream repository
+chmod +x ./*.sh
+# echo "${INFO} - Running the original sync script from the upstream repository..."
+read -p "${CAT} Do you want to sync config? (y/n): " SYNC
+case "$SYNC" in
+[Yy]*)
+  ./sync.sh
+  ;;
+[Nn]*)
+  echo "${NOTE} - Skipping sync config"
+  ;;
+*)
+  echo "${WARN} - Invalid choice."
+  ;;
+esac
+
+# Function to create a unique backup directory name with month, day, hours, and minutes
+get_backup_dirname() {
+  local timestamp
+  timestamp=$(date +"%m%d_%H%M")
+  echo "back-up_${timestamp}"
+}
+
+# Directory for configurations
+config_dir="$PWD/loneros"
+
+# Check if stow is installed
+if ! command -v stow &>/dev/null; then
+  echo -e "$ERROR stow is not installed. Please install it first. $RESET"
+  exit 1
+fi
+echo -e "$OK stow is installed. $RESET"
+
+# 查找配置目录中的子目录
+directories=($(find "$config_dir" -mindepth 1 -maxdepth 1 -type d))
+
+mkdir_route() {
+  local dirname="$1"
+
+  if [ -f "$config_dir/$dirname/route" ]; then
+    echo "检测到 rout 文件，按 rout 规则创建目录..."
+
+    while IFS= read -r line; do
+      [[ -z "$line" ]] && continue    # 忽略空行
+      [[ "$line" =~ ^# ]] && continue # 忽略注释行
+
+      # 处理提示信息
+      if [[ "$line" =~ ^@NOTE ]]; then
+        echo "route 提示: ${line#@NOTE: }"
+        continue
+      fi
+
+      # 处理正常的目录路径
+      target_dir="$HOME/$line"
+      if [ ! -d "$target_dir" ]; then
+        mkdir -p "$target_dir"
+        echo " 创建目录: $target_dir 成功！"
+      fi
+    done <"$config_dir/$dirname/route"
+  else
+    echo "没有需要创建的文件夹"
+  fi
+}
+
+# 遍历所有目录
+for dir in "${directories[@]}"; do
+  dir_name=$(basename "$dir")
+
+  # 开始链接配置文件
+  # echo -e "$CAT Linking configuration: ${BLUE} $dir_name $RESET"
+  if [ -d "$config_dir/$dir_name" ]; then
+    read -p "${CAT} Do you want to stow ${BLUE}$dir_name$RESET ? (y/n): " SYNC
+    case "$SYNC" in
+    [Yy]*)
+      stow_output=$(stow --dir="$config_dir" --target="$HOME" -D "$dir_name" 2>&1)
+      mkdir_route "$dir_name"
+      stow_output=$(stow --dir="$config_dir" --target="$HOME" "$dir_name" --ignore="^route$" --adopt 2>&1)
+      stow_status=$?
+      echo -e "$OK $dir_name successfully linked. $RESET"
+      ;;
+    [Nn]*)
+      echo "${NOTE} - Skipping link $dir_name $RESET"
+      ;;
+    *)
+      echo "${WARN} - Invalid choice."
+      ;;
+    esac
+    echo
+  else
+    echo -e "$ORANGE $config_dir/$dir_name does not exist. Skipping. $RESET"
+    echo
+  fi
+done
+
+# # 直接复制逻辑
+# printf "${INFO} - copying dotfiles ${BLUE}first${RESET} part\n"
+# # Config directories which will ask the user whether to replace or not
+# DIRS="
+#   fzf
+#   fish
+#   go-musicfox
+#   mpd
+#   mpv
+#   nvim
+#   qBittorrent
+#   rclone
+#   xdg-desktop-portal
+#   yazi
+#   starship.toml
+# "
+# for ITEM in $DIRS; do
+#   SOURCE_PATH="loneros/$ITEM"
+#   TARGET_PATH="$HOME/.config/$ITEM"
+#
+#   # 检查是文件还是目录
+#   if [ -f "$SOURCE_PATH" ]; then
+#     # 处理文件
+#     if [ -f "$TARGET_PATH" ]; then
+#       read -p "${CAT} ${ORANGE}$ITEM${RESET} file found in ~/.config/. Do you want to replace it? (y/n): " FILE_CHOICE
+#       case "$FILE_CHOICE" in
+#       [Yy]*)
+#         BACKUP_DIR=$(get_backup_dirname)
+#         mv "$TARGET_PATH" "$TARGET_PATH-backup-$BACKUP_DIR" 2>&1 | tee -a "$LOG"
+#         cp "$SOURCE_PATH" "$TARGET_PATH" 2>&1 | tee -a "$LOG"
+#         ;;
+#       [Nn]*)
+#         echo "${NOTE} - Skipping $ITEM" 2>&1 | tee -a "$LOG"
+#         ;;
+#       *)
+#         echo "${WARN} - Invalid choice."
+#         ;;
+#       esac
+#     else
+#       cp "$SOURCE_PATH" "$TARGET_PATH" 2>&1 | tee -a "$LOG"
+#     fi
+#   elif [ -d "$SOURCE_PATH" ]; then
+#     # 处理目录（原逻辑）
+#     if [ -d "$TARGET_PATH" ]; then
+#       read -p "${CAT} ${ORANGE}$ITEM${RESET} config found in ~/.config/. Do you want to replace it? (y/n): " DIR_CHOICE
+#       case "$DIR_CHOICE" in
+#       [Yy]*)
+#         BACKUP_DIR=$(get_backup_dirname)
+#         mv "$TARGET_PATH" "$TARGET_PATH-backup-$BACKUP_DIR" 2>&1 | tee -a "$LOG"
+#         cp -r "$SOURCE_PATH" "$TARGET_PATH" 2>&1 | tee -a "$LOG"
+#         ;;
+#       [Nn]*)
+#         echo "${NOTE} - Skipping $ITEM" 2>&1 | tee -a "$LOG"
+#         ;;
+#       *)
+#         echo "${WARN} - Invalid choice."
+#         ;;
+#       esac
+#     else
+#       cp -r "$SOURCE_PATH" "$TARGET_PATH" 2>&1 | tee -a "$LOG"
+#     fi
+#   else
+#     echo "${WARN} - $ITEM not found in loneros directory." 2>&1 | tee -a "$LOG"
+#   fi
+# done
+# printf "\n%.0s" {1..1}
+
+# Check if wallpapers directory exists in loneros
+if [ -d "loneros/wallpapers" ]; then
+  while true; do
+    read -p "${CAT} ${ORANGE}wallpapers${RESET} directory found in loneros/. Do you want to use loneros' wallpapers and overwrite your current wallpapers? (y/n): " WALLPAPER_CHOICE
+    case "$WALLPAPER_CHOICE" in
+    [Yy]*)
+      # Create the target directory if it doesn't exist
+      if [ ! -d "$HOME/Pictures/wallpapers" ]; then
+        echo "${INFO} - Creating $HOME/Pictures/wallpapers directory."
+        mkdir -p "$HOME/Pictures/wallpapers"
+      fi
+
+      # Backup existing wallpapers (if any)
+      if [ -d "$HOME/Pictures/wallpapers" ]; then
+        BACKUP_DIR=$(get_backup_dirname)
+        mv "$HOME/Pictures/wallpapers" "$HOME/Pictures/wallpapers-backup-$BACKUP_DIR"
+        echo "${NOTE} - Existing wallpapers backed up to $HOME/Pictures/wallpapers-backup-$BACKUP_DIR."
+      fi
+
+      # Copy new wallpapers
+      cp -r loneros/wallpapers "$HOME/Pictures/wallpapers"
+      if [ $? -eq 0 ]; then
+        echo "${OK} - Wallpapers successfully copied to $HOME/Pictures/wallpapers."
+      else
+        echo "${ERROR} - Failed to copy wallpapers." 2>&1 | tee -a "$LOG"
+        exit 1
+      fi
+      break
+      ;;
+    [Nn]*)
+      echo "${NOTE} - Skipping wallpaper setup." 2>&1 | tee -a "$LOG"
+      break
+      ;;
+    *)
+      echo "${WARN} - Invalid choice. Please enter Y or N."
+      ;;
+    esac
+  done
+else
+  echo "${NOTE} - No wallpapers directory found in loneros."
+fi
+printf "\n%.0s" {1..1}
+
+printf "${INFO} - Copying dotfiles ${BLUE}second${RESET} part\n"

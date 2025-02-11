@@ -1,0 +1,4 @@
+[options]
+show_monitors_toolbar = 'Y'
+view_style = 'adaptive'
+image_quality = 'balanced'

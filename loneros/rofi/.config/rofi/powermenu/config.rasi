@@ -1,0 +1,16 @@
+configuration{
+  font: "FiraCode Nerd Font Mono 12";   // 可以尝试调整字体大小以改善显示
+  listview {
+      lines: 10;
+      border: 0;
+      align: center;
+  }
+  terminal: "ghostty";
+  prompt: "search";
+  drun-display-format: "{icon:24} {name:40}";
+  location: 0;
+  disable-history: false;
+  hide-scrollbar: true;
+}
+
+@theme "catppuccin-mocha"
