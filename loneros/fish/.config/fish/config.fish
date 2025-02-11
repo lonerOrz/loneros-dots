@@ -18,7 +18,7 @@ set -x SDL_IM_MODULE fcitx
 set -x GLFW_IM_MODULE ibus
 
 # gitconfig
-set -x GIT_CONFIG $HOME/.config/git/.gitconfig
+set -x GIT_CONFIG ~/.config/git/config
 
 
 # Custom aliases

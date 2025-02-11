@@ -1,0 +1,9 @@
+[color]
+  ui = "auto"
+[user]
+	name = lonerOrz
+	email = 2788892716@qq.com
+[init]
+  defaultBranch = main
+[core]
+  sshCommand = "ssh -i ~/.ssh/id_rsa"
