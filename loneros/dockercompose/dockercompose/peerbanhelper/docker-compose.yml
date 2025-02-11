@@ -7,7 +7,12 @@ services:
       - ./data:/app/data
     ports:
       - "9898:9898"
+    dns:
+      - 8.8.8.8
+      - 114.114.114.114
     environment:
       - PUID=0
       - PGID=0
       - TZ=Asia/Shanghai
+    extra_hosts:
+      - host.docker.internal:host-gateway

@@ -1,9 +1,9 @@
 [[peers]]
-id = '27220600'
+id = '1936065828'
 username = 'loner'
 hostname = 'loneros'
 platform = 'Linux'
 online = true
 
 [peers.ip_mac]
-"192.168.100.109" = 'd8:bb:c1:9f:5a:78'
+"192.168.100.110" = 'f8:75:a4:da:81:1a'

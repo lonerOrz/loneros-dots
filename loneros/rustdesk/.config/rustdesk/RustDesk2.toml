@@ -2,12 +2,12 @@ rendezvous_server = '192.168.100.109:21116'
 nat_type = 2
 serial = 0
 unlock_pin = ''
-trusted_devices = ''
+trusted_devices = '00A3j1jOsAJGkVeTTFTDIa9EHD'
 
 [options]
-local-ip-addr = '192.168.2.6'
-custom-rendezvous-server = '192.168.100.109'
-av1-test = 'Y'
-allow-linux-headless = 'Y'
-audio-input = 'Built-in Audio Analog Stereo'
 key = 'QpA13tn6lV8Qn3xljXs6flffRVjKLjXuVziDQcj5vJQ='
+audio-input = 'Built-in Audio Analog Stereo'
+relay-server = '192.168.100.109'
+allow-linux-headless = 'Y'
+local-ip-addr = '192.168.100.109'
+custom-rendezvous-server = '192.168.100.109'

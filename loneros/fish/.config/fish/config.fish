@@ -2,11 +2,12 @@ set -U fish_greeting ''
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    fastfetch -c ~/.config/fastfetch/config-compact.jsonc
+    # fastfetch -c ~/.config/fastfetch/config-compact.jsonc
+    maxfetch
     # Initialize starship prompt
     starship init fish | source
     # direnv
-    # direnv hook fish | source
+    direnv hook fish | source
 end
 
 # fcitx5 on wayland env
@@ -16,10 +17,6 @@ set -x XMODIFIERS @im=fcitx
 set -x INPUT_METHOD fcitx
 set -x SDL_IM_MODULE fcitx
 set -x GLFW_IM_MODULE ibus
-
-# gitconfig
-set -x GIT_CONFIG ~/.config/git/config
-
 
 # Custom aliases
 alias ls 'eza -a --icons'
@@ -195,3 +192,19 @@ function backup
         echo "Renamed (overwritten if necessary): $path -> $new_path"
     end
 end
+
+
+set -U fish_user_paths ~/miniconda3/condabin $fish_user_paths
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/loner/miniconda3/bin/conda
+    eval /home/loner/miniconda3/bin/conda "shell.fish" hook $argv | source
+else
+    if test -f "/home/loner/miniconda3/etc/fish/conf.d/conda.fish"
+        . "/home/loner/miniconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH /home/loner/miniconda3/bin $PATH
+    end
+end
+# <<< conda initialize <<<

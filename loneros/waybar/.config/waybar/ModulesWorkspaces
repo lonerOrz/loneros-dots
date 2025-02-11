@@ -150,7 +150,7 @@
 	"on-scroll-up": "hyprctl dispatch workspace e+1",
 	"on-scroll-down": "hyprctl dispatch workspace e-1",
     "persistent-workspaces": {
-      "*": 5
+      "*": 10
 	},
 	"format-icons": {
 		"1": "1",
@@ -175,23 +175,21 @@
 	"on-click": "activate",
 	"on-scroll-up": "hyprctl dispatch workspace e+1",
 	"on-scroll-down": "hyprctl dispatch workspace e-1",
-	"persistent-workspaces": {
-		"*": 5
-	  },
 	"format": "{icon} {windows}",
 	"format-window-separator": " ",
 	"window-rewrite-default": " ",
 	"window-rewrite": {
 		"title<.*youtube.*>": " ",
+		"title<.*github.*>": " ",
 		"title<.*amazon.*>": " ",
 		"title<.*reddit.*>": " ",
 		"title<.*Picture-in-Picture.*>": " ",
 		"class<firefox|org.mozilla.firefox|librewolf|floorp|mercury-browser|[Cc]achy-browser>": " ",
-		"class<kitty|konsole>": " ",
+		"class<kitty|konsole|pypr.*>": " ",
 		"class<kitty-dropterm>": " ",
 		"class<Chromium|Thorium>": " ",
 		"class<org.telegram.desktop|io.github.tdesktop_x64.TDesktop>": " ",
-		"class<[Ss]potify>": " ",
+		"class<[Ss]potify>": " ",
 		"class<VSCode|code-url-handler|code-oss|codium|codium-url-handler|VSCodium>": "󰨞 ",
 		"class<thunar>": "󰝰 ",
 		"class<[Tt]hunderbird|[Tt]hunderbird-esr>": " ",
@@ -210,10 +208,11 @@
 		"class<com.obsproject.Studio>": " ",
 		"class<polkit-gnome-authentication-agent-1>": "󰒃 ",
 		"class<nwg-look>": " ",
-		"class<zen-alpha>": "󰰷 ", //Zen Browser
+		"class<[Zz]en.*>": "󰰷 ", //Zen Browser
 		"class<waterfox|waterfox-bin>": " ",
 		"class<microsoft-edge>": " ",
-		"class<vlc>": "󰕼 "
+		"class<vlc>": "󰕼 ",
+		"class<[Ss]team.*>": " "
 		}   
 	},
 

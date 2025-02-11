@@ -2,19 +2,21 @@
     "autoUpdate": true,
     "autoUpdateNotification": true,
     "useQuickCss": true,
-    "themeLinks": [],
+    "themeLinks": [
+        "https://refact0r.github.io/midnight-discord/midnight.css"
+    ],
     "enabledThemes": [
         "tui-mocha.theme.css"
     ],
     "enableReactDevtools": false,
     "frameless": false,
-    "transparent": false,
+    "transparent": true,
     "winCtrlQ": false,
     "disableMinSize": false,
     "winNativeTitleBar": false,
     "plugins": {
         "ChatInputButtonAPI": {
-            "enabled": false
+            "enabled": true
         },
         "CommandsAPI": {
             "enabled": true
@@ -32,10 +34,10 @@
             "enabled": false
         },
         "MessageEventsAPI": {
-            "enabled": false
+            "enabled": true
         },
         "MessagePopoverAPI": {
-            "enabled": false
+            "enabled": true
         },
         "MessageUpdaterAPI": {
             "enabled": false
@@ -211,7 +213,7 @@
         "GreetStickerPicker": {
             "enabled": false
         },
-        "HideMedia": {
+        "HideAttachments": {
             "enabled": false
         },
         "iLoveSpam": {
@@ -305,6 +307,9 @@
             "enabled": false
         },
         "NoReplyMention": {
+            "enabled": false
+        },
+        "NoScreensharePreview": {
             "enabled": false
         },
         "NoServerEmojis": {
@@ -473,7 +478,14 @@
             "enabled": false
         },
         "Translate": {
-            "enabled": false
+            "enabled": true,
+            "showChatBarButton": true,
+            "service": "google",
+            "deeplApiKey": "",
+            "autoTranslate": true,
+            "showAutoTranslateTooltip": true,
+            "receivedInput": "auto",
+            "receivedOutput": "en"
         },
         "TypingIndicator": {
             "enabled": false
@@ -558,11 +570,14 @@
         "Settings": {
             "enabled": true,
             "settingsLocation": "aboveNitro"
+        },
+        "SupportHelper": {
+            "enabled": true
         }
     },
     "notifications": {
         "timeout": 5000,
-        "position": "bottom-right",
+        "position": "top-right",
         "useNative": "not-focused",
         "logLimit": 50
     },
@@ -570,6 +585,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1738495438702
+        "settingsSyncVersion": 1738190565724
     }
 }

@@ -110,7 +110,7 @@ window#waybar.hidden {
 /*-----Indicators----*/
 #custom-hypridle.notactive,
 #idle_inhibitor.activated {
-	color: cyan;
+	color: white;
 }
 
 #battery.critical:not(.charging) {

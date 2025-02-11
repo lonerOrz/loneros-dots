@@ -77,7 +77,7 @@ print_color "$OK" "stow is installed."
 directories=($(find "$config_dir" -mindepth 1 -maxdepth 1 -type d))
 
 # 定义需要跳过stow的项目目录
-SKIP_DIRECTORIES=("kitty" "nvim" "hyprpanel" "nwg-dock-hyprland")
+SKIP_DIRECTORIES=("git" "spicetify")
 
 mkdir_route() {
   local dirname="$1"

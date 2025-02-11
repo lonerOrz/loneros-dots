@@ -4,19 +4,19 @@
 /* ---- Configuration ---- */
 
 configuration {
-    font:                       "JetBrainsMono Nerd Font SemiBold 12";
-    modi:                       "drun,run,filebrowser";
+	font:						"Fira Code SemiBold 12";
+	modi:                       "drun,run,filebrowser";
     show-icons:                 true;
     display-drun:               "Apps";
     display-run:                "Run";
     display-filebrowser:        "Files";
     display-window:             "Windows";
-    drun-display-format:        "{name}";
-    hover-select:               true;
-    me-select-entry:            "MouseSecondary";
+	drun-display-format:        "{name}";
+	hover-select:               true;
+	me-select-entry:            "MouseSecondary";
     me-accept-entry:            "MousePrimary";
-    window-format:              "{w} · {c} · {t}";
-    dpi:						1;
+	window-format:              "{w} · {c} · {t}";
+	dpi:						1;
 }
 
 /* ---- Load wallust colors ---- */
@@ -43,7 +43,7 @@ window {
     transparency:               "real";
     cursor:                     "default";
     spacing:                    0px;
-    border:                     3px 0px 3px 0px;
+    border:                     4px 0px 4px 0px;
     border-radius:              30px;
     location:                   center;
     anchor:                     center;
@@ -85,7 +85,7 @@ entry {
     background-color:            @selected;
     text-color:                  @text-selected;
     cursor:                      text;
-    placeholder:                 " 🖥️ Search "; // << Search symbol
+    placeholder:                 "🖥️ Search "; // << Search symbol
     placeholder-color:           inherit;
 }
 
@@ -144,17 +144,18 @@ button selected {
 
 /* ---- Scrollbar ---- */
 scrollbar {
-    border:       				0;
-    handle-color: 				@background-alt;
-    handle-width: 				2px ;
-    padding:      				0;
+    width:        4px ;
+    border:       0;
+    handle-color: @border-color;
+    handle-width: 8px ;
+    padding:      0;
 }
 
 /* ---- Elements ---- */
 element {
     enabled:                     true;
     spacing:                     10px;
-  	padding: 					 10px;
+    padding:                     10px;
     border-radius:               12px;
     background-color:            transparent;
     cursor:                      pointer;
@@ -174,11 +175,11 @@ element normal.active {
 }
 
 element selected.normal {
-    border:                      0px 3px 0px 3px;
+    border:                      1px 6px 1px 6px;
     border-radius:               16px;
     border-color:                @selected;
     background-color:            transparent;
-    text-color:                  @background-alt;
+    text-color:                  @selected;
 }
 
 element selected.urgent {
@@ -208,7 +209,7 @@ element-icon {
     cursor:                      inherit;
 }
 element-text {
-    font:						"JetBrainsMono Nerd Font SemiBold 12";
+    font:						"Fira Code SemiBold 12";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;

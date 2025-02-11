@@ -2,7 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-local opts = vim.opt
+local opt = vim.opt
 
-opts.list = true
-opts.listchars = { space = "·" }
+opt.list = true
+opt.listchars = { space = "·" }
