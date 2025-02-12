@@ -30,12 +30,12 @@ SKIP_DIRECTORIES=("kitty" "nvim")
 
 # 每个子文件夹下的排除规则可以单独定义
 declare -A EXCLUDE_RULES
-EXCLUDE_RULES["hypr"]="UserConfigs/ UserScripts/ hyprlock.conf hyprlock-1080p.conf"
-EXCLUDE_RULES["rofi"]="nord/ mocha/ powermenu/ config.rasi .current_wallpaper"
-EXCLUDE_RULES["waybr"]="config style.css"
+EXCLUDE_RULES["hypr"]="UserConfigs/ hyprlock.conf hyprlock-1080p.conf"
+EXCLUDE_RULES["rofi"]="config.rasi .current_wallpaper"
+EXCLUDE_RULES["waybar"]="config style.css"
 EXCLUDE_RULES["btop"]="btop.conf"
 
-# 获取源目录下的所有子文件夹（项目）
+# 获取目标目录下的所有子文件夹（项目）
 subfolders=$(find "$TARGET" -mindepth 1 -maxdepth 1 -type d)
 
 # 遍历源目录下的每个子文件夹（项目）
@@ -69,7 +69,7 @@ for subfolder in $subfolders; do
   SOURCE_DIR="$SOURCE/$folder_name"
   TARGET_DIR="$TARGET/$folder_name/.config/$folder_name"
 
-  # for file in $(rsync -avni --delete --ignore-times "${EXCLUDE_PARAMS[@]}" "$SOURCE_DIR" "$TARGET_DIR" | grep -E '^>f' | awk '{print $2}'); do
+  # for file in $(rsync -avni --ignore-times "${EXCLUDE_PARAMS[@]}" "$SOURCE_DIR" "$TARGET_DIR" | grep -E '^>f' | awk '{print $2}'); do
   #   if [ -f "$TARGET/$folder_name/.config/$file" ]; then
   #     echo "$CAT 差异文件：$file$RESET"
   #     diff -u "$SOURCE/$file" "$TARGET/$folder_name/.config/$file"
@@ -81,7 +81,7 @@ for subfolder in $subfolders; do
 
   # 同步
   echo "$INFO 正在同步 $folder_name 项目...$RESET"
-  rsync -avi --delete "${EXCLUDE_PARAMS[@]}" "$SOURCE_DIR/" "$TARGET_DIR/"
+  rsync -avi "${EXCLUDE_PARAMS[@]}" "$SOURCE_DIR/" "$TARGET_DIR/"
   echo "$OK $folder_name 项目同步完成！$RESET"
   printf "\n%.0s" {1..3}
   echo

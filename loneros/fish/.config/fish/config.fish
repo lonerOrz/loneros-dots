@@ -42,6 +42,7 @@ alias vm 'cd ~/virtualmachine/vm/'
 alias cf 'cd ~/.config'
 alias mkshell 'devbox init && devbox generate direnv && direnv allow'
 alias ga 'git add .'
+alias gc 'git clone'
 alias gs 'git status'
 alias lg lazygit
 alias ipa 'ip a | grep -A 2 -E "^[0-9]+: (wlan|eth|en)"'
@@ -159,7 +160,7 @@ function vmerge
     echo "合并完成: $output_file"
 end
 
-function gc
+function cmt
     # 如果没有输入提交信息，则使用默认的提交信息
     if test (count $argv) -lt 1
         set commit_message "update version"

@@ -77,7 +77,7 @@ print_color "$OK" "stow is installed."
 directories=($(find "$config_dir" -mindepth 1 -maxdepth 1 -type d))
 
 # 定义需要跳过stow的项目目录
-SKIP_DIRECTORIES=("kitty" "nvim" "hyprpanel" "nwg-dock-hyprland")
+SKIP_DIRECTORIES=("hyprpanel" "nwg-dock-hyprland")
 
 mkdir_route() {
   local dirname="$1"
@@ -110,7 +110,6 @@ mkdir_route() {
 # 遍历所有目录
 for dir in "${directories[@]}"; do
   dir_name=$(basename "$dir")
-
   if [[ " ${SKIP_DIRECTORIES[@]} " =~ " $dir_name " ]]; then
     echo "${NOTE} $ORANGE 项目 $dir_name 不需要stow,被跳过！$RESET"
     echo
@@ -126,7 +125,7 @@ for dir in "${directories[@]}"; do
       echo "${CAT} Automatically stowing ${BLUE}$dir_name${RESET}..."
       stow_output=$(stow --dir="$config_dir" --target="$HOME" -D "$dir_name" 2>&1)
       mkdir_route "$dir_name"
-      stow_output=$(stow --dir="$config_dir" --target="$HOME" "$dir_name" --ignore="^route$" --adopt 2>&1)
+      stow_output=$(stow --dir="$config_dir" --target="$HOME" "$dir_name" --ignore="^route$" --no-folding 2>&1)
       stow_status=$?
       print_color "$OK" "${GREEN}$dir_name successfully linked."
     else
@@ -137,7 +136,7 @@ for dir in "${directories[@]}"; do
         [Yy]*)
           stow_output=$(stow --dir="$config_dir" --target="$HOME" -D "$dir_name" 2>&1)
           mkdir_route "$dir_name"
-          stow_output=$(stow --dir="$config_dir" --target="$HOME" "$dir_name" --ignore="^route$" --adopt 2>&1)
+          stow_output=$(stow --dir="$config_dir" --target="$HOME" "$dir_name" --ignore="^route$" 2>&1)
           stow_status=$?
           print_color "$OK" "${GREEN}$dir_name successfully linked."
           break
