@@ -1,5 +1,5 @@
 # Font
-font-family = "FiraCode Nerd Font Mono Reg"
+font-family = "FiraCode Nerd Font Mono Bold"
 font-size = 10
 font-thicken = true
 font-feature = ss01
@@ -30,8 +30,8 @@ mouse-hide-while-typing = true
 
 window-theme = ghostty
 # 设置窗口左右和上下的内边距
-window-padding-x = 4
-window-padding-y = 6
+window-padding-x = 1
+window-padding-y = 1
 window-padding-balance = true
 window-padding-color = background
 window-inherit-working-directory = true

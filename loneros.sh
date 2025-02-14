@@ -136,7 +136,7 @@ for dir in "${directories[@]}"; do
         [Yy]*)
           stow_output=$(stow --dir="$config_dir" --target="$HOME" -D "$dir_name" 2>&1)
           mkdir_route "$dir_name"
-          stow_output=$(stow --dir="$config_dir" --target="$HOME" "$dir_name" --ignore="^route$" 2>&1)
+          stow_output=$(stow --dir="$config_dir" --target="$HOME" "$dir_name" --ignore="^route$" --no-folding 2>&1)
           stow_status=$?
           print_color "$OK" "${GREEN}$dir_name successfully linked."
           break

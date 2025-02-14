@@ -35,14 +35,18 @@ REPO_NAME=$(basename "$UPSTREAM_REPO" .git)
 # 检查是否已经存在该仓库目录，若存在则执行 git pull 更新
 if [ ! -d "$REPO_NAME" ]; then
   echo "${CAT} 克隆 upstream 仓库到当前目录下 $REPO_NAME..."
-  git clone "$UPSTREAM_REPO"
+  git clone --branch development "$UPSTREAM_REPO"
   if [ $? -ne 0 ]; then
     echo "${ERROR} 克隆 upstream 仓库失败。"
     exit 1
   fi
 else
   echo "${INFO} 仓库已存在，拉取最新代码..."
-  cd "$REPO_NAME" && git pull origin main
+  # cd "$REPO_NAME" && git checkout development && git pull origin main
+  cd "$REPO_NAME" || exit 1 # 确保进入仓库目录
+  git fetch origin
+  git checkout development
+  git pull origin development
   if [ $? -ne 0 ]; then
     echo "${ERROR} 更新仓库失败。"
     exit 1
