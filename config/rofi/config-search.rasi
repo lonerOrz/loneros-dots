@@ -6,18 +6,20 @@
 /* ---- Window ---- */
 window {
 	width: 40%;
+	//orientation: horizontal;
 	height: inherit;
     y-offset: 10px;
     location: north;
-    children: [ "entry" ];
+    children: [ "entry", "message" ];
     border: 2px;
     border-color: white/25%;
 }
 
 /* ---- Entry ---- */ 
 entry {
-	placeholder: " 🔎 Google Search via web browser";
+	expand: true;
+	placeholder: " 🔎 Google Search";
+	horizontal-align: 0.5;
 	padding: 15px;
-	border: 0px;
-	border-radius: 12px;
+	border-radius: inherit;
 }

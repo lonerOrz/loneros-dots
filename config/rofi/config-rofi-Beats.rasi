@@ -5,7 +5,7 @@
 
 /* ---- Window ---- */
 window {
-    width: 45%;
+  width: 45%;
 }
 
 /* ---- Mainbox ---- */
@@ -13,7 +13,7 @@ mainbox {
   children:
     [ "inputbar", "listview"];
 }
-
+R
 /* ---- Entry ---- */ 
 entry {
   placeholder: " 📻 Choose Media or Stations to play";
@@ -21,10 +21,10 @@ entry {
 
 /* ---- Listview ---- */
 listview {
-    columns: 2;
-    lines: 8;
-    fixed-height: false;
-    margin: 10px;
+  columns: 2;
+  lines: 8;
+  fixed-height: false;
+  margin: 10px;
 }
 
 /* ---- Elements ---- */

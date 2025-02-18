@@ -6,14 +6,14 @@
 
 /* ---- Configuration ---- */
 configuration {
-  dpi:						1;
+  dpi:                        1;
   show-icons:                 true;
   hover-select:               true;
   me-select-entry:            "MouseSecondary";
   me-accept-entry:            "MousePrimary";
 }
-/*****----- Global Properties -----*****/
 
+/*****----- Global Properties -----*****/
 * {
   bg0    : #ffffff80;
   bg1    : #f9f9f9bf;
@@ -77,13 +77,9 @@ icon-search {
 }
 
 entry {
-  placeholder       : "Type here to search";
-  placeholder-color : @fg1;
-}
-
-textbox {
-  padding          : 4px 8px;
-  background-color : @bg2;
+  placeholder       : "Search  👀 NOTE: CTRL TAB to change MODE";
+  text-color		: @fg1;
+  horizontal-align  : 0.5;
 }
 
 listview {
@@ -129,4 +125,27 @@ element-icon {
 
 element-text {
   text-color: inherit;
+}
+
+/* ---- Scrollbar ---- */
+scrollbar {
+  border:			1px;
+  border-radius:	10px;
+  background-color:	inherit;
+  handle-color: 	@accent;
+  handle-width: 	5px ;
+  padding:      	0;
+}
+
+/*****----- Message -----*****/
+error-message {
+  padding: 20px;
+}
+
+textbox {
+  padding            : 10px;
+  background-color   : @bg0;
+  text-color         : @fg0;
+  vertical-align     : 0.5; 
+  horizontal-align   : 0.5;
 }

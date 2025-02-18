@@ -5,7 +5,7 @@
 IFS=$'\n\t'
 
 # Define directories and variables
-rofi_theme_dir="$HOME/.local/share/rofi/themes"
+rofi_theme_dir="$HOME/.config/rofi/themes"
 rofi_config_file="$HOME/.config/rofi/config.rasi"
 SED=$(which sed)
 iDIR="$HOME/.config/swaync/images"
@@ -25,7 +25,7 @@ menu() {
 add_theme_to_config() {
     local theme_name="$1"
     local theme_path="$rofi_theme_dir/$theme_name"
-    
+        
     # if config in $HOME to write as $HOME 
     if [[ "$theme_path" == $HOME/* ]]; then
         theme_path_with_tilde="~${theme_path#$HOME}"
@@ -65,7 +65,7 @@ main() {
         exit 0
     fi
     add_theme_to_config "$choice"
-    notify-send -i "$iDIR/ja.png" -u low 'Rofi Theme' "$choice applied."
+    notify-send -i "$iDIR/ja.png" -u low 'Rofi Theme applied:' "$choice"
 }
 
 if pgrep -x "rofi" >/dev/null; then

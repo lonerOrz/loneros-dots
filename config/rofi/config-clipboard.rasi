@@ -5,19 +5,19 @@
 
 /* ---- Window ---- */
 window {
-  width: 45%;
+  width: 50%;
 }
 
 /* ---- Mainbox ---- */
 mainbox {
   children:
-    [ "inputbar", "listview"];
+    [ "inputbar", "message", "listview"];
 }
 
 /* ---- Entry ---- */
 entry {
-  width: 42%;
-  placeholder: " 📋 Search  Clipboard **note** 👀 CTRL Del - Cliphist del or Alt Del - cliphist wipe";
+  width: 47%;
+  placeholder: " 📋 Search  Clipboard ";
 }
 
 /* ---- Listview ---- */

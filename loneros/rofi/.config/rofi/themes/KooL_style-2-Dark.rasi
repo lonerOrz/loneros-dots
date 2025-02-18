@@ -1,24 +1,28 @@
 /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-/* KooL Hyprland Rofi Style 2 Light */
-/* credit: https://github.com/adi1090x/rofi */
+/* KooL Hyprland Rofi Style 2 Dark */
+/* Source: https://github.com/adi1090x/rofi */
 
 
-/*****----- Configuration -----*****/
+/* ****----- Configuration -----**** */
 configuration {
 	modi:                       "drun,filebrowser,window";
     show-icons:                 true;
-    display-drun:               "APPS";
-    display-run:                "RUN";
-    display-filebrowser:        "FILES";
-    display-window:             "WINDOW";
-	drun-display-format:        "{name}\n[<span weight='light' size='small'><i>({generic})</i></span>]";
-	window-format:              "Class : {c}\nWorkspace : {w}";
+    display-drun:               "  apps";
+    display-run:                "  term";
+    display-filebrowser:        "  files";
+    display-window:             "  window";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
     dpi:						1;
     hover-select:               true;
     me-select-entry:            "MouseSecondary";
     me-accept-entry:            "MousePrimary";
 }
 
+/*****----- Global Properties -----*****/
+* {
+
+}
 /*****-- Elements Font Size -----*****/
 element-text {
   font: "JetBrainsMono Nerd Font SemiBold 12";
@@ -41,7 +45,7 @@ window {
     padding:                     0px;
     border-radius:               12px;
     cursor:                      "default";
-	background-color: 			 inherit;
+    background-color: 			 transparent;
 }
 
 /*****----- Main Box -----*****/
@@ -51,8 +55,8 @@ mainbox {
     margin:                      10px;
     padding:                     40px;
     border-radius:               12px;
-    background-color:            white/90%;
-    children:                    [ "inputbar", "mode-switcher", "listview" ];
+    background-color:            black/90%;
+    children:                    [ "inputbar", "mode-switcher", "message", "listview" ];
 }
 
 /*****----- Inputbar -----*****/
@@ -60,18 +64,18 @@ inputbar {
     enabled:                     true;
     spacing:                     0px;
     margin:                      0px;
-    padding:                     0px 10px 10px 0px;
+    padding:                     0px 0px 10px 0px;
     border:                      0px 0px 2px 0px;
     border-radius:               0px;
     border-color:                gray/20%;
-    background-color:            transparent;
+    background-color:            black/50%;
     children:                    [ "entry" ];
 }
 
 entry {
     enabled:                     true;
-    background-color:            inherit;
-    text-color:                  black;
+    background-color:            black/50%;
+    text-color:                  white/75%;
     cursor:                      text;
     placeholder:                 "Type to search";
     placeholder-color:           inherit;
@@ -100,6 +104,16 @@ listview {
     cursor:                      "default";
 }
 
+/* ---- Scrollbar ---- */
+scrollbar {
+  border:						1px;
+  border-radius:				10px;
+  background-color:				inherit;
+  handle-color: 				#719DF9;
+  handle-width: 				5px ;
+  padding:      				0;
+}
+
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
@@ -108,22 +122,22 @@ element {
     padding:                     15px;
     border:                      1px solid;
     border-radius:               8px;
-    border-color:                gray/30%;
-    background-color:            white;
-    text-color:                  black;
+    border-color:                white/30%;
+    background-color:            black;
+    text-color:                  white;
     cursor:                      pointer;
 }
 element normal.active {
-    background-color:          #67FF80;
+    background-color:           #67FF80;
     text-color:                  black;
 }
 element selected.normal {
-    background-color:          #FDD66F;
+    background-color:           #c19419;
     text-color:                  black;
 }
 element selected.active {
-    background-color:          #FF7F7C;
-    text-color:                  black;
+    background-color:           #FF7F7C;
+    text-color:                  white;
 }
 element-icon {
     background-color:            transparent;
@@ -148,30 +162,30 @@ mode-switcher{
     text-color:                  white;
 }
 button {
-    font:                        "JetBrainsMono Nerd Font SemiBold 10";
     padding:                     6px;
     border:                      0px solid;
     border-radius:               100%;
-    background-color:          #719DF9;
+    background-color:            #719DF9;
     text-color:                  inherit;
     cursor:                      pointer;
 }
 button selected {
-    background-color:          #F37277;
+    background-color:            #F37277;
     text-color:                  inherit;
 }
 
 /*****----- Message -----*****/
+message {
+    background-color:            transparent;
+    border:                      0px;
+}
 error-message {
     padding:                     20px;
-    background-color:            transparent;
-    text-color:                  black;
 }
 textbox {
-    padding:                     20px;
-    border-radius:               12px;
-    background-color:            white/30%;
-    text-color:                  black;
+    padding:                     10px;
+    background-color:            #719DF9;
+    text-color:                  inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.0;
+    horizontal-align:            0.5;
 }

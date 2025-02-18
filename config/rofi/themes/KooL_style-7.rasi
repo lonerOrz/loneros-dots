@@ -1,18 +1,17 @@
 /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-/* KooL Hyprland Rofi Style 3 - Full screen v2 */
-/* credit: https://github.com/adi1090x/rofi */
+/* KooL Hyprland Rofi Style 7 */
+
+/* original design from: https://github.com/adi1090x/rofi */
 
 /*****----- Configuration -----*****/
 configuration {
-    modi:                       "drun,run,filebrowser";
+	modi:                       "drun,run,filebrowser,window";
     show-icons:                 true;
-    display-drun:               " Apps";
-    display-run:                " Run";
-    display-filebrowser:        " Files";
-    display-window:             " Windows";
-	display-ssh:                " SSH";
-    drun-display-format:        "{name}";
-    window-format:              "{w} · {c} · {t}";
+    display-drun:                " ";
+    display-run:                 " ";
+    display-filebrowser:         " ";
+    display-window:              " ";
+	drun-display-format:        "{name}";
     dpi:						1;
     hover-select:               true;
     me-select-entry:            "MouseSecondary";
@@ -22,40 +21,14 @@ configuration {
 /* ---- Load wallust colors ---- */
 @theme "~/.config/rofi/wallust/colors-rofi.rasi"
 
+
 /*****----- Global Properties -----*****/
 * {
-    background-alt: @color7;
-    selected:       @color12;
-    active:         @color11;
-    urgent:         red;
-    
-    border-color:                @selected;
-    handle-color:                @selected;
-    background-color:            @background;
-    foreground-color:            @foreground;
-    alternate-background:        @background-alt;
-    normal-background:           @background;
-    normal-foreground:           @foreground;
-    urgent-background:           @urgent;
-    urgent-foreground:           @background;
-    active-background:           @active;
-    active-foreground:           @background;
-    selected-normal-background:  @selected;
-    selected-normal-foreground:  @background;
-    selected-urgent-background:  @active;
-    selected-urgent-foreground:  @background;
-    selected-active-background:  @urgent;
-    selected-active-foreground:  @background;
-    alternate-normal-background: @background;
-    alternate-normal-foreground: @foreground;
-    alternate-urgent-background: @urgent;
-    alternate-urgent-foreground: @background;
-    alternate-active-background: @active;
-    alternate-active-foreground: @background;
-    
-
+    background-alt:              @color1;
+    selected:                    @color12;
+    active:                      @color11;
+    urgent:                      #8E3596;
 }
-
 /*****-- Elements Font Size -----*****/
 element-text {
   font: "JetBrainsMono Nerd Font SemiBold 12";
@@ -66,7 +39,8 @@ window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    fullscreen:                  true;
+    fullscreen:                  false;
+    width:                       800px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -74,65 +48,69 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               20px;
     border-color:                @selected;
-    background-color:            black / 10%;
+    background-color:            @background-alt;
     cursor:                      "default";
 }
 
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     100px;
-    margin:                      0px;
-    padding:                     100px 225px;
+    spacing:                     15px;
+    margin:                      40px;
+    padding:                     0px;
     border:                      0px solid;
     border-radius:               0px 0px 0px 0px;
     border-color:                @selected;
     background-color:            transparent;
-    children:                    [ "inputbar", "listview" ];
+    children:                    [ "inputbar", "message", "listview" ];
 }
 
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
-    spacing:                     10px;
-    margin:                      0% 28%;
-    padding:                     10px;
-    border:                      1px solid;
-    border-radius:               6px;
-    border-color:                white / 25%;
-    background-color:            white / 5%;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               100%;
+    border-color:                @selected;
+    background-color:            @background-alt;
     text-color:                  @foreground;
-    children:                    [ "prompt", "entry" ];
+    children:                    [ "entry" ];
 }
 
 prompt {
     enabled:                     true;
-    background-color:            transparent;
-    text-color:                  inherit;
+    padding:                     15px;
+    border-radius:               100%;
+    background-color:            @selected;
+    text-color:                  @background;
 }
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "::";
-    background-color:            transparent;
+    str:                         ":::";
+    padding:                     15px;
+    background-color:            inherit;
     text-color:                  inherit;
 }
 entry {
     enabled:                     true;
-    background-color:            transparent;
+    padding:                     15px 0px;
+    background-color:            inherit;
     text-color:                  @foreground;
     cursor:                      text;
-    placeholder:                 "  Search";
+    placeholder:                 "Search...  👀 NOTE: CTRL TAB to change MODE";
     placeholder-color:           inherit;
 }
 
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     7;
-    lines:                       4;
+    columns:                     2;
+    lines:                       6;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -141,7 +119,7 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     0px;
+    spacing:                     15px;
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
@@ -161,15 +139,15 @@ scrollbar {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    spacing:                     15px;
+    spacing:                     10px;
     margin:                      0px;
-    padding:                     35px 10px;
+    padding:                     0px;
     border:                      0px solid;
-    border-radius:               15px;
+    border-radius:               0px;
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
-    orientation:                 vertical;
+    orientation:                 horizontal;
     cursor:                      pointer;
 }
 element normal.normal {
@@ -177,13 +155,16 @@ element normal.normal {
     text-color:                  @foreground;
 }
 element selected.normal {
-    background-color:            white / 10%;
+    border-radius:               10%;
+    background-color:            @color11;
     text-color:                  @foreground;
 }
 element-icon {
+    padding:                     0px;
+    border-radius:               100%;
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        72px;
+    size:                        5%;
     cursor:                      inherit;
 }
 element-text {
@@ -192,22 +173,28 @@ element-text {
     highlight:                   inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.5;
+    horizontal-align:            0.0;
 }
 
 /*****----- Message -----*****/
+message {
+    background-color:            transparent;
+    border:                      0px;
+}
 error-message {
-    padding:                     100px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @selected;
-    background-color:            black / 10%;
+    padding:                     20px;
+    border:                      2px solid;
+    border-radius:               20px;
+    border-color:                @active;
+    background-color:            @background;
     text-color:                  @foreground;
 }
 textbox {
-    background-color:            transparent;
+	padding:					 10px;
+    border-radius:               20px;
+    background-color:            @selected;
     text-color:                  @foreground;
     vertical-align:              0.5;
-    horizontal-align:            0.0;
+    horizontal-align:            0.5;
     highlight:                   none;
 }

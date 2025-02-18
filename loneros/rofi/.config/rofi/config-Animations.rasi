@@ -6,35 +6,34 @@
 /* ---- Mainbox ---- */
 mainbox {
   children:
-    [ "inputbar", "listview"];
+    [ "inputbar", "message", "listview"];
 }
-
 
 /* ---- Window ---- */
 window {
-  width:	30%;
+  width:	45%;
 }
 
 /* ---- Entry ---- */ 
 entry {
-  width: 28%;
+  width: 43%;
   placeholder: " ✨ Search / Choose which Animations to load";
 }
 
 /* ---- Listview ---- */
 listview {
-    columns: 2;
-    lines: 9;
-    fixed-height: false;
-    margin: 10px;
+  columns: 2;
+  lines: 9;
+  fixed-height: false;
+  margin: 10px;
 }
 
 /* ---- Elements ---- */
 element-icon {
-  	size: 0%;
+  size: 0%;
 }
 element-text {
-    horizontal-align: 0.0;
-    vertical-align: 0.0;
-    margin: 5px 30px 5px 30px;
+  horizontal-align: 0.0;
+  vertical-align: 0.0;
+  margin: 5px 30px 5px 30px;
 }

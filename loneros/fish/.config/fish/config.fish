@@ -6,7 +6,7 @@ if status is-interactive
     # Initialize starship prompt
     starship init fish | source
     # direnv
-    # direnv hook fish | source
+    direnv hook fish | source
 end
 
 # fcitx5 on wayland env

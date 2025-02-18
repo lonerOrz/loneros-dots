@@ -6,21 +6,27 @@
 /* ---- Mainbox ---- */
 mainbox {
   children:
-    [ "inputbar", "listview"];
+    [ "inputbar", "message", "listview"];
+}
+
+/* ---- Window ---- */
+window {
+  width: 45%;
 }
 
 /* ---- Entry ---- */
 entry {
   width: 37%;
-  placeholder: " 💫 Search / Choose Emoji's  **note** 👀 Click or Return to choose | Ctrl V to Paste";
+  placeholder: " 💫 Search / Choose Emoji's";
   horizontal-align: 0.0;
 }
 
 /* ---- Listview ---- */
 listview {
-  columns: 1;
+  columns: 2;
   lines: 8;
   fixed-height: false;
+  scrollbar: true;
 }
 
 /* ---- Elements ---- */

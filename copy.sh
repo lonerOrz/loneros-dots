@@ -30,7 +30,30 @@ if [[ $EUID -eq 0 ]]; then
     printf "\n%.0s" {1..2} 
     exit 1
 fi
-  
+
+# Function to print colorful text
+print_color() {
+    printf "%b%s%b\n" "$1" "$2" "$CLEAR"
+}
+
+# Check if dpkg is installed (use to check if Debian or Ubuntu or based distros)
+if command -v dpkg &> /dev/null; then
+	printf "\n%.0s" {1..1}
+    print_color $WARNING "
+    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+                 KOOL DOTS version INCOMPATIBLE
+    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+
+    Debian / Ubuntu detected. Refer to Hyprland-Dots README
+    For instruction on how to update your KooL Hyprland Dots
+
+    exiting ....
+    "
+  printf "\n%.0s" {1..3}
+  exit 1
+fi
+
+
 printf "\n%.0s" {1..1}  
 echo -e "\e[35m
     ╦╔═┌─┐┌─┐╦    ╔╦╗┌─┐┌┬┐┌─┐
@@ -69,7 +92,7 @@ if lspci -k | grep -A 2 -E "(VGA|3D)" | grep -iq nvidia; then
   sed -i '/env = __GLX_VENDOR_LIBRARY_NAME,nvidia/s/^#//' config/hypr/UserConfigs/ENVariables.conf
   sed -i '/env = NVD_BACKEND,direct/s/^#//' config/hypr/UserConfigs/ENVariables.conf
   # enabling no hardware cursors if nvidia detected
-  sed -i 's/^\([[:space:]]*no_hardware_cursors[[:space:]]*=[[:space:]]*\)2/\1true/' config/hypr/UserConfigs/UserSettings.conf  
+  sed -i 's/^\([[:space:]]*no_hardware_cursors[[:space:]]*=[[:space:]]*\)false/\1true/' config/hypr/UserConfigs/UserSettings.conf  
   # disabling explicit sync for nvidia for now (Hyprland 0.42.0)
   #sed -i 's/  explicit_sync = 2/  explicit_sync = 0/' config/hypr/UserConfigs/UserSettings.conf
 fi
@@ -78,7 +101,7 @@ fi
 if hostnamectl | grep -q 'Chassis: vm'; then
   echo "${INFO} System is running in a virtual machine. Setting up proper env's and configs" 2>&1 | tee -a "$LOG" || true
   # enabling proper ENV's for Virtual Environment which should help
-  sed -i 's/^\([[:space:]]*no_hardware_cursors[[:space:]]*=[[:space:]]*\)2/\1true/' config/hypr/UserConfigs/UserSettings.conf
+  sed -i 's/^\([[:space:]]*no_hardware_cursors[[:space:]]*=[[:space:]]*\)false/\1true/' config/hypr/UserConfigs/UserSettings.conf
   sed -i '/env = WLR_RENDERER_ALLOW_SOFTWARE,1/s/^#//' config/hypr/UserConfigs/ENVariables.conf
   #sed -i '/env = LIBGL_ALWAYS_SOFTWARE,1/s/^#//' config/hypr/UserConfigs/ENVariables.conf
   sed -i '/monitor = Virtual-1, 1920x1080@60,auto,1/s/^#//' config/hypr/UserConfigs/Monitors.conf
@@ -143,6 +166,7 @@ You need to set it Manually
 
 Setting a wrong Keyboard Layout will cause Hyprland to crash
 If you are not sure, just type ${YELLOW}us${RESET}
+${SKYBLUE}You can change later in ~/.config/hypr/UserConfigs/UserSettings.conf${RESET}
 
 ${MAGENTA} NOTE:${RESET}
 •  You can also set more than 2 keyboard layouts
@@ -190,6 +214,7 @@ You need to set it Manually
 
 Setting a wrong Keyboard Layout will cause Hyprland to crash
 If you are not sure, just type ${YELLOW}us${RESET}
+${SKYBLUE}You can change later in ~/.config/hypr/UserConfigs/UserSettings.conf${RESET}
 
 ${MAGENTA} NOTE:${RESET}
 •  You can also set more than 2 keyboard layouts
@@ -264,17 +289,19 @@ fi
 
 printf "\n"
 
-# Action to do for better kitty appearance
+# Action to do for better appearance
 while true; do
-  echo "${NOTE} ${SKY_BLUE} By default, KooL's Dots are configured for 1440p!"
+  echo "${NOTE} ${SKY_BLUE} By default, KooL's Dots are configured for 1440p or 2k."
+  echo "${WARN} If you dont select proper resolution, Hyprlock will look FUNKY!"
+  echo "${INFO} If you are not sure what is your resolution, choose 1 here!"
   echo "${MAGENTA}Select monitor resolution to properly configure appearance and fonts:"
-  echo "$YELLOW  -- Enter 1. for monitor resolution 1200p or less (< 1200p)"
-  echo "$YELLOW  -- Enter 2. for monitor resolution higher than 1440p (≥ 1440p)"
+  echo "$YELLOW  -- Enter 1. for monitor resolution less than 1440p (< 1440p)"
+  echo "$YELLOW  -- Enter 2. for monitor resolution equal to or higher than 1440p (≥ 1440p)"
   read -p "$CAT Enter the number of your choice (1 or 2): " res_choice
 
   case $res_choice in
     1)
-        resolution="< 1200p"
+        resolution="< 1440p"
         break
         ;;
     2)
@@ -300,10 +327,10 @@ if [ "$resolution" == "< 1440p" ]; then
   mv config/hypr/hyprlock-1080p.conf config/hypr/hyprlock.conf
 
   # rofi fonts reduction
-  themes_dir="assets/rofi/themes"
+  themes_dir="config/rofi/themes"
   config_file="config/rofi/config.rasi"
 
-  # Change rofi font size in ~/.local/share/rofi/themes/
+  # Change rofi font size
   find "$themes_dir" -type f | while read -r file; do
       if grep -Pzoq 'element-text {\n  font: "JetBrainsMono Nerd Font SemiBold 12";\n}' "$file"; then
           sed -i 's/font: "JetBrainsMono Nerd Font SemiBold 12"/font: "JetBrainsMono Nerd Font SemiBold 11"/' "$file"
@@ -401,13 +428,11 @@ while true; do
         echo "${ERROR} Invalid choice. Please enter y for yes or n for no."
     fi
 done
-
-
 printf "\n%.0s" {1..1}
 
 # Check if the user wants to disable Rainbow borders
-printf "${MAGENTA} By default, Rainbow Borders animation is enabled.\n"
-printf "${WARN} However, this uses a bit more CPU and Memory resources.\n"
+echo "${NOTE} ${SKY_BLUE}By default, Rainbow Borders animation is enabled"
+echo "${WARN} However, this uses a bit more CPU and Memory resources."
 
 read -p "${CAT} Do you want to disable Rainbow Borders animation? (y/N): " border_choice
 if [[ "$border_choice" =~ ^[Yy]$ ]]; then
@@ -420,7 +445,7 @@ if [[ "$border_choice" =~ ^[Yy]$ ]]; then
 else
     echo "${NOTE} No changes made. Rainbow borders remain enabled." 2>&1 | tee -a "$LOG"
 fi
-printf "\n"
+printf "\n%.0s" {1..1}
 
 set -e
 
@@ -496,7 +521,6 @@ for DIR2 in $DIRS; do
     fi
   fi
 done
-
 printf "\n%.0s" {1..1}
 
 printf "${INFO} - Copying dotfiles ${SKY_BLUE}second${RESET} part\n"
@@ -551,7 +575,7 @@ for DIR_NAME in $DIR; do
   fi
 done
 
-printf "\n%.0s" {1..2}
+printf "\n%.0s" {1..1}
 
 # Restoring UserConfigs and UserScripts
 DIRH="hypr"
@@ -602,7 +626,7 @@ if [ -d "$BACKUP_DIR_PATH" ]; then
   done
 fi
 
-printf "\n%.0s" {1..2}
+printf "\n%.0s" {1..1}
 
 # Restoring previous UserScripts
 DIRSH="hypr"
@@ -639,21 +663,22 @@ fi
 
 printf "\n%.0s" {1..1}
 
-## Rofi Additional themes
-source_DIR="assets/rofi/themes"
+# Define the target directory for rofi themes
 rofi_DIR="$HOME/.local/share/rofi/themes"
 
-echo -e "${NOTE} copying additional rofi themes into ${YELLOW}$rofi_DIR${RESET}... "
-
 if [ ! -d "$rofi_DIR" ]; then
-  echo "${INFO}Directory $rofi_DIR does not exist. Creating it now..." | tee -a "$LOG"
   mkdir -p "$rofi_DIR"
 fi
-
-# Copy the rofi themes from assets
-cp -r "$source_DIR"/* "$rofi_DIR"
-
-echo "${OK}rofi themes from ${YELLOW}$source_DIR${RESET} have been copied to ${MAGENTA}$rofi_DIR${RESET}" | tee -a "$LOG"
+if [ -d "$HOME/.config/rofi/themes" ]; then
+  if [ -z "$(ls -A $HOME/.config/rofi/themes)" ]; then
+    echo '/* Dummy Rofi theme */' > "$HOME/.config/rofi/themes/dummy.rasi"
+  fi
+  ln -snf ~/.config/rofi/themes/* ~/.local/share/rofi/themes/
+  # Delete the dummy file if it was created
+  if [ -f "$HOME/.config/rofi/themes/dummy.rasi" ]; then
+    rm "$HOME/.config/rofi/themes/dummy.rasi"
+  fi
+fi
 
 printf "\n%.0s" {1..1}
 
@@ -690,7 +715,7 @@ rm -rf "$HOME/.config/waybar/configs/[TOP] Default$config_remove" \
        "$HOME/.config/waybar/configs/[TOP] Default$config_remove (old v3)" \
        "$HOME/.config/waybar/configs/[TOP] Default$config_remove (old v4)" 2>&1 | tee -a "$LOG" || true
 
-printf "\n%.0s" {1..2}
+printf "\n%.0s" {1..1}
 
 # for SDDM (sequoia_2)
 sddm_sequioa="/usr/share/sddm/themes/sequoia_2"
@@ -815,15 +840,15 @@ cleanup_backups
 # symlinks for waybar style
 ln -sf "$waybar_style" "$HOME/.config/waybar/style.css" && \
 
-printf "\n%.0s" {1..2}
+printf "\n%.0s" {1..1}
 
 # initialize wallust to avoid config error on hyprland
 wallust run -s $wallpaper 2>&1 | tee -a "$LOG"
 
 printf "\n%.0s" {1..2}
 printf "${OK} GREAT! KooL's Hyprland-Dots is now Loaded & Ready !!! "
-printf "\n%.0s" {1..2}
+printf "\n%.0s" {1..1}
 printf "${INFO} However, it is ${MAGENTA}HIGHLY SUGGESTED${RESET} to logout and re-login or better reboot to avoid any issues"
-printf "\n%.0s" {1..2}
+printf "\n%.0s" {1..1}
 printf "${SKY_BLUE}Thank you${RESET} for using ${MAGENTA}KooL's Hyprland Configuration${RESET}... ${YELLOW}ENJOY!!!${RESET}"
 printf "\n%.0s" {1..3}

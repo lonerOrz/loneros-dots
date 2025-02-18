@@ -30,4 +30,4 @@ element-text {
   horizontal-align: 0.5;
 }
 
-@theme "./mocha/launcher.rasi"
+@theme "~/.config/rofi/themes/KooL_LonerOrZ.rasi"

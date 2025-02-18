@@ -10,16 +10,15 @@ mainbox {
   height: inherit;
 }
 
+/* ---- Window ---- */
+window {
+  width: 30%;
+}
 
 /* ---- Entry ---- */
 entry {
   expand: true;
   placeholder: " 🧮 Calculate";
-}
-
-textbox {
-    padding: 12px;
-    border-radius: 10px;
 }
 
 listview {enable: false;}
