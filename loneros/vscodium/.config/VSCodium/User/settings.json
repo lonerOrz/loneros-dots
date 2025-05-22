@@ -1,0 +1,41 @@
+{
+    "editor.fontFamily": "'FiraCode NerdFont Mono', 'monospace', monospace",
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "boundary",
+    "files.autoSave": "afterDelay",
+    "window.newWindowProfile": "默认",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "chat.commandCenter.enabled": false,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "python.defaultInterpreterPath": "/nix/store/89h7ppmyqv2fjq3apz7hv8323v9n4w3g-python3-3.11.11/bin/python",
+    "background.editor": {
+        
+        "useFront": true,
+        "style": {
+            "background-position": "100% 100%",
+            "background-size": "auto",
+            "opacity": 0.6
+        },
+        "styles": [
+            {},
+            {},
+            {}
+        ],
+        "images": ["file:///~/Pictures/wallpapers/loner/rocket.jpg"],
+        "interval": 0,
+        "random": false
+    },
+    "catppuccin.accentColor": "blue",
+    "backgroundCover.imagePath": "https://pic.20988.xyz/2024-07-15/1721007095-589488-20240222042738170854725857886.jpg",
+    "backgroundCover.opacity": 0.7,
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.confirmDelete": false,
+    "backgroundCover.randomImageFolder": "/home/loner/Pictures/Wallpapers",
+    "Codegeex.Privacy": true,
+    "workbench.iconTheme": "catppuccin-mocha",
+    "Codegeex.License": "",
+    "workbench.activityBar.location": "top",
+    "Codegeex.CompletionDelay": 0.3,
+    "livePreview.notifyOnOpenLooseFile": false
+}

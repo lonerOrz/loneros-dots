@@ -1,0 +1,61 @@
+# Main background and text colors
+theme[main_bg] = "{{background}}"
+theme[main_fg] = "{{foreground}}"
+theme[title] = "{{foreground}}"
+theme[hi_fg] = "{{color6}}"
+
+# Process box selected item
+theme[selected_bg] = "{{color0}}"
+theme[selected_fg] = "{{color6}}"
+
+# Inactive/disabled text and graph text
+theme[inactive_fg] = "{{color8}}"
+theme[graph_text] = "{{color9}}"
+
+# Meter background and process misc colors
+theme[meter_bg] = "{{color1}}"
+theme[proc_misc] = "{{color9}}"
+
+# Box outline colors
+theme[cpu_box] = "{{color5}}"
+theme[mem_box] = "{{color2}}"
+theme[net_box] = "{{color3}}"
+theme[proc_box] = "{{color6}}"
+theme[div_line] = "{{color7}}"
+
+# Temperature graph colors (Green -> Yellow -> Red)
+theme[temp_start] = "{{color2}}"
+theme[temp_mid] = "{{color10}}"
+theme[temp_end] = "{{color3}}"
+
+# CPU graph colors (Teal -> Lavender)
+theme[cpu_start] = "{{color4}}"
+theme[cpu_mid] = "{{color6}}"
+theme[cpu_end] = "{{color5}}"
+
+# Memory/Disk meter colors
+theme[free_start] = "{{color2}}"
+theme[free_mid] = "{{color6}}"
+theme[free_end] = "{{color4}}"
+theme[cached_start] = "{{color6}}"
+theme[cached_mid] = "{{color4}}"
+theme[cached_end] = "{{color5}}"
+theme[available_start] = "{{color11}}"
+theme[available_mid] = "{{color3}}"
+theme[available_end] = "{{color9}}"
+theme[used_start] = "{{color2}}"
+theme[used_mid] = "{{color4}}"
+theme[used_end] = "{{color6}}"
+
+# Network graph colors (Download and Upload)
+theme[download_start] = "{{color11}}"
+theme[download_mid] = "{{color3}}"
+theme[download_end] = "{{color9}}"
+theme[upload_start] = "{{color2}}"
+theme[upload_mid] = "{{color4}}"
+theme[upload_end] = "{{color6}}"
+
+# Process box gradient colors (Blue -> Mauve)
+theme[process_start] = "{{color6}}"
+theme[process_mid] = "{{color5}}"
+theme[process_end] = "{{color9}}"

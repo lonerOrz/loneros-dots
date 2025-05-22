@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf  # 挂载 Redis 配置文件
+      - ./data:/data                                         # 挂载数据目录
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+

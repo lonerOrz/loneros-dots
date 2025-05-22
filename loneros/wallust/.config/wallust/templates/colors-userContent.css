@@ -1,0 +1,105 @@
+@media (prefers-color-scheme: dark) {
+  /* 基本页面设置 */
+  @-moz-document url-prefix("about:") {
+    :root {
+      --in-content-page-color: {{foreground | lighten(0.1)}} !important;
+      --color-accent-primary: {{color12}} !important;
+      --color-accent-primary-hover: rgb(185, 233, 181) !important;
+      --color-accent-primary-active: rgb(161, 227, 172) !important;
+      --content-background-color: {{background}} !important;
+      --content-text-color: {{foreground | lighten(0.1)}} !important;
+      --in-content-page-background: {{background}} !important;
+    }
+  }
+
+  /* 新标签页和首页设置 */
+  @-moz-document url("about:newtab"), url("about:home") {
+    :root {
+      --newtab-background-color: {{background}} !important;
+      --newtab-background-color-secondary: {{background | lighten(0.1)}} !important;
+      --newtab-element-hover-color: {{background | lighten(0.1)}} !important;
+      --newtab-text-primary-color: {{foreground | lighten(0.1)}} !important;
+      --newtab-wordmark-color: {{foreground | lighten(0.1)}} !important;
+      --newtab-primary-action-background: {{color12}} !important;
+    }
+    .icon { color: {{color12}} !important; }
+    .card-outer:is(:hover, :focus, .active):not(.placeholder) .card-title {
+      color: {{color12}} !important;
+    }
+    .top-site-outer .search-topsite {
+      background-color: {{color12}} !important;
+    }
+  }
+
+  /* 偏好设置页面样式 */
+  @-moz-document url-prefix("about:preferences") {
+    :root {
+      --zen-colors-tertiary: {{background}} !important;
+      --in-content-text-color: {{foreground | lighten(0.1)}} !important;
+      --link-color: {{color12}} !important;
+      --link-color-hover: rgb(185, 233, 181) !important;
+      --zen-colors-primary: {{background | lighten(0.1)}} !important;
+      --in-content-box-background: {{background | lighten(0.1)}} !important;
+      --zen-primary-color: {{color12}} !important;
+    }
+    groupbox, moz-card { background: {{background}} !important; }
+    button, groupbox menulist { background: {{background | lighten(0.1)}} !important; color: {{foreground | lighten(0.1)}} !important; }
+    .main-content { background-color: {{background}} !important; }
+    .identity-color-blue { --identity-tab-color: {{color12}} !important; --identity-icon-color: {{color12}} !important; }
+    .identity-color-turquoise { --identity-tab-color: {{color14}} !important; --identity-icon-color: {{color14}} !important; }
+    .identity-color-green { --identity-tab-color: {{color10}} !important; --identity-icon-color: {{color10}} !important; }
+    .identity-color-yellow { --identity-tab-color: {{color11}} !important; --identity-icon-color: {{color11}} !important; }
+    .identity-color-orange { --identity-tab-color: #fab387 !important; --identity-icon-color: #fab387 !important; }
+    .identity-color-red { --identity-tab-color: {{color9}} !important; --identity-icon-color: {{color9}} !important; }
+    .identity-color-pink { --identity-tab-color: #f2cdcd !important; --identity-icon-color: #f2cdcd !important; }
+    .identity-color-purple { --identity-tab-color: {{color13}} !important; --identity-icon-color: {{color13}} !important; }
+  }
+
+  /* 插件页面样式 */
+  @-moz-document url-prefix("about:addons") {
+    :root {
+      --zen-dark-color-mix-base: {{background}} !important;
+      --background-color-box: {{background}} !important;
+    }
+  }
+
+  /* 安全页面样式 */
+  @-moz-document url-prefix("about:protections") {
+    :root {
+      --zen-primary-color: {{background}} !important;
+      --social-color: {{color13}} !important;
+      --coockie-color: {{color14}} !important;
+      --fingerprinter-color: {{color11}} !important;
+      --cryptominer-color: {{color3 | darken(0.1)}} !important;
+      --tracker-color: {{color12}} !important;
+      --in-content-primary-button-background-hover: {{color0}} !important;
+      --in-content-primary-button-text-color-hover: {{foreground | lighten(0.1)}} !important;
+      --in-content-primary-button-background: {{color0}} !important;
+      --in-content-primary-button-text-color: {{foreground | lighten(0.1)}} !important;
+    }
+    .card { background-color: {{background | lighten(0.1)}} !important; }
+  }
+
+  /* 错误与成功提示 */
+  .success-message {
+    background-color: #a6e3a1 !important; /* base0B */
+    color: {{background}} !important;
+    padding: 10px;
+  }
+
+  .error-message {
+    background-color: #f38ba8 !important; /* base08 */
+    color: {{background}} !important;
+    padding: 10px;
+  }
+
+  /* 动画与过渡效果 */
+  button, .button {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* 身份标识和选项卡样式 */
+  .identity-color-blue { --identity-tab-color: {{color12}} !important; }
+  .identity-color-green { --identity-tab-color: {{color10}} !important; }
+  .identity-color-yellow { --identity-tab-color: {{color11}} !important; }
+}

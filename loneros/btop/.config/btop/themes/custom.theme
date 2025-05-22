@@ -1,0 +1,61 @@
+# Main background and text colors
+theme[main_bg] = "#1E1E2E"
+theme[main_fg] = "#CDD6F4"
+theme[title] = "#CDD6F4"
+theme[hi_fg] = "#94E2D5"
+
+# Process box selected item
+theme[selected_bg] = "#45475A"
+theme[selected_fg] = "#94E2D5"
+
+# Inactive/disabled text and graph text
+theme[inactive_fg] = "#585B70"
+theme[graph_text] = "#F38BA8"
+
+# Meter background and process misc colors
+theme[meter_bg] = "#F38BA8"
+theme[proc_misc] = "#F38BA8"
+
+# Box outline colors
+theme[cpu_box] = "#CBA6F7"
+theme[mem_box] = "#A6E3A1"
+theme[net_box] = "#F9E2AF"
+theme[proc_box] = "#94E2D5"
+theme[div_line] = "#BAC2DE"
+
+# Temperature graph colors (Green -> Yellow -> Red)
+theme[temp_start] = "#A6E3A1"
+theme[temp_mid] = "#A6E3A1"
+theme[temp_end] = "#F9E2AF"
+
+# CPU graph colors (Teal -> Lavender)
+theme[cpu_start] = "#89B4FA"
+theme[cpu_mid] = "#94E2D5"
+theme[cpu_end] = "#CBA6F7"
+
+# Memory/Disk meter colors
+theme[free_start] = "#A6E3A1"
+theme[free_mid] = "#94E2D5"
+theme[free_end] = "#89B4FA"
+theme[cached_start] = "#94E2D5"
+theme[cached_mid] = "#89B4FA"
+theme[cached_end] = "#CBA6F7"
+theme[available_start] = "#F9E2AF"
+theme[available_mid] = "#F9E2AF"
+theme[available_end] = "#F38BA8"
+theme[used_start] = "#A6E3A1"
+theme[used_mid] = "#89B4FA"
+theme[used_end] = "#94E2D5"
+
+# Network graph colors (Download and Upload)
+theme[download_start] = "#F9E2AF"
+theme[download_mid] = "#F9E2AF"
+theme[download_end] = "#F38BA8"
+theme[upload_start] = "#A6E3A1"
+theme[upload_mid] = "#89B4FA"
+theme[upload_end] = "#94E2D5"
+
+# Process box gradient colors (Blue -> Mauve)
+theme[process_start] = "#94E2D5"
+theme[process_mid] = "#CBA6F7"
+theme[process_end] = "#F38BA8"

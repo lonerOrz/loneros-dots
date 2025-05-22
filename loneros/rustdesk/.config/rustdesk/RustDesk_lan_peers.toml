@@ -1,0 +1,9 @@
+[[peers]]
+id = '27220600'
+username = 'loner'
+hostname = 'loneros'
+platform = 'Linux'
+online = true
+
+[peers.ip_mac]
+"192.168.100.109" = 'd8:bb:c1:9f:5a:78'

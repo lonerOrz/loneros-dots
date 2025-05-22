@@ -1,0 +1,206 @@
+# 如果希望更改某些设置，请取消注释并根据需要进行修改。
+
+# 这一组选项表示命令行选项。如果运行时显式添加了标志（例如：`btm -a`），
+# 将覆盖此配置文件中设置的相应选项。
+[flags]
+# 是否隐藏平均 CPU 项目。
+#hide_avg_cpu = false
+# 是否使用点标记而不是盲文字符。
+#dot_marker = false
+# 应用程序的更新速率。
+#rate = "1s"
+# 是否将 CPU 图例放在左侧。
+# cpu_left_legend = false
+# 是否基于总 CPU 或当前使用率来设置进程的 CPU%。
+#current_usage = false
+# 是否基于总 CPU 或每核 CPU%（不除以 CPU 核心数）来设置进程的 CPU%。
+#unnormalized_cpu = false
+# 是否默认将相同名称的进程分组。
+#group_processes = false
+# 是否默认使进程搜索区分大小写。
+#case_sensitive = false
+# 是否默认使进程搜索匹配整个单词。
+#whole_word = false
+# 是否默认使进程搜索使用正则表达式。
+#regex = false
+# 温度单位，以下之一，默认为 "c"（摄氏度）：
+#temperature_type = "c"
+##temperature_type = "k"
+##temperature_type = "f"
+##temperature_type = "kelvin"
+##temperature_type = "fahrenheit"
+##temperature_type = "celsius"
+# 默认时间间隔（毫秒）。
+#default_time_value = "60s"
+# 每次缩放操作的时间增量（毫秒）。
+#time_delta = 15000
+# 隐藏时间刻度。
+#hide_time = false
+# 覆盖布局的默认小部件。
+#default_widget_type = "proc"
+#default_widget_count = 1
+# 启动应用程序时展开选中的小部件。
+#expanded = true
+# 使用基本模式。
+#basic = false
+# 使用旧版网络图例样式。
+#use_old_network_legend = false
+# 去除表格中的空格。
+#hide_table_gap = false
+# 显示电池小部件。
+battery = true
+# 禁用鼠标点击操作。
+#disable_click = false
+# 在进程小部件中默认将内存值显示为具体数值。
+#process_memory_as_value = false
+# 在进程小部件中默认显示树状模式。
+tree = true
+# 在表格小部件中显示滚动位置指示器。
+#show_table_scroll_position = false
+# 在进程小部件中默认将进程显示为其命令。
+#process_command = false
+# 在网络小部件中使用二进制前缀进行显示。
+#network_use_binary_prefix = false
+# 在网络小部件中使用字节单位进行显示。
+#network_use_bytes = false
+# 在网络小部件中使用对数刻度进行显示。
+network_use_log = false
+# 在类 Unix 系统中隐藏停止进程的高级选项。
+#disable_advanced_kill = false
+# 显示 GPU 信息。
+enable_gpu = true
+# 显示缓存和缓冲区内存。
+enable_cache_memory = true
+# 存储的数据时长（时间格式）。
+#retention = "10m"
+# 内存小部件图例位置，以下之一：
+# "none", "top-left", "top", "top-right", "left", "right", "bottom-left", "bottom", "bottom-right"。
+#memory_legend = "TopRight"
+# 网络小部件图例位置，以下之一：
+# "none", "top-left", "top", "top-right", "left", "right", "bottom-left", "bottom", "bottom-right"。
+#network_legend = "TopRight"
+
+# 进程小部件配置
+[processes]
+# 进程小部件中显示的列。支持以下列：
+# PID, Name, CPU%, Mem%, R/s, W/s, T.Read, T.Write, User, State, Time, GMem%, GPU%
+columns = [
+  "PID",
+  "Name",
+  "CPU%",
+  "Mem%",
+  "R/s",
+  "W/s",
+  "T.Read",
+  "T.Write",
+  "User",
+  "State",
+  "GMem%",
+  "GPU%",
+]
+
+# CPU 小部件配置
+#[cpu]
+# 显示模式之一："all"（默认）、"average"/"avg"
+#default = "average"
+
+# 磁盘小部件配置
+#[disk]
+#[name_filter]
+# 是否忽略列表中的设备。
+#is_list_ignored = true
+# 设备列表示例。
+#list = ["/dev/sda\\d+", "/dev/nvme0n1p2"]
+# 是否使用正则表达式匹配。
+#regex = true
+# 是否区分大小写。
+#case_sensitive = false
+# 是否匹配整个单词。
+#whole_word = false
+
+# 布局配置 - 布局遵循以下模式：
+# [[row]] 表示应用程序中的一行。
+# [[row.child]] 表示一个小部件或列。
+# [[row.child.child]] 表示一个小部件。
+#
+# 默认小部件布局示例：
+#[[row]]
+#  ratio=30
+#  [[row.child]]
+#  type="cpu"
+#[[row]]
+#    ratio=40
+#    [[row.child]]
+#      ratio=4
+#      type="mem"
+#    [[row.child]]
+#      ratio=3
+#      [[row.child.child]]
+#        type="temp"
+#      [[row.child.child]]
+#        type="disk"
+#[[row]]
+#  ratio=30
+#  [[row.child]]
+#    type="net"
+#  [[row.child]]
+#    type="proc"
+#    default=true
+
+
+# 主题设置
+[styles.battery]
+high_battery_color = "{{color10}}"
+low_battery_color = "{{color9}}"
+medium_battery_color = "{{color8}}"
+
+[styles.cpu]
+all_entry_color = "{{foreground}}"
+avg_entry_color = "{{color7}}"
+cpu_core_colors = [
+  "{{color10}}",
+  "{{color8}}",
+  "{{color6}}",
+  "{{color5}}",
+  "{{color4}}",
+  "{{color15}}",
+  "{{color3}}",
+  "{{color2}}",
+]
+
+[styles.graphs]
+graph_color = "{{color1}}"
+
+[styles.memory]
+arc_color = "{{color5}}"
+gpu_colors = [
+  "{{color9}}",
+  "{{color7}}",
+  "{{color10}}",
+  "{{color8}}",
+  "{{color6}}",
+  "{{color5}}",
+]
+ram_color = "{{color10}}"
+swap_color = "{{color4}}"
+
+[styles.network]
+rx_color = "{{color10}}"
+tx_color = "{{color4}}"
+
+[styles.tables.headers]
+color = "{{foreground}}"
+
+[styles.widgets]
+border_color = "{{color12}}"
+selected_border_color = "{{color5}}"
+
+[styles.widgets.selected_text]
+bg_color = "{{color5}}"
+color = "{{background}}"
+
+[styles.widgets.text]
+color = "{{foreground}}"
+
+[styles.widgets.widget_title]
+color = "{{color10}}"

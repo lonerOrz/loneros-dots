@@ -1,0 +1,24 @@
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[[language]]
+name = "python"
+language-servers = ["pyright"]
+auto-format = true
+file-types = ["py"]
+
+
+[[language]]
+name = "nix"
+scope = "source.nix"
+injection-regex = "nix"
+file-types = ["nix"]
+shebangs = []
+comment-token = "#"
+language-servers = ["nil", "nixd"]
+indent = { tab-width = 2, unit = "  " }
+
+[[grammar]]
+name = "nix"
+source = { git = "https://github.com/nix-community/tree-sitter-nix", rev = "1b69cf1fa92366eefbe6863c184e5d2ece5f187d" }

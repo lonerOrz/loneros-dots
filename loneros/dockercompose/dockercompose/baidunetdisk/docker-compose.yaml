@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  baidunetdisk:
+    image: johngong/baidunetdisk:latest
+    container_name: baidunetdisk
+    ports:
+      - "5858:5800"
+      - "5911:5900"
+    volumes:
+      - ./config:/config
+      - ./dls:/config/downloads
+    environment:
+      - VNC_PASSWORD=123456
+    dns:
+      - 8.8.8.8   # Google DNS
+      - 8.8.4.4   # Google DNS
+      - 114.114.114.114
+    restart: unless-stopped

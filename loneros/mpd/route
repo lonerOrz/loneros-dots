@@ -1,0 +1,6 @@
+.config/mpd/mpd.pid
+.config/mpd/state
+.config/mpd/mpd.fifo
+.config/mpd/log
+.config/mpd/database
+.config/mpd/playlists/

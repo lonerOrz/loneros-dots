@@ -1,0 +1,20 @@
+remote_id = '27220600'
+kb_layout_type = ''
+size = [
+    0,
+    0,
+    0,
+    0,
+]
+fav = []
+
+[options]
+wayland-restore-token = '78dc015c-5440-4f8b-be1f-6b1a75fd0a2b'
+remote-menubar-drag-left = '0.0'
+theme = 'dark'
+lang = 'zh-cn'
+remote-menubar-drag-right = '1.0'
+
+[ui_flutter]
+peer-tab-index = '2'
+peer-sorting = 'Remote ID'

@@ -1,0 +1,67 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --zen-colors-primary: {{background | lighten(0.2)}} !important;
+    --zen-primary-color: {{color12}} !important;
+    --zen-colors-secondary: {{background | lighten(0.2)}} !important;
+    --zen-colors-tertiary: {{background}} !important;
+    --zen-colors-border: {{color12}} !important;
+    --toolbarbutton-icon-fill: {{color12}} !important;
+    --lwt-text-color: {{foreground | lighten(0.1)}} !important;
+    --toolbar-field-color: {{foreground}} !important;
+    --tab-selected-textcolor: {{color12}} !important;
+    --toolbar-field-focus-color: {{foreground}} !important;
+    --toolbar-color: {{foreground}} !important;
+    --newtab-text-primary-color: {{foreground}} !important;
+    --arrowpanel-color: {{foreground}} !important;
+    --arrowpanel-background: {{background | lighten(0.1)}} !important;
+    --sidebar-text-color: {{foreground | lighten(0.1)}} !important;
+    --lwt-sidebar-text-color: {{foreground | lighten(0.1)}} !important;
+    --lwt-sidebar-background-color: {{background}} !important;
+    --toolbar-bgcolor: {{background | lighten(0.2)}} !important;
+    --newtab-background-color: {{background | lighten(0.1)}} !important;
+    --zen-themed-toolbar-bg: {{background}} !important;
+    --zen-main-browser-background: {{background}} !important;
+
+    /* 菜单和弹出窗口 */
+    --menu-background-color: {{background | lighten(0.2)}} !important;
+    --menu-item-color: {{foreground | lighten(0.1)}} !important;
+    --popup-menu-background-color: {{background | lighten(0.2)}} !important;
+    --tooltip-background-color: {{background}} !important;
+    --tooltip-text-color: {{foreground | lighten(0.1)}} !important;
+
+    /* 滚动条 */
+    --scrollbar-background-color: {{background | lighten(0.2)}} !important;
+    --scrollbar-thumb-color: {{foreground}} !important;
+
+    /* 输入框和表单控件 */
+    --input-background-color: {{background | lighten(0.2)}} !important;
+    --input-text-color: {{foreground | lighten(0.1)}} !important;
+    --select-background-color: {{background | lighten(0.2)}} !important;
+    --select-text-color: {{foreground | lighten(0.1)}} !important;
+
+    /* 焦点元素 */
+    --focus-color: {{color12}} !important;
+    --border-color: {{foreground}} !important;
+
+    /* 标签栏和选项卡 */
+    --tabs-toolbar-background-color: {{background}} !important;
+    --tab-selected-background-color: {{color12}} !important;
+    --tab-selected-text-color: {{background}} !important;
+    --tab-unselected-background-color: {{background | lighten(0.2)}} !important;
+    --tab-unselected-text-color: {{foreground | lighten(0.1)}} !important;
+
+    /* 导航栏和书签栏 */
+    --navigation-bar-background-color: {{background}} !important;
+    --bookmarks-bar-background-color: {{background | lighten(0.1)}} !important;
+  }
+
+  /* 强调色重定义 */
+  .identity-color-blue { --identity-tab-color: {{color12}} !important; --identity-icon-color: {{color12}} !important; }
+  .identity-color-turquoise { --identity-tab-color: {{color14}} !important; --identity-icon-color: {{color14}} !important; }
+  .identity-color-green { --identity-tab-color: {{color10}} !important; --identity-icon-color: {{color10}} !important; }
+  .identity-color-yellow { --identity-tab-color: {{color11}} !important; --identity-icon-color: {{color11}} !important; }
+  .identity-color-orange { --identity-tab-color: #fab387 !important; --identity-icon-color: #fab387 !important; }
+  .identity-color-red { --identity-tab-color: {{color9}} !important; --identity-icon-color: {{color9}} !important; }
+  .identity-color-pink { --identity-tab-color: #f2cdcd !important; --identity-icon-color: #f2cdcd !important; }
+  .identity-color-purple { --identity-tab-color: {{color13}} !important; --identity-icon-color: {{color13}} !important; }
+}

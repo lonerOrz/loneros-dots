@@ -1,0 +1,233 @@
+palette = "custom"
+
+# base16 template
+# [palettes.custom]
+# rosewater = "#94E2D5"
+# flamingo = "#A6ADC8"
+# pink = "#A6ADC8"
+# mauve = "#94E2D5"
+# red = "#585B70"
+# maroon = "#585B70"
+# peach = "#F38BA8"
+# yellow = "#A6E3A1"
+# green = "#F9E2AF"
+# teal = "#89B4FA"
+# sky = "#89B4FA"
+# sapphire = "#CBA6F7"
+# blue = "#CBA6F7"
+# lavender = "#BAC2DE"
+# text = "#CDD6F4"
+# subtext1 = "#BAC2DE"
+# subtext0 = "#CBA6F7"
+# overlay2 = "#89B4FA"
+# overlay1 = "#F9E2AF"
+# overlay0 = "#A6E3A1"
+# surface2 = "#89B4FA"
+# surface1 = "#F9E2AF"
+# surface0 = "#A6E3A1"
+# base = "#1E1E2E"
+# mantle = "#F38BA8"
+# crust = "#45475A"
+
+[palettes.custom]
+rosewater = "#BAC2DE"
+flamingo = "#F38BA8"
+pink = "#F38BA8"
+mauve = "#CBA6F7"
+red = "#F38BA8"
+maroon = "#F38BA8"
+peach = "#F9E2AF"
+yellow = "#F9E2AF"
+green = "#A6E3A1"
+teal = "#94E2D5"
+sky = "#94E2D5"
+sapphire = "#89B4FA"
+blue = "#89B4FA"
+lavender = "#A6ADC8"
+text = "#CDD6F4"
+subtext1 = "#A6ADC8"
+subtext0 = "#CDD6F4"
+overlay2 = "#585B70"
+overlay1 = "#585B70"
+overlay0 = "#585B70"
+surface2 = "#585B70"
+surface1 = "#585B70"
+surface0 = "#585B70"
+base = "#1E1E2E"
+mantle = "#45475A"
+crust = "#45475A"
+
+[character]
+success_symbol = '[ ](bold sky)[ ➜](bold green)'
+error_symbol = '[ ](bold sky)[ ➜](bold red)'
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " 󰌾"
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[package]
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[gradle]
+symbol = " "

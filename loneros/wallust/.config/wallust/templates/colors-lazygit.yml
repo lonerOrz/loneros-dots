@@ -1,0 +1,22 @@
+gui:
+  authorColors:
+    '*': '{{color15}}'
+  theme:
+    activeBorderColor:
+      - '{{color12}}'
+    cherryPickedCommitBgColor:
+      - '{{color8}}'
+    cherryPickedCommitFgColor:
+      - '{{color12}}'
+    defaultFgColor:
+      - '{{foreground}}'
+    inactiveBorderColor:
+      - '{{color4}}'
+    optionsTextColor:
+      - '{{color4}}'
+    searchingActiveBorderColor:
+      - '{{color3}}'
+    selectedLineBgColor:
+      - '{{color8}}'
+    unstagedChangesColor:
+      - '{{color1}}'

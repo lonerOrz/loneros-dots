@@ -1,0 +1,4 @@
+[flavor]
+# 不设置默认使用teminal主题
+use = "catppuccin-mocha"
+# dark = "catppuccin-mocha"

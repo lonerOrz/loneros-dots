@@ -1,0 +1,27 @@
+theme = "catppuccin-mocha"
+# theme = "tokyonight"
+
+# editor 编辑器
+[editor]
+# 真彩支持
+true-color = true
+mouse = true
+line-number = "relative"
+cursorline = true
+auto-completion = true
+idle-timeout = 0
+
+# 光标样式
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+
+[editor.whitespace.characters]
+space = "·"
+tab = "→"
+tabpad = "·" # tab空格会显示： "→···" (依赖于tab宽度)

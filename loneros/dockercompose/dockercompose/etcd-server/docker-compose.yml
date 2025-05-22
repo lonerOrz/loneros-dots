@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  etcd-server:
+    image: bitnami/etcd:latest
+    container_name: etcd-server
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd-server:2379
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    networks:
+      - app-etcd
+
+  etcd-keeper:
+    image: evildecay/etcdkeeper
+    container_name: etcd-keeper
+    environment:
+      - ETCD_SERVERS=http://etcd-server:2379
+    ports:
+      - "7648:8080"
+    networks:
+      - app-etcd
+
+networks:
+  app-etcd:
+    driver: bridge

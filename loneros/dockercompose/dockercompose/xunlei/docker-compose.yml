@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  xunlei:
+    image: cnk3x/xunlei:latest
+    container_name: xunlei
+    environment:
+      XL_DASHBOARD_PORT: 2345                  # 网页访问端口，默认 2345
+      XL_DASHBOARD_IP: 0.0.0.0                # 网页访问的 IP，默认 0.0.0.0（表示所有IP）
+      XL_DASHBOARD_USERNAME: loner            # 网页访问的用户名
+      XL_DASHBOARD_PASSWORD: 123456         # 网页访问的密码
+      XL_DIR_DOWNLOAD: /xunlei/downloads       # 下载文件保存的默认文件夹
+      XL_DIR_DATA: /xunlei/data               # 程序数据保存的文件夹
+      XL_UID: 1000                           # 运行迅雷的用户ID，默认值为1000
+      XL_GID: 1000                           # 运行迅雷的用户组ID，默认值为1000
+      XL_PREVENT_UPDATE: 'true'              # 是否阻止更新，默认 true
+      XL_CHROOT: /xunlei                     # 隔离模式运行目录，默认 /xunlei
+      XL_DEBUG: 'false'                      # 调试模式，默认 false
+    volumes:
+      - ./data:/xunlei/data  # 配置文件和数据保存目录（宿主机目录：容器内目录）
+      - ./dls:/xunlei/downloads  # 下载文件保存目录（宿主机目录：容器内目录）
+    ports:
+      - "5757:2345"                           # 映射端口，默认 2345
+    dns:
+      - 8.8.8.8
+      - 114.114.114.114
+    restart: unless-stopped                   # 容器异常退出时自动重启
+    # 运行时不需要特权模式，btrfs 支持非特权模式
+    privileged: true
+

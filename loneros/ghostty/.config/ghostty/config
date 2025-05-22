@@ -1,0 +1,60 @@
+shell-integration = fish
+
+# Font
+font-family = "FiraCode Nerd Font Mono Bold"
+# FiraCode Nerd Font Mono Bold
+# LXGW WenKai Mono Medium
+font-size = 10
+font-thicken = true
+font-feature = ss01
+font-feature = ss04
+
+bold-is-bright = false
+adjust-box-thickness = 1
+
+# Theme
+theme = "custom"
+background-opacity = 0.7
+
+# shaders
+# custom-shader = shaders/glow++.glsl
+# custom-shader = shaders/starfield-colors.glsl
+# custom-shader = shaders/bettercrt.glsl
+
+# title = "ghtty"
+
+cursor-style = bar
+cursor-style-blink = false
+adjust-cursor-thickness = 1
+
+resize-overlay = never
+copy-on-select = false
+confirm-close-surface = false
+mouse-hide-while-typing = true
+
+window-theme = ghostty
+# 设置窗口左右和上下的内边距
+window-padding-x = 1
+window-padding-y = 1
+window-padding-balance = true
+window-padding-color = background
+window-inherit-working-directory = true
+window-inherit-font-size = true
+window-decoration = false
+
+gtk-titlebar = false
+gtk-single-instance = false
+gtk-tabs-location = bottom
+gtk-wide-tabs = false
+
+auto-update = off
+term = ghostty
+clipboard-paste-protection = false
+
+# 解除快捷键绑定
+keybind = shift+end=unbind
+keybind = shift+home=unbind
+keybind = ctrl+shift+left=unbind
+keybind = ctrl+shift+right=unbind
+# 设置Shift+Enter为插入换行符
+keybind = shift+enter=text:\n
