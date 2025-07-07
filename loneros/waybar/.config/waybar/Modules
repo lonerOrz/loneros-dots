@@ -26,6 +26,7 @@
 	"interval": 2,
 	"align": 0,
 	"rotate": 0,
+	//"format": "{icon} {percent}%",
 	"format-icons": [
 		" ",
 		" ",
@@ -35,8 +36,7 @@
 		"󰃟 ",
 		"󰃠 "
 	],
-	"format": "{icon} {percent}%",
-	//"format": "{icon}",
+	"format": "{icon}",
 	//"format-icons": ["","","","","","","","","","","","","","",""],
 	"tooltip-format": "backlight {percent}%",
 	"icon-size": 10,
@@ -109,7 +109,7 @@
 		"format": {
 			"months": "<span color='#ffead3'><b>{}</b></span>",
 			"days": "<span color='#ecc6d9'><b>{}</b></span>",
-			"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+			"weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
 			"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
 			"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
 		}
@@ -295,15 +295,15 @@
 	"tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
 	"tooltip-format-ethernet": "{ifname} 󰌘",
 	"tooltip-format-disconnected": "󰌙 Disconnected",
-	"min-length": 22,
-	"max-length": 22,
+	"min-length": 24,
+	"max-length": 24,
 	"format-icons": [
 		"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
 	]
 },
 
 "power-profiles-daemon": {
-  "format": "{icon} {profile}",
+  "format": "{icon} ",
   "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
   "tooltip": true,
   "format-icons": {

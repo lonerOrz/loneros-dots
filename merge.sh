@@ -68,7 +68,7 @@ echo "${CAT} 开始同步文件..."
 
 SYNCED_FILES=()
 
-FILES_TO_SYNC=("config/" "assets/" "copy.sh" "upgrade.sh" "release.sh") # 同步Hyprland-Dots的upstream的文件夹和文件
+FILES_TO_SYNC=("config/" "assets/" "copy.sh") # 同步Hyprland-Dots的upstream的文件夹和文件
 
 for FILE in "${FILES_TO_SYNC[@]}"; do
   # 检查文件或文件夹是否存在于 upstream 仓库

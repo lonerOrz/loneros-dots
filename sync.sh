@@ -27,17 +27,17 @@ echo
 # clear
 
 # 定义需要跳过同步的项目目录
-SKIP_DIRECTORIES=("fastfetch" "kitty" "nvim")
+SKIP_DIRECTORIES=( "fastfetch" "kitty" "nvim" "cava" "btop" )
 
 # 同步Hyprland-Dots和loneros
 # 每个子文件夹下的排除规则可以单独定义
 declare -A EXCLUDE_RULES
-EXCLUDE_RULES["hypr"]="UserConfigs/ wallpaper_effects/ hyprlock.conf hyprlock-1080p.conf wallust/"
-EXCLUDE_RULES["rofi"]="config.rasi .current_wallpaper wallust/ resolution/"
-EXCLUDE_RULES["waybar"]="config style.css UserMoudules wallust/"
-EXCLUDE_RULES["btop"]="btop.conf"
-EXCLUDE_RULES["swaync"]="ja.png wallust/"
-EXCLUDE_RULES["wallust"]="wallust.toml templates/"
+EXCLUDE_RULES["hypr"]="UserConfigs/ Monitor_Profiles/ wallpaper_effects/ wallust/ workspaces.conf hyprlock.conf hyprlock-1080p.conf monitors.conf"
+EXCLUDE_RULES["rofi"]="config.rasi .current_wallpaper wallust/"
+EXCLUDE_RULES["waybar"]="config style.css UserModules wallust/"
+EXCLUDE_RULES["swaync"]="ja.png style.css"
+EXCLUDE_RULES["wlogout"]="style.css"
+EXCLUDE_RULES["wallust"]="wallust.toml colors-rofi.rasi"
 
 # 获取目标目录下的所有子文件夹（项目）
 subfolders=$(find "$TARGET" -mindepth 1 -maxdepth 1 -type d)

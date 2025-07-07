@@ -3,6 +3,9 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     local null_ls = require("null-ls")
+    local helpers = require("null-ls.helpers")
+    local methods = require("null-ls.methods")
+    local FORMATTING = methods.internal.FORMATTING
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     local toggle_state_file = vim.fn.stdpath("state") .. "/autoformat.toggle"
 
@@ -39,11 +42,13 @@ return {
         })
         :map("<leader>tf") -- 映射按钮
 
-    local nixpkgs_fmt = {
-      method = require("null-ls").methods.FORMATTING,
+    -- nix 官方格式化工具
+    local nixfmt_rfc = {
+      name = "nixfmt_rfc",
+      method = FORMATTING,
       filetypes = { "nix" },
-      generator = null_ls.generator({
-        command = "nixpkgs-fmt",
+      generator = helpers.formatter_factory({
+        command = "nixfmt",
         args = { "-" },
         to_stdin = true,
       }),
@@ -52,8 +57,9 @@ return {
     null_ls.setup({
       sources = {
         -- Nix
-        null_ls.builtins.formatting.alejandra,
-        -- nixpkgs_fmt,
+        -- null_ls.builtins.formatting.alejandra,
+        -- null_ls.builtins.formatting.nixfmt_rfc,
+        nixfmt_rfc,
         -- Lua
         null_ls.builtins.formatting.stylua,
         -- Python

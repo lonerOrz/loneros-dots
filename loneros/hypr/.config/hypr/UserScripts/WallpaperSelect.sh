@@ -98,19 +98,19 @@ menu() {
   done
 }
 
-# Offer SDDM Sequioa Wallpaper Option (only for non-video wallpapers)
+# Offer SDDM Simple Wallpaper Option (only for non-video wallpapers)
 set_sddm_wallpaper() {
   sleep 1
-  sddm_sequoia="/usr/share/sddm/themes/sequoia_2"
+  sddm_simple="/usr/share/sddm/themes/simple_sddm_2"
 
-  if [ -d "$sddm_sequoia" ]; then
+  if [ -d "$sddm_simple" ]; then
 
     # Check if yad is running to avoid multiple notifications
     if pidof yad >/dev/null; then
       killall yad
     fi
 
-    if yad --info --text="Set current wallpaper as SDDM background?\n\nNOTE: This only applies to SEQUOIA SDDM Theme" \
+    if yad --info --text="Set current wallpaper as SDDM background?\n\nNOTE: This only applies to SIMPLE SDDM v2 Theme" \
       --text-align=left \
       --title="SDDM Background" \
       --timeout=5 \
@@ -126,7 +126,7 @@ set_sddm_wallpaper() {
 
       # Open terminal to enter password
       $terminal -e bash -c "echo 'Enter your password to set wallpaper as SDDM Background'; \
-            sudo cp -r $wallpaper_current '$sddm_sequoia/backgrounds/default' && \
+            sudo cp -r $wallpaper_current '$sddm_simple/Backgrounds/default' && \
             notify-send -i '$iDIR/ja.png' 'SDDM' 'Background SET'"
     fi
   fi
@@ -135,11 +135,6 @@ set_sddm_wallpaper() {
 modify_startup_config() {
   local selected_file="$1"
   local startup_config="$HOME/.config/hypr/UserConfigs/Startup_Apps.conf"
-
-  # **如果是符号链接，获取它指向的实际文件**
-  if [[ -L "$startup_config" ]]; then
-    startup_config=$(realpath "$startup_config")
-  fi
 
   # Check if it's a live wallpaper (video)
   if [[ "$selected_file" =~ \.(mp4|mkv|mov|webm)$ ]]; then
@@ -178,9 +173,9 @@ apply_image_wallpaper() {
   # Run additional scripts
   "$SCRIPTSDIR/WallustSwww.sh"
   sleep 2
-  # "$SCRIPTSDIR/Refresh.sh"
-  "$SCRIPTSDIR/RefreshNOWaybar.sh"
+  "$SCRIPTSDIR/Refresh.sh"
   sleep 1
+
   set_sddm_wallpaper
 }
 

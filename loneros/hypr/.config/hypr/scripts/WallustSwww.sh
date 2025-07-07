@@ -36,5 +36,4 @@ if [ "$ln_success" = true ]; then
 	echo 'about to execute wallust'
     # execute wallust skipping tty and terminal changes
     wallust run "$wallpaper_path" -s &
-    applytheme
 fi

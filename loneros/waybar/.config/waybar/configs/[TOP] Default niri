@@ -53,6 +53,7 @@
 	//"custom/separator#dot-line",
 	"group/audio",
 	"custom/separator#dot-line",
-	"group/status#niri",
+  "custom/keyboard#niri",
+	"custom/power#niri",
 	],
 }
