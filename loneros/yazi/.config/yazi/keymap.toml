@@ -1,9 +1,13 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "c", "m" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "<C-d>"
 run  = "plugin diff"
 desc = "Diff the selected with the hovered file"
+
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]

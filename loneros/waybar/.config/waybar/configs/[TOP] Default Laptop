@@ -40,8 +40,8 @@
 	"custom/separator#dot-line",
 	"custom/weather",
 	"custom/separator#dot-line",
-	"idle_inhibitor",	
-	"custom/hint",	
+	"idle_inhibitor",
+	"custom/hint",
 	],
 
 "modules-right": [
@@ -51,9 +51,9 @@
 	"group/laptop",
 	"custom/separator#dot-line",
 	"group/mobo_drawer",
-	"custom/separator#line",  
+	"custom/separator#line",
 	"group/audio",
-	"custom/separator#dot-line", 
+	"custom/separator#dot-line",
 	"group/status",
 	],
 }

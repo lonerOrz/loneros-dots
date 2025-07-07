@@ -4,7 +4,6 @@
     "editor.renderWhitespace": "boundary",
     "files.autoSave": "afterDelay",
     "window.newWindowProfile": "默认",
-    "workbench.colorTheme": "Catppuccin Mocha",
     "chat.commandCenter.enabled": false,
     "git.confirmSync": false,
     "git.autofetch": true,
@@ -37,5 +36,7 @@
     "Codegeex.License": "",
     "workbench.activityBar.location": "top",
     "Codegeex.CompletionDelay": 0.3,
-    "livePreview.notifyOnOpenLooseFile": false
+    "livePreview.notifyOnOpenLooseFile": false,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "STM32VSCodeExtension.projectCreator.executablePath": "/nix/store/3idng02v16x6176kqddcliplj0x4b604-system-path/bin/stm32cubemx"
 }

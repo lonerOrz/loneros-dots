@@ -1,67 +1,67 @@
 @media (prefers-color-scheme: dark) {
   :root {
-    --zen-colors-primary: #4B4B58 !important;
-    --zen-primary-color: #89B4FA !important;
-    --zen-colors-secondary: #4B4B58 !important;
-    --zen-colors-tertiary: #1E1E2E !important;
-    --zen-colors-border: #89B4FA !important;
-    --toolbarbutton-icon-fill: #89B4FA !important;
-    --lwt-text-color: #D2DAF5 !important;
-    --toolbar-field-color: #CDD6F4 !important;
-    --tab-selected-textcolor: #89B4FA !important;
-    --toolbar-field-focus-color: #CDD6F4 !important;
-    --toolbar-color: #CDD6F4 !important;
-    --newtab-text-primary-color: #CDD6F4 !important;
-    --arrowpanel-color: #CDD6F4 !important;
-    --arrowpanel-background: #353543 !important;
-    --sidebar-text-color: #D2DAF5 !important;
-    --lwt-sidebar-text-color: #D2DAF5 !important;
-    --lwt-sidebar-background-color: #1E1E2E !important;
-    --toolbar-bgcolor: #4B4B58 !important;
-    --newtab-background-color: #353543 !important;
-    --zen-themed-toolbar-bg: #1E1E2E !important;
-    --zen-main-browser-background: #1E1E2E !important;
+    --zen-colors-primary: #484951 !important;
+    --zen-primary-color: #7AA2F7 !important;
+    --zen-colors-secondary: #484951 !important;
+    --zen-colors-tertiary: #1A1B26 !important;
+    --zen-colors-border: #7AA2F7 !important;
+    --toolbarbutton-icon-fill: #7AA2F7 !important;
+    --lwt-text-color: #C6CFF6 !important;
+    --toolbar-field-color: #C0CAF5 !important;
+    --tab-selected-textcolor: #7AA2F7 !important;
+    --toolbar-field-focus-color: #C0CAF5 !important;
+    --toolbar-color: #C0CAF5 !important;
+    --newtab-text-primary-color: #C0CAF5 !important;
+    --arrowpanel-color: #C0CAF5 !important;
+    --arrowpanel-background: #31323C !important;
+    --sidebar-text-color: #C6CFF6 !important;
+    --lwt-sidebar-text-color: #C6CFF6 !important;
+    --lwt-sidebar-background-color: #1A1B26 !important;
+    --toolbar-bgcolor: #484951 !important;
+    --newtab-background-color: #31323C !important;
+    --zen-themed-toolbar-bg: #1A1B26 !important;
+    --zen-main-browser-background: #1A1B26 !important;
 
     /* 菜单和弹出窗口 */
-    --menu-background-color: #4B4B58 !important;
-    --menu-item-color: #D2DAF5 !important;
-    --popup-menu-background-color: #4B4B58 !important;
-    --tooltip-background-color: #1E1E2E !important;
-    --tooltip-text-color: #D2DAF5 !important;
+    --menu-background-color: #484951 !important;
+    --menu-item-color: #C6CFF6 !important;
+    --popup-menu-background-color: #484951 !important;
+    --tooltip-background-color: #1A1B26 !important;
+    --tooltip-text-color: #C6CFF6 !important;
 
     /* 滚动条 */
-    --scrollbar-background-color: #4B4B58 !important;
-    --scrollbar-thumb-color: #CDD6F4 !important;
+    --scrollbar-background-color: #484951 !important;
+    --scrollbar-thumb-color: #C0CAF5 !important;
 
     /* 输入框和表单控件 */
-    --input-background-color: #4B4B58 !important;
-    --input-text-color: #D2DAF5 !important;
-    --select-background-color: #4B4B58 !important;
-    --select-text-color: #D2DAF5 !important;
+    --input-background-color: #484951 !important;
+    --input-text-color: #C6CFF6 !important;
+    --select-background-color: #484951 !important;
+    --select-text-color: #C6CFF6 !important;
 
     /* 焦点元素 */
-    --focus-color: #89B4FA !important;
-    --border-color: #CDD6F4 !important;
+    --focus-color: #7AA2F7 !important;
+    --border-color: #C0CAF5 !important;
 
     /* 标签栏和选项卡 */
-    --tabs-toolbar-background-color: #1E1E2E !important;
-    --tab-selected-background-color: #89B4FA !important;
-    --tab-selected-text-color: #1E1E2E !important;
-    --tab-unselected-background-color: #4B4B58 !important;
-    --tab-unselected-text-color: #D2DAF5 !important;
+    --tabs-toolbar-background-color: #1A1B26 !important;
+    --tab-selected-background-color: #7AA2F7 !important;
+    --tab-selected-text-color: #1A1B26 !important;
+    --tab-unselected-background-color: #484951 !important;
+    --tab-unselected-text-color: #C6CFF6 !important;
 
     /* 导航栏和书签栏 */
-    --navigation-bar-background-color: #1E1E2E !important;
-    --bookmarks-bar-background-color: #353543 !important;
+    --navigation-bar-background-color: #1A1B26 !important;
+    --bookmarks-bar-background-color: #31323C !important;
   }
 
   /* 强调色重定义 */
-  .identity-color-blue { --identity-tab-color: #89B4FA !important; --identity-icon-color: #89B4FA !important; }
-  .identity-color-turquoise { --identity-tab-color: #94E2D5 !important; --identity-icon-color: #94E2D5 !important; }
-  .identity-color-green { --identity-tab-color: #A6E3A1 !important; --identity-icon-color: #A6E3A1 !important; }
-  .identity-color-yellow { --identity-tab-color: #F9E2AF !important; --identity-icon-color: #F9E2AF !important; }
+  .identity-color-blue { --identity-tab-color: #7AA2F7 !important; --identity-icon-color: #7AA2F7 !important; }
+  .identity-color-turquoise { --identity-tab-color: #7DCFFF !important; --identity-icon-color: #7DCFFF !important; }
+  .identity-color-green { --identity-tab-color: #9ECE6A !important; --identity-icon-color: #9ECE6A !important; }
+  .identity-color-yellow { --identity-tab-color: #E0AF68 !important; --identity-icon-color: #E0AF68 !important; }
   .identity-color-orange { --identity-tab-color: #fab387 !important; --identity-icon-color: #fab387 !important; }
-  .identity-color-red { --identity-tab-color: #F38BA8 !important; --identity-icon-color: #F38BA8 !important; }
+  .identity-color-red { --identity-tab-color: #F7768E !important; --identity-icon-color: #F7768E !important; }
   .identity-color-pink { --identity-tab-color: #f2cdcd !important; --identity-icon-color: #f2cdcd !important; }
-  .identity-color-purple { --identity-tab-color: #CBA6F7 !important; --identity-icon-color: #CBA6F7 !important; }
+  .identity-color-purple { --identity-tab-color: #BB9AF7 !important; --identity-icon-color: #BB9AF7 !important; }
 }

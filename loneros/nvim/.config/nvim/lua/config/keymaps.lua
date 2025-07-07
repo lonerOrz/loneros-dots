@@ -26,8 +26,11 @@ vim.keymap.set({ "n", "x" }, "qq", "<CMD>:q<CR>")
 vim.keymap.set("n", "<A-z>", "<CMD>set wrap!<CR>", { desc = "Toggle line wrap" })
 
 -- kitty
-vim.keymap.set("n","<Leader>T","<CMD>!kitty -T pypr &<CR>",{ desc = "open kitty terminal of the current path ", noremap = true, silent = true })
+-- vim.keymap.set("n","<Leader>T","<CMD>!kitty -T pypr &<CR>",{ desc = "open kitty terminal of the current path ", noremap = true, silent = true })
 
 -- 多次选中
 vim.keymap.set("x", ">", ">gv", { noremap = true, silent = true })
 vim.keymap.set("x", "<", "<gv", { noremap = true, silent = true })
+
+-- 保存文件
+vim.keymap.set("n", "<C-S>", "<CMD>w<CR>", { desc = "Save file" })

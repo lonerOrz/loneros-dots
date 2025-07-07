@@ -31,10 +31,38 @@ return {
       },
     },
     keys = {
-      { "<leader>f", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "[Flash] Jump"              },
-      { "<leader>F", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "[Flash] Treesitter"        },
-      { "<leader>F", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "[Flash] Treesitter Search" },
-      { "<c-f>",     mode = { "c" },           function() require("flash").toggle() end,            desc = "[Flash] Toggle Search"     },
+      {
+        "<leader>f",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "[Flash] Jump",
+      },
+      {
+        "<leader>F",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "[Flash] Treesitter",
+      },
+      {
+        "<leader>F",
+        mode = { "o", "x" },
+        function()
+          require("flash").treesitter_search()
+        end,
+        desc = "[Flash] Treesitter Search",
+      },
+      {
+        "<c-f>",
+        mode = { "c" },
+        function()
+          require("flash").toggle()
+        end,
+        desc = "[Flash] Toggle Search",
+      },
       {
         "<leader>j",
         mode = { "n", "x", "o" },
@@ -56,15 +84,47 @@ return {
     "folke/todo-comments.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "folke/snacks.nvim"
+      "folke/snacks.nvim",
     },
     event = "VeryLazy",
     keys = {
       ---@diagnostic disable-next-line: undefined-field
-      { "<leader>st", function() require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME", "BUG", "FIXIT", "HACK", "WARN", "ISSUE"  } }) end, desc = "[TODO] Pick todos (without NOTE)", },
+      {
+        "<leader>st",
+        function()
+          require("snacks").picker.todo_comments({
+            keywords = { "TODO", "FIX", "FIXME", "BUG", "FIXIT", "HACK", "WARN", "ISSUE" },
+          })
+        end,
+        desc = "[TODO] Pick todos (without NOTE)",
+      },
       ---@diagnostic disable-next-line: undefined-field
-      { "<leader>sT", function() require("snacks").picker.todo_comments() end, desc = "[TODO] Pick todos (with NOTE)", },
+      {
+        "<leader>sT",
+        function()
+          require("snacks").picker.todo_comments()
+        end,
+        desc = "[TODO] Pick todos (with NOTE)",
+      },
     },
     config = true,
+  },
+  -- unix shell 命令
+  {
+    "tpope/vim-eunuch",
+    event = "VeryLazy",
+    -- :Remove: Delete a file on disk without E211: File no longer available.
+    -- :Delete: Delete a file on disk and the buffer too.
+    -- :Move: Rename a buffer and the file on disk simultaneously. See also :Rename, :Copy, and :Duplicate.
+    -- :Chmod: Change the permissions of the current file.
+    -- :Mkdir: Create a directory, defaulting to the parent of the current file.
+    -- :Cfind: Run find and load the results into the quickfix list.
+    -- :Clocate: Run locate and load the results into the quickfix list.
+    -- :Lfind/:Llocate: Like above, but use the location list.
+    -- :Wall: Write every open window. Handy for kicking off tools like guard.
+    -- :SudoWrite: Write a privileged file with sudo.
+    -- :SudoEdit: Edit a privileged file with sudo.
+    -- Typing a shebang line causes the file type to be re-detected. Additionally the file will be automatically made executable (chmod +x) after the next write.
+    keys = {},
   },
 }

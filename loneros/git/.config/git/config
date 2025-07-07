@@ -1,9 +1,19 @@
-[color]
-  ui = "auto"
 [user]
-	name = lonerOrz
-	email = 2788892716@qq.com
+  name = loner
+  email = 2788892716@qq.com
+  signingkey = F55E587ECAB5D316
+
+[commit]
+  gpgsign = true
+
+[gpg]
+  format = openpgp
+
+[core]
+  sshCommand = "ssh -i ~/.ssh/id_ed25519"
+
+[color]
+  ui = auto
+
 [init]
   defaultBranch = main
-[core]
-  sshCommand = "ssh -i ~/.ssh/id_rsa"

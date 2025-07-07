@@ -1,9 +1,10 @@
 shell-integration = fish
 
 # Font
-font-family = "FiraCode Nerd Font Mono Bold"
+font-family = "Maple Mono NF CN ExtraBold"
 # FiraCode Nerd Font Mono Bold
 # LXGW WenKai Mono Medium
+# Maple Mono NF CN ExtraBold Italic
 font-size = 10
 font-thicken = true
 font-feature = ss01

@@ -26,7 +26,6 @@
 	"interval": 2,
 	"align": 0,
 	"rotate": 0,
-	//"format": "{icon} {percent}%",
 	"format-icons": [
 		" ",
 		" ",
@@ -36,7 +35,8 @@
 		"󰃟 ",
 		"󰃠 "
 	],
-	"format": "{icon}",
+	"format": "{icon} {percent}%",
+	//"format": "{icon}",
 	//"format-icons": ["","","","","","","","","","","","","","",""],
 	"tooltip-format": "backlight {percent}%",
 	"icon-size": 10,
@@ -295,15 +295,15 @@
 	"tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
 	"tooltip-format-ethernet": "{ifname} 󰌘",
 	"tooltip-format-disconnected": "󰌙 Disconnected",
-	"min-length": 24,
-	"max-length": 24,
+	"min-length": 22,
+	"max-length": 22,
 	"format-icons": [
 		"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
 	]
 },
 
 "power-profiles-daemon": {
-  "format": "{icon} ",
+  "format": "{icon} {profile}",
   "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
   "tooltip": true,
   "format-icons": {

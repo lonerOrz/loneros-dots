@@ -40,9 +40,9 @@
 		"transition-left-to-right": true
         },
 	"modules": [
-		"temperature",		
+		"temperature",
 		"cpu",
-		"power-profiles-daemon",	
+		"power-profiles-daemon",
 		"memory",
 		"disk",
 	]
@@ -56,11 +56,11 @@
 },
 "group/audio": {
 	"orientation": "inherit",
-	"drawer": {
-		"transition-duration": 500,
-		"children-class": "pulseaudio",
-		"transition-left-to-right": true
-        },
+	//"drawer": {
+	//	"transition-duration": 500,
+	//	"children-class": "pulseaudio",
+	//	"transition-left-to-right": true
+  //     },
 	"modules": [
 		"pulseaudio",
 		"pulseaudio#microphone",

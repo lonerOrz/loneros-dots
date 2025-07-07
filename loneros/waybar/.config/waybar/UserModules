@@ -6,5 +6,47 @@
 /* IMPORTANT, be mindful with , or ". else waybar will not start */
 
 {
-
+"niri/window": {
+	"format": "{title}",
+	"max-length": 25,
+	"separate-outputs": true,
+	"offscreen-css": true,
+	"offscreen-css-text": "(inactive)",
+	"rewrite": {
+		"(.*) — Mozilla Firefox": " $1",
+		"(.*) — Zen Twilight": " $1",
+		"(.*) - fish": "> [$1]",
+		"(.*) - zsh": "> [$1]",
+		"(.*) - $term": "> [$1]",
+	},
+},
+"custom/lrcsnc": {
+    "exec": "lrcsnc -c ~/.config/lrcsnc/config.yaml",
+    "hide-empty-text": true,
+    //"format": "󰝚 {}",
+    "format": "{}",
+    "max-length": 88,
+    "tooltip": false,
+    "escape": true
+},
+"custom/power#rofi": {
+	"format": " ",
+	"on-click": "powermenu",
+	"on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
+	"tooltip": true,
+	"tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur",
+},
+"group/status#niri": {
+	"orientation": "inherit",
+	"drawer": {
+		"transition-duration": 500,
+		"children-class": "custom/power",
+		"transition-left-to-right": false
+        },
+	"modules": [
+		"custom/power#rofi",
+		"keyboard-state",
+		"custom/keyboard",
+	]
+},
 }

@@ -26,14 +26,23 @@ return {
     end,
   },
   {
-    'williamboman/mason-lspconfig.nvim',
+    "williamboman/mason-lspconfig.nvim",
     event = { "BufReadPre", "BufNewFile" }, -- 延迟加载
-    config = function()
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+    opts = {
+      automatic_enable = {
+        exclude = { "nil_ls" },
+      },
+    },
+    config = function(_, opts)
       -- 设置 Mason 和 LSP 配置
-      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup(opts)
 
-      local lspconfig = require("lspconfig")
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      -- local lspconfig = require("lspconfig")
+      -- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       -- 遍历已安装的服务器并为每个服务器进行配置
       -- for _, server_name in ipairs(require("mason-lspconfig").get_installed_servers()) do
@@ -41,12 +50,12 @@ return {
       --     capabilities = capabilities,
       --   })
       -- end
-    end
+    end,
   },
   {
-   "glepnir/lspsaga.nvim",
+    "glepnir/lspsaga.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     config = function()
       require("lspsaga").setup({
         symbol_in_winbar = { enable = true, separator = "  ", show_file = true },
@@ -54,14 +63,14 @@ return {
     end,
   },
   {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { 'saghen/blink.cmp', "williamboman/mason.nvim" },
+    dependencies = { "saghen/blink.cmp", "williamboman/mason.nvim" },
 
     -- example calling setup directly for each LSP
     config = function()
       vim.diagnostic.config({
-        underline = false,
+        underline = true,
         signs = false,
         update_in_insert = false,
         virtual_text = { spacing = 2, prefix = "●" },
@@ -70,10 +79,31 @@ return {
           border = "rounded",
         },
       })
+      -- ====== 加强诊断提示颜色和符号可见性 ======
+      vim.cmd([[
+        highlight! DiagnosticUnderlineError guisp=#FF0000 gui=undercurl
+        highlight! DiagnosticVirtualTextError guifg=#FF4C4C
+        highlight! link DiagnosticHint DiagnosticWarn
+      ]])
 
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local lspconfig = require('lspconfig')
+      local lspconfig = require("lspconfig")
+      local blink_cmp = require("blink.cmp")
+      local util = require("lspconfig.util")
 
+      lspconfig.nil_ls.setup({
+        capabilities = blink_cmp.get_lsp_capabilities(),
+        root_dir = util.root_pattern("flake.nix", ".git"),
+        settings = {
+          ["nil"] = {
+            nix = {
+              flake = {
+                autoEvalInputs = false,
+                autoArchive = false,
+              },
+            },
+          },
+        },
+      })
       -- lspconfig['lua_ls'].setup({ capabilities = capabilities })
 
       -- Use LspAttach autocommand to only map the following keys
@@ -81,7 +111,6 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
-
           vim.diagnostic.open_float(nil, { focusable = true })
           local opts = { buffer = ev.buf }
 
@@ -92,10 +121,10 @@ return {
           })
 
           -- 查看错误提示浮窗（diagnostic） vim.diagnostic.open_float
-          vim.keymap.set("n", "<leader>d", "<CMD>Lspsaga show_workspace_diagnostics<CR>", {
-            buffer = ev.buf,
-            desc = "[LSP] Show diagnostics",
-          })
+          -- vim.keymap.set("n", "<leader>cd", "<CMD>Lspsaga show_workspace_diagnostics<CR>", {
+          --   buffer = ev.buf,
+          --   desc = "[LSP] Show diagnostics",
+          -- })
 
           -- 显示函数签名（signature help
           vim.keymap.set("n", "gk", vim.lsp.buf.signature_help, {
@@ -127,6 +156,12 @@ return {
             desc = "[LSP] Rename symbol",
           })
 
+          -- 触发 code action（代码修复、导入等）
+          vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", {
+            buffer = ev.buf,
+            desc = "[LSP] Code action",
+          })
+
           -- 添加当前目录为 workspace folder
           vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, {
             buffer = ev.buf,
@@ -148,7 +183,7 @@ return {
           })
         end,
       })
-    end
+    end,
   },
   {
     "folke/lazydev.nvim",
@@ -160,5 +195,101 @@ return {
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
+  },
+  {
+    -- 代码诊断显示信息
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    keys = {
+      {
+        "<A-j>",
+        function()
+          vim.diagnostic.jump({ count = 1 })
+        end,
+        mode = { "n" },
+        desc = "Go to next diagnostic",
+      },
+      {
+        "<A-k>",
+        function()
+          vim.diagnostic.jump({ count = -1 })
+        end,
+        mode = { "n" },
+        desc = "Go to previous diagnostic",
+      },
+
+      {
+        "<leader>cd",
+        "<CMD>Trouble diagnostics toggle<CR>",
+        desc = "[Trouble] Toggle buffer diagnostics",
+      },
+      { "<leader>cs", "<CMD>Trouble symbols toggle focus=false<CR>", desc = "[Trouble] Toggle symbols " },
+      -- { "<leader>gl", "<CMD>Trouble lsp toggle focus=false win.position=right<CR>", desc = "[Trouble] Toggle LSP definitions/references/...", },
+      -- { "<leader>gL", "<CMD>Trouble loclist toggle<CR>",                            desc = "[Trouble] Location List" },
+      -- { "<leader>gq", "<CMD>Trouble qflist toggle<CR>",                             desc = "[Trouble] Quickfix List" },
+
+      -- { "grr", "<CMD>Trouble lsp_references focus=true<CR>",         mode = { "n" }, desc = "[Trouble] LSP references"                        },
+      -- { "gD", "<CMD>Trouble lsp_declarations focus=true<CR>",        mode = { "n" }, desc = "[Trouble] LSP declarations"                      },
+      -- { "gd", "<CMD>Trouble lsp_type_definitions focus=true<CR>",    mode = { "n" }, desc = "[Trouble] LSP type definitions"                  },
+      -- { "gri", "<CMD>Trouble lsp_implementations focus=true<CR>",    mode = { "n" }, desc = "[Trouble] LSP implementations"                   },
+    },
+
+    -- specs = {
+    --   "folke/snacks.nvim",
+    --   opts = function(_, opts)
+    --     return vim.tbl_deep_extend("force", opts or {}, {
+    --       picker = {
+    --         actions = require("trouble.sources.snacks").actions,
+    --         win = {
+    --           input = {
+    --             -- stylua: ignore
+    --             keys = {
+    --               ["<c-t>"] = { "trouble_open", mode = { "n", "i" }, },
+    --             },
+    --           },
+    --         },
+    --       },
+    --     })
+    --   end,
+    -- },
+    -- opts = {
+    --   focus = false,
+    --   warn_no_results = false,
+    --   open_no_results = true,
+    --   preview = {
+    --     type = "float",
+    --     relative = "editor",
+    --     border = "rounded",
+    --     title = "Preview",
+    --     title_pos = "center",
+    --     ---`row` and `col` values relative to the editor
+    --     position = { 0.3, 0.3 },
+    --     size = { width = 0.6, height = 0.5 },
+    --     zindex = 200,
+    --   },
+    -- },
+
+    -- lualine 的显示
+    config = function(_, opts)
+      require("trouble").setup(opts)
+      local symbols = require("trouble").statusline({
+        mode = "lsp_document_symbols",
+        groups = {},
+        title = false,
+        filter = { range = true },
+        format = "{kind_icon}{symbol.name:Normal}",
+        -- The following line is needed to fix the background color
+        -- Set it to the lualine section you want to use
+        -- hl_group = "lualine_b_normal",
+      })
+
+      -- Insert status into lualine
+      opts = require("lualine").get_config()
+      table.insert(opts.winbar.lualine_b, 1, {
+        symbols.get,
+        cond = symbols.has,
+      })
+      require("lualine").setup(opts)
+    end,
   },
 }
