@@ -49,7 +49,7 @@ set -gx PATH $GOPATH/bin $PATH # go
 # gitconfig for archlinux
 set -gx GIT_CONFIG ~/.config/git/config
 set -x GPG_TTY (tty)
-set -gx GITHUB_TOKEN (cat ~/.config/fish/.github_token)
+# set -gx GITHUB_TOKEN (cat ~/.config/fish/.github_token)
 
 # Custom aliases
 alias ls 'eza -a --icons'

@@ -39,7 +39,7 @@
 "custom/keyboard#niri": {
 	"exec": "layout-niri",
 	"interval": 1,
-	"format": "  {}",
+	"format": " {}",
 	"on-click": "switch-layout-niri",
 },
 

@@ -32,7 +32,7 @@ SKIP_DIRECTORIES=( "fastfetch" "kitty" "nvim" "cava" "btop" )
 # 同步Hyprland-Dots和loneros
 # 每个子文件夹下的排除规则可以单独定义
 declare -A EXCLUDE_RULES
-EXCLUDE_RULES["hypr"]="UserConfigs/ Monitor_Profiles/ wallpaper_effects/ wallust/ workspaces.conf hyprlock.conf hyprlock-1080p.conf monitors.conf"
+EXCLUDE_RULES["hypr"]="UserConfigs/ Monitor_Profiles/ wallpaper_effects/ wallust/ workspaces.conf hypridle.conf.conf hyprlock.conf hyprlock-1080p.conf monitors.conf"
 EXCLUDE_RULES["rofi"]="config.rasi .current_wallpaper wallust/"
 EXCLUDE_RULES["waybar"]="config style.css UserModules wallust/"
 EXCLUDE_RULES["swaync"]="ja.png style.css"
