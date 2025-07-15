@@ -3,6 +3,7 @@
 /* IMPORTANT, be mindful with , or ". else waybar will not start */
 
 {
+// Modules
 "niri/window": {
 	"format": "{title}",
 	"max-length": 25,
@@ -18,6 +19,7 @@
 	},
 },
 
+// Custom modules
 "custom/lrcsnc": {
     "exec": "lrcsnc -c ~/.config/lrcsnc/config.yaml",
     "hide-empty-text": true,
@@ -41,6 +43,40 @@
 	"interval": 1,
 	"format": " {}",
 	"on-click": "switch-layout-niri",
+},
+
+"backlight#lo": {
+	"interval": 2,
+	"align": 0,
+	"rotate": 0,
+	"format": "{icon}{percent}%",
+	"format-icons": [
+		" ",
+		" ",
+		" ",
+		"󰃝 ",
+		"󰃞 ",
+		"󰃟 ",
+		"󰃠 "
+	],
+	"tooltip-format": "backlight {percent}%",
+	"icon-size": 10,
+	"on-click": "",
+	"on-click-middle": "",
+	"on-click-right": "",
+	"on-update": "",
+	"on-scroll-up": "$HOME/.config/hypr/scripts/Brightness.sh --inc",
+	"on-scroll-down": "$HOME/.config/hypr/scripts/Brightness.sh --dec",
+	"smooth-scrolling-threshold": 1,
+},
+
+// Group modules
+"group/laptop#lo": {
+	"orientation": "inherit",
+	"modules": [
+		"backlight#lo",
+		"battery",
+	]
 },
 
 }

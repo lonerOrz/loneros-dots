@@ -58,7 +58,7 @@ return {
       sources = {
         -- Nix
         -- null_ls.builtins.formatting.alejandra,
-        -- null_ls.builtins.formatting.nixfmt_rfc,
+        -- null_ls.builtins.formatting.nixfmt,
         nixfmt_rfc,
         -- Lua
         null_ls.builtins.formatting.stylua,

@@ -85,6 +85,7 @@ alias powerinfo 'upower -i /org/freedesktop/UPower/devices/battery_BAT0'
 alias fontlist 'fc-list : family | sort | uniq'
 alias cpu_top 'ps aux --sort=-%cpu | head -n 10'
 alias npmi 'npm install -g --prefix=~/.npm'
+alias carm 'mpv av://v4l2:/dev/video0 --profile=low-latency --untimed --no-cache' # 使用mpv调用相机
 
 function gz
     for dir in (find . -maxdepth 1 -type d)

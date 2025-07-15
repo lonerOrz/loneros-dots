@@ -6,7 +6,7 @@ configuration {
 }
 
 * {
-    font:            "Iosevka Nerd Font Bold 11";
+    font:            "Iosevka Nerd Font Bold 16";
 }
 
 /*****----- Main Window -----*****/
@@ -125,7 +125,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     10px;
     margin:                      0px;
     padding:                     0px;
@@ -142,7 +142,7 @@ element {
     enabled:                     true;
     spacing:                     0px;
     margin:                      0px;
-    padding:                     27px 1px 37px 1px;
+    padding:                     18px 2px;
     border:                      1px solid;
     border-radius:               6px;
     border-color:                @border-highlight;
@@ -151,7 +151,7 @@ element {
     cursor:                      pointer;
 }
 element-text {
-    font:                        "feather bold 24";
+    font:                        @font;
     background-color:            transparent;
     text-color:                  @selected;
     cursor:                      inherit;

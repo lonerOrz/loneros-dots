@@ -20,6 +20,7 @@ return {
     opts = {
       options = {
         theme = "catppuccin",
+        -- theme = "base16",
         always_divide_middle = false,
         -- component_separators = { left = "", right = "" },
         -- section_separators = { left = "", right = "" },
@@ -48,7 +49,8 @@ return {
       -- },
     },
     config = function(_, opts)
-      local mocha = require("catppuccin.palettes").get_palette("mocha")
+      local theme = require("catppuccin.palettes").get_palette("mocha")
+      -- local theme = require("base16-colorscheme").colors
 
       local function show_macro_recording()
         local recording_register = vim.fn.reg_recording()
@@ -61,7 +63,7 @@ return {
 
       local macro_recording = {
         show_macro_recording,
-        color = { fg = "#333333", bg = mocha.red },
+        color = { fg = "#333333", bg = theme.red },
         separator = { left = "", right = "" },
         padding = 0,
       }
@@ -72,14 +74,14 @@ return {
         symbols = {
           status = {
             hl = {
-              enabled = mocha.green,
-              sleep = mocha.overlay0,
-              disabled = mocha.surface0,
-              warning = mocha.peach,
-              unknown = mocha.red,
+              enabled = theme.green,
+              sleep = theme.overlay0,
+              disabled = theme.surface0,
+              warning = theme.peach,
+              unknown = theme.red,
             },
           },
-          spinner_color = mocha.mauve,
+          spinner_color = theme.mauve,
         },
       }
 
