@@ -31,8 +31,8 @@
 },
 
 "custom/power#niri": {
-	"format": " ",
-	"on-click": "powermenu",
+	"format": "",
+	"on-click": "PowerMenu",
 	"on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
 	"tooltip": true,
 	"tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur",
@@ -71,12 +71,5 @@
 },
 
 // Group modules
-"group/laptop#lo": {
-	"orientation": "inherit",
-	"modules": [
-		"backlight#lo",
-		"battery",
-	]
-},
 
 }

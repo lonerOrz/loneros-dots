@@ -55,7 +55,7 @@ for subfolder in $subfolders; do
   # 检查目标文件夹中是否存在对应的项目文件夹
   target_folder="$SOURCE/$folder_name"
   if [ ! -d "$target_folder" ]; then
-    # echo "$WARNING 源文件夹下 $target_folder 不存在，跳过该项目...$RESET"
+    echo "$WARNING 源文件夹下 $target_folder 不存在，跳过该项目...$RESET"
     continue
   fi
 

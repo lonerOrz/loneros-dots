@@ -21,10 +21,13 @@ background-opacity = 0.7
 # custom-shader = shaders/glow++.glsl
 # custom-shader = shaders/starfield-colors.glsl
 # custom-shader = shaders/bettercrt.glsl
+# custom-shader = shaders/cursor_smear_fade.glsl
+custom-shader = shaders/cursor_frozen.glsl
 
 # title = "ghtty"
 
 cursor-style = bar
+cursor-opacity = 0.1
 cursor-style-blink = false
 adjust-cursor-thickness = 1
 

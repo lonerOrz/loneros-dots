@@ -82,3 +82,6 @@ userChrome.target = '~/.zen/loner.loneros/chrome/userChrome.css'
 
 spicetify.template = 'colors-spicetify.ini'
 spicetify.target = '~/.config/spicetify/Themes/custom/color.ini'
+
+quickshell.template = 'qml_color.json'
+quickshell.target = '~/.config/quickshell/qml_color.json'
