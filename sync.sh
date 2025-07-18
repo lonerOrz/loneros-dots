@@ -35,7 +35,7 @@ declare -A EXCLUDE_RULES
 EXCLUDE_RULES["hypr"]="UserConfigs/ Monitor_Profiles/ wallpaper_effects/ wallust/ workspaces.conf hypridle.conf.conf hyprlock.conf hyprlock-1080p.conf monitors.conf"
 EXCLUDE_RULES["rofi"]="config.rasi .current_wallpaper wallust/"
 EXCLUDE_RULES["waybar"]="config style.css UserModules wallust/"
-EXCLUDE_RULES["swaync"]="ja.png style.css"
+EXCLUDE_RULES["swaync"]="ja.png style.css config.json"
 EXCLUDE_RULES["wlogout"]="style.css"
 EXCLUDE_RULES["wallust"]="wallust.toml colors-rofi.rasi"
 

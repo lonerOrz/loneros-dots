@@ -85,3 +85,5 @@ spicetify.target = '~/.config/spicetify/Themes/custom/color.ini'
 
 quickshell.template = 'qml_color.json'
 quickshell.target = '~/.config/quickshell/qml_color.json'
+
+Quickshell = { template = 'quickshell.json', target = '~/.config/quickshell/Settings/Theme.json' }
