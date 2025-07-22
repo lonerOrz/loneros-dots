@@ -2,7 +2,8 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "VimEnter",
+    -- event = "VimEnter",
+    event = "InsertEnter",
     opts = {
       suggestion = { enabled = false },
       panel = { enabled = false },
@@ -29,10 +30,38 @@ return {
     end,
 
     keys = {
-      {"<leader>cca", "<CMD>CodeCompanionActions<CR>",     mode = {"n", "v"}, noremap = true, silent = true, desc = "CodeCompanion actions"      },
-      {"<leader>cci", "<CMD>CodeCompanion<CR>",            mode = {"n", "v"}, noremap = true, silent = true, desc = "CodeCompanion inline"       },
-      {"<leader>ccc", "<CMD>CodeCompanionChat Toggle<CR>", mode = {"n", "v"}, noremap = true, silent = true, desc = "CodeCompanion chat (toggle)"},
-      {"<leader>ccp", "<CMD>CodeCompanionChat Add<CR>",    mode = {"v"}     , noremap = true, silent = true, desc = "CodeCompanion chat add code"},
+      {
+        "<leader>cca",
+        "<CMD>CodeCompanionActions<CR>",
+        mode = { "n", "v" },
+        noremap = true,
+        silent = true,
+        desc = "CodeCompanion actions",
+      },
+      {
+        "<leader>cci",
+        "<CMD>CodeCompanion<CR>",
+        mode = { "n", "v" },
+        noremap = true,
+        silent = true,
+        desc = "CodeCompanion inline",
+      },
+      {
+        "<leader>ccc",
+        "<CMD>CodeCompanionChat Toggle<CR>",
+        mode = { "n", "v" },
+        noremap = true,
+        silent = true,
+        desc = "CodeCompanion chat (toggle)",
+      },
+      {
+        "<leader>ccp",
+        "<CMD>CodeCompanionChat Add<CR>",
+        mode = { "v" },
+        noremap = true,
+        silent = true,
+        desc = "CodeCompanion chat add code",
+      },
     },
 
     opts = {
@@ -52,7 +81,5 @@ return {
         language = "Chinese", -- "English"|"Chinese"
       },
     },
-
   },
-
 }

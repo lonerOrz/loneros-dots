@@ -17,7 +17,7 @@ vim.opt.sidescrolloff = 10  -- 光标左右保留10列的滚动偏移
 vim.opt.startofline = false -- 保持光标在行内当前位置，不自动跳到行首
 
 -- 隐藏级别设置
-vim.opt.conceallevel = 2 -- 设置隐藏文本的级别（用于Markdown等文件）
+  vim.opt.conceallevel = 2 -- 设置隐藏文本的级别（用于Markdown等文件）
 
 -- Tab 和缩进相关设置
 vim.opt.tabstop = 2        -- Tab 显示为 2 个空格宽

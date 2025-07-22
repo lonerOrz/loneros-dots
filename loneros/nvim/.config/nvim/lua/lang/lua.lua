@@ -1,4 +1,4 @@
--- vim.lsp.enable("lua_ls")
+vim.lsp.enable("lua_ls")
 
 return {
 	{
@@ -23,13 +23,13 @@ return {
 	},
 
 	{
-		"stevearc/conform.nvim",
-		optional = true,
+		"nvimtools/none-ls.nvim",
 		opts = {
-			formatters_by_ft = {
-				lua = { "stylua" },
+			sources = {
+				require("null-ls").builtins.formatting.stylua,
 			},
 		},
+		opts_extend = { "sources" },
 	},
 
 	{

@@ -1,7 +1,7 @@
 shell-integration = fish
 
 # Font
-font-family = "Maple Mono NF CN ExtraBold"
+font-family = "Maple Mono NF CN Italic"
 # FiraCode Nerd Font Mono Bold
 # LXGW WenKai Mono Medium
 # Maple Mono NF CN ExtraBold Italic

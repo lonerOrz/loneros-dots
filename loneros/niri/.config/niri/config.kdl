@@ -1,0 +1,345 @@
+// Input
+input {
+    keyboard {
+        xkb {
+            layout "us,fr,cn"
+            // options "esc:nocaps"
+            model ""
+            rules ""
+            variant "intel"
+        }
+        repeat-delay 250
+        repeat-rate 25
+        track-layout "global"
+        numlock
+    }
+    touchpad {
+        tap // 点击即可点击
+        dwt // 键入时禁用
+        dwtp // 跟踪指向时禁用
+        natural-scroll // 反转滚动方向
+        accel-speed 0.000000 //指针加速速度
+        accel-profile "adaptive" // adaptive （默认）or flat （禁用指针加速）
+        scroll-method "two-finger" // 生成滚动事件而不是指针运动事件
+        click-method "button-areas" // button-areas or clickfinger
+        tap-button-map "left-right-middle"
+    }
+    mouse { accel-speed 0.000000; }
+    trackpoint { accel-speed 0.000000; }
+    trackball { accel-speed 0.000000; }
+    tablet
+    touch
+    warp-mouse-to-focus mode="center-xy-always" // 同时扭曲 X 和 Y 坐标，即使鼠标已经在新聚焦的窗口内
+    focus-follows-mouse max-scroll-amount="0%" // 选择设置最大滚动量 。然后，focus-follows-mouse 不会聚焦一个窗口，如果它会导致视图滚动超过设置的量。该值是工作区宽度的百分比
+    workspace-auto-back-and-forth
+}
+
+// Output
+output "eDP-1" {
+    scale 1
+    transform "normal" // 逆时针旋转输出角度
+    position x=0 y=0
+    mode "1920x1080@144.00"
+}
+screenshot-path "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
+prefer-no-csd // 应用程序省略其客户端装饰
+
+// Layout
+layout {
+  gaps 8
+  center-focused-column "never"
+  always-center-single-column
+  background-color "transparent"
+  struts {
+      left -6
+      right -6
+      top -6
+      bottom -8
+  }
+  focus-ring { off; }
+  border {
+      width 2
+      active-color "#89b4fa"
+      inactive-color "#665c54"
+      // active-gradient from="#f00f" to="#0f05" angle=45 in="oklch longer hue" // 渐变
+  }
+  insert-hint { color "rgb(127 200 255 / 50%)"; }
+  default-column-width { proportion 0.500000; }
+  preset-column-widths {
+      proportion 0.333333
+      proportion 0.500000
+      proportion 0.666667
+      proportion 1.000000
+  }
+  // empty-workspace-above-first // 始终在最开始添加一个空工作区，以及最后的空工作区
+}
+
+// Environment
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto" // for electron > 28
+    CLUTTER_BACKEND "wayland"
+    DISPLAY ":0"
+    GDK_BACKEND "wayland,x11"
+    MOZ_ENABLE_WAYLAND "1"
+    NIXOS_OZONE_WL "1"
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    SDL_VIDEODRIVER "wayland"
+}
+
+// keybinds
+binds {
+    Mod+Return { spawn "kitty"; } // ghostty kitty foot
+    Mod+Shift+Return { spawn "kitty" "-T" "float-kitty"; }
+    Mod+D { spawn "rofi" "-show" "drun" "-modi" "drun,ssh,run,window"; }
+    Mod+Shift+D { spawn "fuzzel"; }
+    Mod+W { spawn "WallSelect"; }
+    Mod+Q { close-window; }
+    Mod+P { spawn "hyprpicker"; }
+    Mod+Shift+P { spawn "wshowkeys" "-b" "#1e1e2e" "-f" "#f5e0dc" "-s" "#f38ba8" "-F" "Maple Mono NF CN Bold Italic 30" "-t" "1" "-a" "bottom" "-m" "150"; }
+    Mod+I { spawn "XDG_CURRENT_DESKTOP=gnome" "gnome-control-center"; }
+    Mod+A repeat=false { toggle-overview; }
+    Mod+B { spawn "google-chrome-stable"; }
+    Ctrl+Alt+L { spawn "loginctl" "lock-session"; }
+    XF86Sleep { spawn "loginctl" "suspend"; }
+    Mod+Shift+F12 { spawn "PowerMenu"; }
+
+    // waybar
+    Mod+Alt+B { spawn "WaybarLayout"; }
+    Mod+Ctrl+B { spawn "WaybarStyles"; }
+
+    // window
+    Mod+End { focus-column-last; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+C { center-window; }
+    Mod+Space { toggle-window-floating; }
+    Mod+Tab { switch-focus-between-floating-and-tiling; }
+
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // Mod+Home { focus-column-first; }
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-right; }
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-column-to-workspace-down; }
+    Mod+Shift+K { move-column-to-workspace-up; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Right { focus-column-right; }
+    Mod+Left { focus-column-left; }
+    Mod+Up { focus-workspace-up; }
+    Mod+Down { focus-workspace-down; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Up { move-column-to-workspace-up; }
+    Mod+Shift+Down { move-column-to-workspace-down; }
+
+    // screenshot
+    Mod+Print { screenshot-screen; }
+    Mod+Alt+Print { screenshot-window; }
+    Mod+Shift+Print { screenshot; }
+
+    // volume control
+    XF86AudioRaiseVolume {spawn "Volume" "--inc";}
+    Xf86AudioLowerVolume {spawn "Volume" "--dec";}
+    Xf86AudioMute {spawn "Volume" "--toggle";} // volume mute
+    Xf86AudioMicMute {spawn "Volume" "--toggle-mic";} // mic mute
+
+    // audio control
+    XF86AudioPlay { spawn "MediaCtrl" "--pause"; }
+    XF86AudioPause { spawn "MediaCtrl" "--pause"; }
+    XF86AudioPrev { spawn "MediaCtrl" "--prv"; }
+    XF86AudioNext { spawn "MediaCtrl" "--nxt"; }
+    XF86AudioStop { spawn "MediaCtrl" "--stop"; }
+
+    // brightness control
+    XF86MonBrightnessDown { spawn "Brightness" "--dec"; }
+    XF86MonBrightnessUp { spawn "Brightness" "--inc"; }
+}
+
+// Startup
+spawn-at-startup "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DBUS_SESSION_BUS_ADDRESS" //  D-Bus 服务环境
+spawn-at-startup "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DBUS_SESSION_BUS_ADDRESS" // systemd 的 user 服务
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "Polkit-NixOS"
+spawn-at-startup "nm-applet --indicator"
+spawn-at-startup "hypridle"
+spawn-at-startup "wl-paste --type text --watch cliphist store"
+spawn-at-startup "wl-paste --type image --watch cliphist store"
+// spawn-at-startup "quickshell"
+spawn-at-startup "swaync"
+spawn-at-startup "waybar"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "fcitx5"
+spawn-at-startup "foots"
+spawn-at-startup "gammastep -l 31.1824:106.0919 -t 6500:3500 -b 1.0:0.8 -g 1.0:0.9:0.9"
+spawn-at-startup "mihomo-party"
+spawn-at-startup "windows-niri"
+
+// Window Rules
+window-rule {
+    opacity 1.0 // 窗口透明度
+    draw-border-with-background false // 窗口边框是否与背景一起绘制
+    geometry-corner-radius 8.000000 8.000000 8.000000 8.000000 // 窗口的圆角半径
+    clip-to-geometry true // 窗口是否裁剪到几何形状
+}
+window-rule {
+    match app-id="google-chrome"
+    open-maximized true
+}
+window-rule {
+    match app-id="zen"
+    open-maximized true
+}
+window-rule {
+    match app-id="org.telegram.desktop"
+    block-out-from "screencast"
+}
+window-rule {
+    match app-id="app.drey.PaperPlane"
+    block-out-from "screencast"
+}
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    match title="^Picture in picture$"
+    match title="^Discord Popout$"
+    open-floating true
+    default-floating-position relative-to="top-right" x=32 y=32
+}
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+window-rule {
+    match app-id="^(pwvucontrol)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(Volume Control)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(dialog)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(file_progress)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(confirm)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(download)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(error)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(notification)" title=""
+    open-floating true
+}
+window-rule {
+    match title="float-kitty"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 480; }
+}
+window-rule {
+    match app-id="^dropdown$"
+    open-floating true
+    default-floating-position x=0 y=0 relative-to="top"
+    default-window-height { proportion 0.5; }
+    default-column-width { proportion 0.8; }
+}
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+// Layer Rule
+layer-rule {
+  match namespace="swww-daemon"
+  place-within-backdrop true // 将表面放置在 Overview （概述 ） 和工作区之间可见的背景中
+}
+layer-rule {
+    match namespace="^notifications$"
+    block-out-from "screencast" // Block out mako notifications from screencasts
+}
+layer-rule {
+    match namespace="waybar"
+    // baba-is-float true
+}
+
+// Animations
+animations {
+    slowdown 1.000000
+    window-resize {
+        spring damping-ratio=0.800000 epsilon=0.000500 stiffness=1000
+        custom-shader "vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {\n  vec3 coords_next_geo = niri_curr_geo_to_next_geo * coords_curr_geo;\n\n  vec3 coords_stretch = niri_geo_to_tex_next * coords_curr_geo;\n  vec3 coords_crop = niri_geo_to_tex_next * coords_next_geo;\n\n  // We can crop if the current window size is smaller than the next window\n  // size. One way to tell is by comparing to 1.0 the X and Y scaling\n  // coefficients in the current-to-next transformation matrix.\n  bool can_crop_by_x = niri_curr_geo_to_next_geo[0][0] <= 1.0;\n  bool can_crop_by_y = niri_curr_geo_to_next_geo[1][1] <= 1.0;\n\n  vec3 coords = coords_stretch;\n  if (can_crop_by_x)\n      coords.x = coords_crop.x;\n  if (can_crop_by_y)\n      coords.y = coords_crop.y;\n\n  vec4 color = texture2D(niri_tex_next, coords.st);\n\n  // However, when we crop, we also want to crop out anything outside the\n  // current geometry. This is because the area of the shader is unspecified\n  // and usually bigger than the current geometry, so if we don't fill pixels\n  // outside with transparency, the texture will leak out.\n  //\n  // When stretching, this is not an issue because the area outside will\n  // correspond to client-side decoration shadows, which are already supposed\n  // to be outside.\n  if (can_crop_by_x && (coords_curr_geo.x < 0.0 || 1.0 < coords_curr_geo.x))\n      color = vec4(0.0);\n  if (can_crop_by_y && (coords_curr_geo.y < 0.0 || 1.0 < coords_curr_geo.y))\n      color = vec4(0.0);\n\n  return color;\n}\n"
+    }
+}
+
+// Overview
+overview {
+    zoom 0.3
+    workspace-shadow {
+        off
+    }
+}
+
+// Disable the hot corners.
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// Cursor
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
+}
+
+hotkey-overlay { skip-at-startup; } // 禁用热键帮助
+
+
+// Events
+switch-events {
+    lid-close { spawn "notify-send" " The laptop lid is closed! "; }
+    lid-open { spawn "notify-send" " The laptop lid is open! "; }
+    tablet-mode-on { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
+    tablet-mode-off { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
+}

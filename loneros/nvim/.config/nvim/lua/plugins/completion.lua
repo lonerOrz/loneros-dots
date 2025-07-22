@@ -1,6 +1,7 @@
 return {
   {
-    'saghen/blink.cmp',
+    "saghen/blink.cmp",
+    event = "InsertEnter",
     -- optional: provides snippets for the snippet source
     dependencies = {
       -- 'rafamadriz/friendly-snippets'
@@ -11,7 +12,7 @@ return {
     },
 
     -- use a release tag to download pre-built binaries
-    version = '1.*',
+    version = "1.*",
     -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
@@ -35,30 +36,83 @@ return {
       keymap = {
         -- If the command/function returns false or nil, the next command/function will be run.
         preset = "none",
-        ["<A-j>"] = { function(cmp) return cmp.select_next({ auto_insert = false }) end, "fallback", },
-        ["<A-k>"] = { function(cmp) return cmp.select_prev({ auto_insert = false }) end, "fallback", },
-        ["<C-n>"] = { function(cmp) return cmp.select_next({ auto_insert = false }) end, "fallback", },
-        ["<C-p>"] = { function(cmp) return cmp.select_prev({ auto_insert = false }) end, "fallback", },
+        ["<A-j>"] = {
+          function(cmp)
+            return cmp.select_next({ auto_insert = false })
+          end,
+          "fallback",
+        },
+        ["<A-k>"] = {
+          function(cmp)
+            return cmp.select_prev({ auto_insert = false })
+          end,
+          "fallback",
+        },
+        ["<C-n>"] = {
+          function(cmp)
+            return cmp.select_next({ auto_insert = false })
+          end,
+          "fallback",
+        },
+        ["<C-p>"] = {
+          function(cmp)
+            return cmp.select_prev({ auto_insert = false })
+          end,
+          "fallback",
+        },
 
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
 
-        ["<Tab>"] = { function(cmp) return cmp.accept() end, "fallback", },
-        ["<CR>"] = { function(cmp) return cmp.accept() end, "fallback", },
+        ["<Tab>"] = {
+          function(cmp)
+            return cmp.accept()
+          end,
+          "fallback",
+        },
+        ["<CR>"] = {
+          function(cmp)
+            return cmp.accept()
+          end,
+          "fallback",
+        },
         -- Close current completion and insert a newline
-        ["<S-CR>"] = { function(cmp) cmp.hide() return false end, "fallback", },
+        ["<S-CR>"] = {
+          function(cmp)
+            cmp.hide()
+            return false
+          end,
+          "fallback",
+        },
 
         -- Show/Remove completion
-        ["<A-/>"] = { function(cmp) if cmp.is_menu_visible() then return cmp.hide() else return cmp.show() end end, "fallback", },
+        ["<A-/>"] = {
+          function(cmp)
+            if cmp.is_menu_visible() then
+              return cmp.hide()
+            else
+              return cmp.show()
+            end
+          end,
+          "fallback",
+        },
 
-        ["<A-n>"] = { function(cmp) cmp.show({ providers = {"buffer"} }) end, },
-        ["<A-p>"] = { function(cmp) cmp.show({ providers = {"buffer"} }) end, },
+        ["<A-n>"] = {
+          function(cmp)
+            cmp.show({ providers = { "buffer" } })
+          end,
+        },
+        ["<A-p>"] = {
+          function(cmp)
+            cmp.show({ providers = { "buffer" } })
+          end,
+        },
       },
 
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'normal'
+        nerd_font_variant = "normal",
       },
 
       -- Default list of enabled providers defined so that you can extend it
@@ -66,7 +120,11 @@ return {
       sources = {
         default = function()
           local success, node = pcall(vim.treesitter.get_node)
-          if success and node and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
+          if
+              success
+              and node
+              and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type())
+          then
             return { "buffer" }
           else
             return { "lazydev", "copilot", "lsp", "path", "snippets", "buffer" }
@@ -258,17 +316,59 @@ return {
         },
         keymap = {
           preset = "none",
-          ["<A-j>"] = { function(cmp) return cmp.select_next({ auto_insert = false }) end, "fallback", },
-          ["<A-k>"] = { function(cmp) return cmp.select_prev({ auto_insert = false }) end, "fallback", },
-          ["<C-p>"] = { function(cmp) return cmp.select_prev({ auto_insert = false }) end, "fallback", },
-          ["<C-n>"] = { function(cmp) return cmp.select_next({ auto_insert = false }) end, "fallback", },
-          ["<Tab>"] = { function(cmp) return cmp.accept() end, "fallback", },
-          ["<CR>"] = { function(cmp) if vim.fn.getcmdtype() == ":" then return cmp.accept_and_enter() end return false end, "fallback", },
-          ["<A-/>"] = { function(cmp) if cmp.is_menu_visible() then return cmp.hide() else return cmp.show() end end, "fallback", },
+          ["<A-j>"] = {
+            function(cmp)
+              return cmp.select_next({ auto_insert = false })
+            end,
+            "fallback",
+          },
+          ["<A-k>"] = {
+            function(cmp)
+              return cmp.select_prev({ auto_insert = false })
+            end,
+            "fallback",
+          },
+          ["<C-p>"] = {
+            function(cmp)
+              return cmp.select_prev({ auto_insert = false })
+            end,
+            "fallback",
+          },
+          ["<C-n>"] = {
+            function(cmp)
+              return cmp.select_next({ auto_insert = false })
+            end,
+            "fallback",
+          },
+          ["<Tab>"] = {
+            function(cmp)
+              return cmp.accept()
+            end,
+            "fallback",
+          },
+          ["<CR>"] = {
+            function(cmp)
+              if vim.fn.getcmdtype() == ":" then
+                return cmp.accept_and_enter()
+              end
+              return false
+            end,
+            "fallback",
+          },
+          ["<A-/>"] = {
+            function(cmp)
+              if cmp.is_menu_visible() then
+                return cmp.hide()
+              else
+                return cmp.show()
+              end
+            end,
+            "fallback",
+          },
         },
       },
     },
 
-    opts_extend = { "sources.default" }
-  }
+    opts_extend = { "sources.default" },
+  },
 }
