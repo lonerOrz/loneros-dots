@@ -2,56 +2,56 @@
  /* wallust template - colors-rofi */
 
 * {
-  active-background: #D6ACFF;
-  active-foreground: #F8F8F2;
-  normal-background: #282A36;
-  normal-foreground: #F8F8F2;
-  urgent-background: #FF92D0;
-  urgent-foreground: #F8F8F2;
+  active-background: #89B4FA;
+  active-foreground: #CDD6F4;
+  normal-background: #1E1E2E;
+  normal-foreground: #CDD6F4;
+  urgent-background: #CBA6F7;
+  urgent-foreground: #CDD6F4;
 
-  alternate-active-background: #D6ACFF;
-  alternate-active-foreground: #F8F8F2;
-  alternate-normal-background: #282A36;
-  alternate-normal-foreground: #F8F8F2;
-  alternate-urgent-background: #282A36;
-  alternate-urgent-foreground: #F8F8F2;
+  alternate-active-background: #89B4FA;
+  alternate-active-foreground: #CDD6F4;
+  alternate-normal-background: #1E1E2E;
+  alternate-normal-foreground: #CDD6F4;
+  alternate-urgent-background: #1E1E2E;
+  alternate-urgent-foreground: #CDD6F4;
 
-  selected-active-background: #FF92D0;
-  selected-active-foreground: #F8F8F2;
-  selected-normal-background: #FF92D0;
-  selected-normal-foreground: #F8F8F2;
-  selected-urgent-background: #D6ACFF;
-  selected-urgent-foreground: #F8F8F2;
+  selected-active-background: #CBA6F7;
+  selected-active-foreground: #CDD6F4;
+  selected-normal-background: #CBA6F7;
+  selected-normal-foreground: #CDD6F4;
+  selected-urgent-background: #89B4FA;
+  selected-urgent-foreground: #CDD6F4;
 
-  background-color: #282A36;
+  background-color: #1E1E2E;
   // background: rgba(0,0,0,0.7);
-  foreground: #F8F8F2;
-  border-color: #D6ACFF;
+  foreground: #CDD6F4;
+  border-color: #89B4FA;
 
-  color0: #000000;
-  color1: #FF5555;
-  color2: #50FA7B;
-  color3: #F1FA8C;
-  color4: #BD93F9;
-  color5: #FF79C6;
-  color6: #8BE9FD;
-  color7: #F8F8F2;
-  color8: #4D4D4D;
-  color9: #FF6E6E;
-  color10: #69FF94;
-  color11: #FFFFA5;
-  color12: #D6ACFF;
-  color13: #FF92D0;
-  color14: #A4FFFF;
-  color15: #FFFFFF;
+  color0: #45475A;
+  color1: #F38BA8;
+  color2: #A6E3A1;
+  color3: #F9E2AF;
+  color4: #89B4FA;
+  color5: #CBA6F7;
+  color6: #94E2D5;
+  color7: #BAC2DE;
+  color8: #585B70;
+  color9: #F38BA8;
+  color10: #A6E3A1;
+  color11: #F9E2AF;
+  color12: #89B4FA;
+  color13: #CBA6F7;
+  color14: #94E2D5;
+  color15: #A6ADC8;
 
 
-  background:             rgba(40,42,54, 0.8);
-  background-solid:       rgba(40,42,54, 1);
-  background-alt:         rgba(62,63,74, 0.4);
-  selected:               rgba(214,172,255,1);
-  border-highlight:       rgba(214,172,255,0.1);
-  selected-tinted:        rgba(214,172,255,0.6);
+  background:             rgba(30,30,46, 0.8);
+  background-solid:       rgba(30,30,46, 1);
+  background-alt:         rgba(53,53,67, 0.4);
+  selected:               rgba(137,180,250,1);
+  border-highlight:       rgba(137,180,250,0.1);
+  selected-tinted:        rgba(137,180,250,0.6);
   active:                 #AFFFB2FF;
   urgent:                 #FF5849FF;
 }

@@ -41,6 +41,12 @@ output "eDP-1" {
     position x=0 y=0
     mode "1920x1080@144.00"
 }
+output "DP-2" {
+    scale 1
+    transform "normal" // 逆时针旋转输出角度
+    position x=0 y=1080
+    mode "1920x1080@165.00"
+}
 screenshot-path "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
 prefer-no-csd // 应用程序省略其客户端装饰
 
@@ -187,23 +193,23 @@ binds {
 }
 
 // Startup
-spawn-at-startup "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DBUS_SESSION_BUS_ADDRESS" //  D-Bus 服务环境
-spawn-at-startup "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DBUS_SESSION_BUS_ADDRESS" // systemd 的 user 服务
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "DBUS_SESSION_BUS_ADDRESS" // D-Bus 服务环境
+spawn-at-startup "systemctl" "--user" "import-environment" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "DBUS_SESSION_BUS_ADDRESS" // systemd 的 user 服务
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "Polkit-NixOS"
-spawn-at-startup "nm-applet --indicator"
+spawn-at-startup "nm-applet" "--indicator"
 spawn-at-startup "hypridle"
-spawn-at-startup "wl-paste --type text --watch cliphist store"
-spawn-at-startup "wl-paste --type image --watch cliphist store"
-// spawn-at-startup "quickshell"
-spawn-at-startup "swaync"
-spawn-at-startup "waybar"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "quickshell" "-p" "/home/loner/Downloads/qs/DankMaterialShell/shell.qml"
+// spawn-at-startup "swaync"
+// spawn-at-startup "waybar"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "fcitx5"
-spawn-at-startup "foots"
-spawn-at-startup "gammastep -l 31.1824:106.0919 -t 6500:3500 -b 1.0:0.8 -g 1.0:0.9:0.9"
+// spawn-at-startup "foots"
+spawn-at-startup "gammastep" "-l" "31.1824:106.0919" "-t" "6500:3500" "-b" "1.0:0.8" "-g" "1.0:0.9:0.9"
 spawn-at-startup "mihomo-party"
-spawn-at-startup "windows-niri"
+// spawn-at-startup "windows-niri"
 
 // Window Rules
 window-rule {

@@ -15,8 +15,10 @@ scope = "source.nix"
 injection-regex = "nix"
 file-types = ["nix"]
 shebangs = []
+auto-format = true
+formatter = ["nix fmt"]
 comment-token = "#"
-language-servers = ["nil", "nixd"]
+language-servers = [ "nixd" ]
 indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]

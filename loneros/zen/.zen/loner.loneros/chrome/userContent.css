@@ -2,94 +2,94 @@
   /* 基本页面设置 */
   @-moz-document url-prefix("about:") {
     :root {
-      --in-content-page-color: #F9F9F3 !important;
-      --color-accent-primary: #D6ACFF !important;
+      --in-content-page-color: #D2DAF5 !important;
+      --color-accent-primary: #89B4FA !important;
       --color-accent-primary-hover: rgb(185, 233, 181) !important;
       --color-accent-primary-active: rgb(161, 227, 172) !important;
-      --content-background-color: #282A36 !important;
-      --content-text-color: #F9F9F3 !important;
-      --in-content-page-background: #282A36 !important;
+      --content-background-color: #1E1E2E !important;
+      --content-text-color: #D2DAF5 !important;
+      --in-content-page-background: #1E1E2E !important;
     }
   }
 
   /* 新标签页和首页设置 */
   @-moz-document url("about:newtab"), url("about:home") {
     :root {
-      --newtab-background-color: #282A36 !important;
-      --newtab-background-color-secondary: #3E3F4A !important;
-      --newtab-element-hover-color: #3E3F4A !important;
-      --newtab-text-primary-color: #F9F9F3 !important;
-      --newtab-wordmark-color: #F9F9F3 !important;
-      --newtab-primary-action-background: #D6ACFF !important;
+      --newtab-background-color: #1E1E2E !important;
+      --newtab-background-color-secondary: #353543 !important;
+      --newtab-element-hover-color: #353543 !important;
+      --newtab-text-primary-color: #D2DAF5 !important;
+      --newtab-wordmark-color: #D2DAF5 !important;
+      --newtab-primary-action-background: #89B4FA !important;
     }
-    .icon { color: #D6ACFF !important; }
+    .icon { color: #89B4FA !important; }
     .card-outer:is(:hover, :focus, .active):not(.placeholder) .card-title {
-      color: #D6ACFF !important;
+      color: #89B4FA !important;
     }
     .top-site-outer .search-topsite {
-      background-color: #D6ACFF !important;
+      background-color: #89B4FA !important;
     }
   }
 
   /* 偏好设置页面样式 */
   @-moz-document url-prefix("about:preferences") {
     :root {
-      --zen-colors-tertiary: #282A36 !important;
-      --in-content-text-color: #F9F9F3 !important;
-      --link-color: #D6ACFF !important;
+      --zen-colors-tertiary: #1E1E2E !important;
+      --in-content-text-color: #D2DAF5 !important;
+      --link-color: #89B4FA !important;
       --link-color-hover: rgb(185, 233, 181) !important;
-      --zen-colors-primary: #3E3F4A !important;
-      --in-content-box-background: #3E3F4A !important;
-      --zen-primary-color: #D6ACFF !important;
+      --zen-colors-primary: #353543 !important;
+      --in-content-box-background: #353543 !important;
+      --zen-primary-color: #89B4FA !important;
     }
-    groupbox, moz-card { background: #282A36 !important; }
-    button, groupbox menulist { background: #3E3F4A !important; color: #F9F9F3 !important; }
-    .main-content { background-color: #282A36 !important; }
-    .identity-color-blue { --identity-tab-color: #D6ACFF !important; --identity-icon-color: #D6ACFF !important; }
-    .identity-color-turquoise { --identity-tab-color: #A4FFFF !important; --identity-icon-color: #A4FFFF !important; }
-    .identity-color-green { --identity-tab-color: #69FF94 !important; --identity-icon-color: #69FF94 !important; }
-    .identity-color-yellow { --identity-tab-color: #FFFFA5 !important; --identity-icon-color: #FFFFA5 !important; }
+    groupbox, moz-card { background: #1E1E2E !important; }
+    button, groupbox menulist { background: #353543 !important; color: #D2DAF5 !important; }
+    .main-content { background-color: #1E1E2E !important; }
+    .identity-color-blue { --identity-tab-color: #89B4FA !important; --identity-icon-color: #89B4FA !important; }
+    .identity-color-turquoise { --identity-tab-color: #94E2D5 !important; --identity-icon-color: #94E2D5 !important; }
+    .identity-color-green { --identity-tab-color: #A6E3A1 !important; --identity-icon-color: #A6E3A1 !important; }
+    .identity-color-yellow { --identity-tab-color: #F9E2AF !important; --identity-icon-color: #F9E2AF !important; }
     .identity-color-orange { --identity-tab-color: #fab387 !important; --identity-icon-color: #fab387 !important; }
-    .identity-color-red { --identity-tab-color: #FF6E6E !important; --identity-icon-color: #FF6E6E !important; }
+    .identity-color-red { --identity-tab-color: #F38BA8 !important; --identity-icon-color: #F38BA8 !important; }
     .identity-color-pink { --identity-tab-color: #f2cdcd !important; --identity-icon-color: #f2cdcd !important; }
-    .identity-color-purple { --identity-tab-color: #FF92D0 !important; --identity-icon-color: #FF92D0 !important; }
+    .identity-color-purple { --identity-tab-color: #CBA6F7 !important; --identity-icon-color: #CBA6F7 !important; }
   }
 
   /* 插件页面样式 */
   @-moz-document url-prefix("about:addons") {
     :root {
-      --zen-dark-color-mix-base: #282A36 !important;
-      --background-color-box: #282A36 !important;
+      --zen-dark-color-mix-base: #1E1E2E !important;
+      --background-color-box: #1E1E2E !important;
     }
   }
 
   /* 安全页面样式 */
   @-moz-document url-prefix("about:protections") {
     :root {
-      --zen-primary-color: #282A36 !important;
-      --social-color: #FF92D0 !important;
-      --coockie-color: #A4FFFF !important;
-      --fingerprinter-color: #FFFFA5 !important;
-      --cryptominer-color: #D9E17E !important;
-      --tracker-color: #D6ACFF !important;
-      --in-content-primary-button-background-hover: #000000 !important;
-      --in-content-primary-button-text-color-hover: #F9F9F3 !important;
-      --in-content-primary-button-background: #000000 !important;
-      --in-content-primary-button-text-color: #F9F9F3 !important;
+      --zen-primary-color: #1E1E2E !important;
+      --social-color: #CBA6F7 !important;
+      --coockie-color: #94E2D5 !important;
+      --fingerprinter-color: #F9E2AF !important;
+      --cryptominer-color: #E0CB9E !important;
+      --tracker-color: #89B4FA !important;
+      --in-content-primary-button-background-hover: #45475A !important;
+      --in-content-primary-button-text-color-hover: #D2DAF5 !important;
+      --in-content-primary-button-background: #45475A !important;
+      --in-content-primary-button-text-color: #D2DAF5 !important;
     }
-    .card { background-color: #3E3F4A !important; }
+    .card { background-color: #353543 !important; }
   }
 
   /* 错误与成功提示 */
   .success-message {
     background-color: #a6e3a1 !important; /* base0B */
-    color: #282A36 !important;
+    color: #1E1E2E !important;
     padding: 10px;
   }
 
   .error-message {
     background-color: #f38ba8 !important; /* base08 */
-    color: #282A36 !important;
+    color: #1E1E2E !important;
     padding: 10px;
   }
 
@@ -99,7 +99,7 @@
   }
 
   /* 身份标识和选项卡样式 */
-  .identity-color-blue { --identity-tab-color: #D6ACFF !important; }
-  .identity-color-green { --identity-tab-color: #69FF94 !important; }
-  .identity-color-yellow { --identity-tab-color: #FFFFA5 !important; }
+  .identity-color-blue { --identity-tab-color: #89B4FA !important; }
+  .identity-color-green { --identity-tab-color: #A6E3A1 !important; }
+  .identity-color-yellow { --identity-tab-color: #F9E2AF !important; }
 }

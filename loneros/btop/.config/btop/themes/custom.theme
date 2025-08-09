@@ -1,61 +1,61 @@
 # Main background and text colors
-theme[main_bg] = "#282A36"
-theme[main_fg] = "#F8F8F2"
-theme[title] = "#F8F8F2"
-theme[hi_fg] = "#8BE9FD"
+theme[main_bg] = "#1E1E2E"
+theme[main_fg] = "#CDD6F4"
+theme[title] = "#CDD6F4"
+theme[hi_fg] = "#94E2D5"
 
 # Process box selected item
-theme[selected_bg] = "#000000"
-theme[selected_fg] = "#8BE9FD"
+theme[selected_bg] = "#45475A"
+theme[selected_fg] = "#94E2D5"
 
 # Inactive/disabled text and graph text
-theme[inactive_fg] = "#4D4D4D"
-theme[graph_text] = "#FF6E6E"
+theme[inactive_fg] = "#585B70"
+theme[graph_text] = "#F38BA8"
 
 # Meter background and process misc colors
-theme[meter_bg] = "#FF5555"
-theme[proc_misc] = "#FF6E6E"
+theme[meter_bg] = "#F38BA8"
+theme[proc_misc] = "#F38BA8"
 
 # Box outline colors
-theme[cpu_box] = "#FF79C6"
-theme[mem_box] = "#50FA7B"
-theme[net_box] = "#F1FA8C"
-theme[proc_box] = "#8BE9FD"
-theme[div_line] = "#F8F8F2"
+theme[cpu_box] = "#CBA6F7"
+theme[mem_box] = "#A6E3A1"
+theme[net_box] = "#F9E2AF"
+theme[proc_box] = "#94E2D5"
+theme[div_line] = "#BAC2DE"
 
 # Temperature graph colors (Green -> Yellow -> Red)
-theme[temp_start] = "#50FA7B"
-theme[temp_mid] = "#69FF94"
-theme[temp_end] = "#F1FA8C"
+theme[temp_start] = "#A6E3A1"
+theme[temp_mid] = "#A6E3A1"
+theme[temp_end] = "#F9E2AF"
 
 # CPU graph colors (Teal -> Lavender)
-theme[cpu_start] = "#BD93F9"
-theme[cpu_mid] = "#8BE9FD"
-theme[cpu_end] = "#FF79C6"
+theme[cpu_start] = "#89B4FA"
+theme[cpu_mid] = "#94E2D5"
+theme[cpu_end] = "#CBA6F7"
 
 # Memory/Disk meter colors
-theme[free_start] = "#50FA7B"
-theme[free_mid] = "#8BE9FD"
-theme[free_end] = "#BD93F9"
-theme[cached_start] = "#8BE9FD"
-theme[cached_mid] = "#BD93F9"
-theme[cached_end] = "#FF79C6"
-theme[available_start] = "#FFFFA5"
-theme[available_mid] = "#F1FA8C"
-theme[available_end] = "#FF6E6E"
-theme[used_start] = "#50FA7B"
-theme[used_mid] = "#BD93F9"
-theme[used_end] = "#8BE9FD"
+theme[free_start] = "#A6E3A1"
+theme[free_mid] = "#94E2D5"
+theme[free_end] = "#89B4FA"
+theme[cached_start] = "#94E2D5"
+theme[cached_mid] = "#89B4FA"
+theme[cached_end] = "#CBA6F7"
+theme[available_start] = "#F9E2AF"
+theme[available_mid] = "#F9E2AF"
+theme[available_end] = "#F38BA8"
+theme[used_start] = "#A6E3A1"
+theme[used_mid] = "#89B4FA"
+theme[used_end] = "#94E2D5"
 
 # Network graph colors (Download and Upload)
-theme[download_start] = "#FFFFA5"
-theme[download_mid] = "#F1FA8C"
-theme[download_end] = "#FF6E6E"
-theme[upload_start] = "#50FA7B"
-theme[upload_mid] = "#BD93F9"
-theme[upload_end] = "#8BE9FD"
+theme[download_start] = "#F9E2AF"
+theme[download_mid] = "#F9E2AF"
+theme[download_end] = "#F38BA8"
+theme[upload_start] = "#A6E3A1"
+theme[upload_mid] = "#89B4FA"
+theme[upload_end] = "#94E2D5"
 
 # Process box gradient colors (Blue -> Mauve)
-theme[process_start] = "#8BE9FD"
-theme[process_mid] = "#FF79C6"
-theme[process_end] = "#FF6E6E"
+theme[process_start] = "#94E2D5"
+theme[process_mid] = "#CBA6F7"
+theme[process_end] = "#F38BA8"

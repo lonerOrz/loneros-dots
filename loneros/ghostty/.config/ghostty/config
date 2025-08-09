@@ -1,17 +1,18 @@
-shell-integration = fish
+# shell-integration = fish
 
 # Font
-font-family = "Maple Mono NF CN Italic"
+font-family = "LXGW WenKai Mono Medium"
+# font-style-bold = true
 # FiraCode Nerd Font Mono Bold
 # LXGW WenKai Mono Medium
 # Maple Mono NF CN ExtraBold Italic
-font-size = 10
+font-size = 12
 font-thicken = true
 font-feature = ss01
 font-feature = ss04
 
-bold-is-bright = false
-adjust-box-thickness = 1
+# bold-is-bright = false
+# adjust-box-thickness = 1
 
 # Theme
 theme = "custom"

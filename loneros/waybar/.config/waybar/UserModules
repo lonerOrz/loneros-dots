@@ -51,7 +51,7 @@
 },
 
 "custom/power#niri": {
-	"format": "",
+	"format": " ",
 	"on-click": "PowerMenu",
 	"on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
 	"tooltip": true,

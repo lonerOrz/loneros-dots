@@ -1,7 +1,7 @@
 [user]
   name = loner
   email = 2788892716@qq.com
-  signingkey = F55E587ECAB5D316
+  signingkey = BF57164EB71B66AF
 
 [commit]
   gpgsign = true
@@ -17,3 +17,5 @@
 
 [init]
   defaultBranch = main
+[lfs]
+	repositoryformatversion = 0

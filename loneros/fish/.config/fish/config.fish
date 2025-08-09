@@ -8,7 +8,10 @@ if status is-interactive
     direnv hook fish | source
     # zoxide
     zoxide init fish | source
-
+    # atuin
+    atuin init fish | source
+    # todo-rs
+    # td init fish | source
     # Commands to run in interactive sessions can go here
     # fastfetch -c ~/.config/fastfetch/config-compact.jsonc
     # fastfetch -c ~/.config/fastfetch/config-small.jsonc
