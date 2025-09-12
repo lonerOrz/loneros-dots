@@ -231,3 +231,9 @@ symbol = " "
 
 [gradle]
 symbol = " "
+
+[custom.todo]
+command = "td prompt-today"
+when = "td prompt-today | grep -q ."
+style = "bold red"
+format = "[$output]($style) "

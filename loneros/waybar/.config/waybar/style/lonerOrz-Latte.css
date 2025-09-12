@@ -1,6 +1,3 @@
-/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-/* Catppuccin Latte */
-
 * {
   font-family: "JetBrainsMono Nerd Font Propo";
   font-weight: bold;
@@ -15,22 +12,31 @@
 window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
-  border-top: 1px solid @flamingo;
-  border-bottom: 3px solid @lavender;
-  background: alpha(@overlay0, 0.3);
-  border-radius: 10px;
+  background: @surface0;
+  border-radius: 20px;
+  border: 0.5px solid @overlay2;
 }
 
 window#waybar.hidden {
   opacity: 0.2;
 }
 
+window#waybar.empty,
+window#waybar.empty #window {
+  background-color: transparent;
+  padding: 0px;
+  border: 0px;
+}
+
 #taskbar button,
 #workspaces button {
+  color: @overlay1;
   box-shadow: none;
   text-shadow: none;
-  padding: 4px;
+  padding: 0px;
   border-radius: 9px;
+  padding-left: 4px;
+  padding-right: 4px;
   animation: gradient_f 20s ease-in infinite;
   transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
@@ -38,8 +44,8 @@ window#waybar.hidden {
 #taskbar button:hover,
 #workspaces button:hover {
   border-radius: 10px;
-  color: @overlay0;
-  background-color: @surface0;
+  color: @peach;
+  background-color: @overlay2;
   padding-left: 2px;
   padding-right: 2px;
   animation: gradient_f 20s ease-in infinite;
@@ -47,13 +53,13 @@ window#waybar.hidden {
 }
 
 #workspaces button.persistent {
-  color: @surface1;
+  color: @surface2;
   border-radius: 10px;
 }
 
 #taskbar button.active,
 #workspaces button.active {
-  color: @peach;
+  color: @lavender;
   border-radius: 10px;
   padding-left: 8px;
   padding-right: 8px;
@@ -136,12 +142,13 @@ window#waybar.hidden {
   color: #39ff14;
 }
 
+#bluetooth,
 #backlight {
-  color: @blue;
+  color: @peach;
 }
 
 #battery {
-  color: @green;
+  color: @yellow;
 }
 
 @keyframes blink {
@@ -161,12 +168,8 @@ window#waybar.hidden {
   box-shadow: inset 0 -3px transparent;
 }
 
-#bluetooth {
-  color: @blue;
-}
-
 #clock {
-  color: @yellow;
+  color: @green;
 }
 
 #cpu {
@@ -190,10 +193,11 @@ window#waybar.hidden {
   background-color: @red;
 }
 
-#tray > .passive {
+#tray>.passive {
   -gtk-icon-effect: dim;
 }
-#tray > .needs-attention {
+
+#tray>.needs-attention {
   -gtk-icon-effect: highlight;
 }
 
@@ -211,6 +215,26 @@ window#waybar.hidden {
 
 #custom-power {
   color: @red;
+}
+
+#custom-power.niri {
+  color: @sky;
+}
+
+#custom-lrcsnc {
+  color: @mauve;
+}
+
+#custom-playerctl {
+  color: @text;
+}
+
+#custom-separator {
+  color: @subtext1;
+}
+
+#custom-swaync {
+  color: @blue;
 }
 
 #custom-updater {
@@ -236,6 +260,11 @@ window#waybar.hidden {
 #pulseaudio.bluetooth {
   color: @pink;
 }
+
+#pulseaudio.microphone {
+  color: @pink;
+}
+
 #pulseaudio.muted {
   color: @red;
 }

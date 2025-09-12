@@ -12,19 +12,7 @@ services:
       - PGID=0
       - TZ=Asia/Shanghai
     dns:
-      - 8.8.8.8   # Google DNS
+      - 8.8.8.8 # Google DNS
       - 114.114.114.114
-# 自动更新docker镜像
-  watchtower:
-    image: containrrr/watchtower
-    container_name: watchtower
-    restart: always
-    # 环境变量,设置为上海时区
-    environment:
-        - TZ=Asia/Shanghai
-    dns:
-      - 8.8.8.8   # Google DNS
-      - 114.114.114.114
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: peerbanhelper watchtower --cleanup --schedule "0 0 1 * * *"
+    labels:
+      - "io.containers.autoupdate=image"

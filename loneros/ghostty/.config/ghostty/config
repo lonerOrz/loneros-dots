@@ -1,15 +1,19 @@
 # shell-integration = fish
 
 # Font
-font-family = "LXGW WenKai Mono Medium"
-# font-style-bold = true
+font-family = " Maple Mono NF CN ExtraBold"
 # FiraCode Nerd Font Mono Bold
 # LXGW WenKai Mono Medium
 # Maple Mono NF CN ExtraBold Italic
-font-size = 12
+font-size = 9
 font-thicken = true
 font-feature = ss01
 font-feature = ss04
+font-feature = liga
+font-feature = clig
+font-feature = calt
+adjust-cell-width = 2%
+adjust-cell-height = -10%
 
 # bold-is-bright = false
 # adjust-box-thickness = 1
@@ -19,18 +23,19 @@ theme = "custom"
 background-opacity = 0.7
 
 # shaders
-# custom-shader = shaders/glow++.glsl
+custom-shader = shaders/glow++.glsl
 # custom-shader = shaders/starfield-colors.glsl
 # custom-shader = shaders/bettercrt.glsl
 # custom-shader = shaders/cursor_smear_fade.glsl
 # custom-shader = shaders/cursor_frozen.glsl
 # custom-shader = shaders/cursor_blaze.glsl
 custom-shader = shaders/cursor_smear.glsl
+# custom-shader = shaders/cursor_blaze2.glsl
 
-cursor-color = #89B4FA
-# cursor-text = #89B4FA
-cursor-style = bar
-cursor-opacity = 0.3
+cursor-color = #FFFFFF
+cursor-text = #000000
+cursor-style = block
+cursor-opacity = 0.7
 # cursor-invert-fg-bg
 cursor-style-blink = false
 adjust-cursor-thickness = 1

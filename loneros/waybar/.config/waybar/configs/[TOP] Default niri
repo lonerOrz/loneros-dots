@@ -22,37 +22,32 @@
 "margin-right": 8,
 
 "modules-left": [
+	"custom/power#niri",
+  "custom/separator#dot-line",
+	"clock#3",
 	"custom/separator#blank",
 	"custom/cava_mviz",
-	//"custom/separator#blank",
-	//"custom/playerctl",
+	"custom/separator#blank",
+	"custom/playerctl",
 	"custom/separator#blank",
 	//"niri/window",
   "custom/lrcsnc",
 	],
 
 "modules-center": [
-  "custom/swaync",
-	"custom/separator#dot-line",
 	"niri/workspaces#pacman",
-	"custom/separator#dot-line",
-	//"custom/separator#dot-line",
-	//"custom/hint",
-	//"idle_inhibitor",
-	"clock",
 	],
 
 "modules-right": [
 	"tray",
   "custom/separator#dot-line",
 	//"network#speed",
-	//"custom/separator#dot-line",
   "custom/separator#blank",
   "backlight#lo",
 	"battery",
   "pulseaudio",
   "pulseaudio#microphone",
   "custom/keyboard#niri",
-	"custom/power#niri",
+  "custom/swaync#niri",
 	],
 }
