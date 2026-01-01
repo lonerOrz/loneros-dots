@@ -1,0 +1,14 @@
+layout {
+  border {
+      active-color "{{ color12 }}"
+      inactive-color "{{ background }}"
+      // active-gradient from="#f00f" to="#0f05" angle=45 in="oklch longer hue" // 渐变
+  }
+}
+
+recent-windows {
+    highlight {
+      active-color "{{ color12 }}" // 焦点窗口的高亮颜色
+      urgent-color "{{ color9 }}" // 紧急窗口的高亮颜色
+  }
+}

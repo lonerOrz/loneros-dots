@@ -1,0 +1,139 @@
+# 启动页配置
+[startup]
+enable = true
+progressOutBounce = true
+loadingSeconds = 2
+welcome = "musicfox"
+signIn = false
+checkUpdate = false
+
+
+# 主界面与核心功能
+[main]
+altScreen = true
+enableMouseEvent = true
+debug = false
+
+
+# 桌面通知
+[main.notification]
+enable = true
+icon = "logo.png"
+albumCover = false
+
+
+# 歌词设置
+[main.lyric]
+show = true
+showTranslation = true
+offset = 0
+skipParseErr = false
+
+
+# pprof 配置
+[main.pprof]
+port = 9876
+
+
+# 主题配置
+[theme]
+showTitle = false
+loadingText = "[加载中...]"
+doubleColumn = true
+dynamicMenuRows = false
+centerEverything = false
+primaryColor = "#ea403f"
+
+
+# 进度条样式
+[theme.progress]
+fullChar = "#"
+fullCharWhenFirst = "#"
+fullCharWhenLast = "#"
+lastFullChar = "#"
+emptyChar = "·"
+emptyCharWhenFirst = "·"
+emptyCharWhenLast = "·"
+firstEmptyChar = "·"
+
+
+# 存储配置
+[storage]
+downloadDir = "/home/loner/.config/go-musicfox/download"
+lyricDir = "/home/loner/.config/go-musicfox/lyrics"
+downloadSongWithLyric = false
+
+
+# 缓存配置
+[storage.cache]
+dir = "/home/loner/.config/go-musicfox/cache"
+musicDir = "music_cache"
+limit = -1
+
+
+# 播放器配置
+[player]
+engine = "beep"
+maxPlayErrCount = 3
+songLevel = "higher"
+showAllSongsOfPlaylist = false
+mouseVolumeStep = 1
+
+
+# beep 引擎
+[player.beep]
+mp3Decoder = "go-mp3"
+
+
+# mpd 引擎
+[player.mpd]
+bin = "/run/current-system/sw/bin/mpd"
+configFile = "/home/loner/.config/mpd/mpd.conf"
+network = "tcp"
+addr = "127.0.0.1:6600"
+autoStart = true
+
+
+# 自动播放
+[autoplay]
+enable = false
+playlist = "dailyReco"
+offset = 0
+mode = "last"
+
+
+# UNM 配置
+[unm]
+enable = true
+sources = ["kuwo", "kugou", "migu", "qq"]
+searchLimit = 3
+enableLocalVip = true
+unlockSoundEffects = true
+qqCookieFile = ""
+skipInvalidTracks = true
+
+
+# 上报配置
+[reporter.netease]
+enable = false
+
+
+[reporter.lastfm]
+enable = false
+key = ""
+secret = ""
+scrobblePoint = 50
+onlyFirstArtist = false
+skipDjRadio = false
+
+
+# 快捷键
+[keybindings]
+useDefaultKeyBindings = true
+
+[keybindings.global]
+# "ctrl+shift+space" = "toggle"
+
+
+# 自定义分享模板
+[share]

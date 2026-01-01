@@ -150,57 +150,57 @@ columns = [
 
 # 主题设置
 [styles.battery]
-high_battery_color = "#9ECE6A"
-low_battery_color = "#F7768E"
-medium_battery_color = "#414868"
+high_battery_color = "#A6E3A1"
+low_battery_color = "#F38BA8"
+medium_battery_color = "#585B70"
 
 [styles.cpu]
-all_entry_color = "#C0CAF5"
-avg_entry_color = "#A9B1D6"
+all_entry_color = "#CDD6F4"
+avg_entry_color = "#BAC2DE"
 cpu_core_colors = [
-  "#9ECE6A",
-  "#414868",
-  "#7DCFFF",
-  "#BB9AF7",
-  "#7AA2F7",
-  "#C0CAF5",
-  "#E0AF68",
-  "#9ECE6A",
+  "#A6E3A1",
+  "#585B70",
+  "#94E2D5",
+  "#CBA6F7",
+  "#89B4FA",
+  "#A6ADC8",
+  "#F9E2AF",
+  "#A6E3A1",
 ]
 
 [styles.graphs]
-graph_color = "#F7768E"
+graph_color = "#F38BA8"
 
 [styles.memory]
-arc_color = "#BB9AF7"
+arc_color = "#CBA6F7"
 gpu_colors = [
-  "#F7768E",
-  "#A9B1D6",
-  "#9ECE6A",
-  "#414868",
-  "#7DCFFF",
-  "#BB9AF7",
+  "#F38BA8",
+  "#BAC2DE",
+  "#A6E3A1",
+  "#585B70",
+  "#94E2D5",
+  "#CBA6F7",
 ]
-ram_color = "#9ECE6A"
-swap_color = "#7AA2F7"
+ram_color = "#A6E3A1"
+swap_color = "#89B4FA"
 
 [styles.network]
-rx_color = "#9ECE6A"
-tx_color = "#7AA2F7"
+rx_color = "#A6E3A1"
+tx_color = "#89B4FA"
 
 [styles.tables.headers]
-color = "#C0CAF5"
+color = "#CDD6F4"
 
 [styles.widgets]
-border_color = "#7AA2F7"
-selected_border_color = "#BB9AF7"
+border_color = "#89B4FA"
+selected_border_color = "#CBA6F7"
 
 [styles.widgets.selected_text]
-bg_color = "#BB9AF7"
-color = "#1A1B26"
+bg_color = "#CBA6F7"
+color = "#1E1E2E"
 
 [styles.widgets.text]
-color = "#C0CAF5"
+color = "#CDD6F4"
 
 [styles.widgets.widget_title]
-color = "#9ECE6A"
+color = "#A6E3A1"

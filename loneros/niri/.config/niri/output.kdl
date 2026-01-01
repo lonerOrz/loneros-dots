@@ -1,0 +1,14 @@
+output "eDP-1" {
+    scale 1.0
+    transform "normal" // 逆时针旋转输出角度
+    position x=0 y=0
+    mode "1920x1080@143.999"
+    variable-refresh-rate on-demand=true // 可变刷新率
+}
+output "DP-2" {
+    scale 1.0
+    transform "normal" // 逆时针旋转输出角度
+    position x=0 y=1080
+    mode "1920x1080@165.000"
+    variable-refresh-rate on-demand=true
+}

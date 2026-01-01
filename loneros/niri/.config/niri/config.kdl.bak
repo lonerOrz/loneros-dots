@@ -1,0 +1,460 @@
+include "input.kdl"
+include "output.kdl"
+include "layout.kdl"
+include "animations.kdl"
+include "environment.kdl"
+include "keybinds.kdl"
+include "misc.kdl"
+include "rules.kdl"
+include "startup.kdl"
+include "theme.kdl"
+
+
+
+workspace "stage" {
+    open-on-output "eDP-1"
+}
+
+// Input
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            // options "esc:nocaps"
+            model ""
+            rules ""
+            // variant "intl"
+        }
+        repeat-delay 250
+        repeat-rate 25
+        track-layout "global"
+        numlock
+    }
+    touchpad {
+        tap // 点击即可点击
+        dwt // 键入时禁用
+        dwtp // 跟踪指向时禁用
+        natural-scroll // 反转滚动方向
+        accel-speed 0.000000 //指针加速速度
+        accel-profile "adaptive" // adaptive （默认）or flat （禁用指针加速）
+        scroll-method "two-finger" // 生成滚动事件而不是指针运动事件
+        click-method "button-areas" // button-areas or clickfinger
+        tap-button-map "left-right-middle"
+    }
+    mouse { accel-speed 0.000000; }
+    trackpoint { accel-speed 0.000000; }
+    trackball { accel-speed 0.000000; }
+    tablet
+    touch
+    warp-mouse-to-focus mode="center-xy-always" // 同时扭曲 X 和 Y 坐标，即使鼠标已经在新聚焦的窗口内
+    focus-follows-mouse max-scroll-amount="0%" // 选择设置最大滚动量 。然后，focus-follows-mouse 不会聚焦一个窗口，如果它会导致视图滚动超过设置的量。该值是工作区宽度的百分比
+    workspace-auto-back-and-forth
+}
+
+// Output
+output "eDP-1" {
+    scale 1
+    transform "normal" // 逆时针旋转输出角度
+    position x=0 y=0
+    mode "1920x1080@143.999"
+    variable-refresh-rate on-demand=true // 可变刷新率
+}
+output "DP-2" {
+    scale 1
+    transform "normal" // 逆时针旋转输出角度
+    position x=0 y=1080
+    mode "1920x1080@165.000"
+    variable-refresh-rate on-demand=true
+}
+screenshot-path "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
+prefer-no-csd // 应用程序省略其客户端装饰
+
+// Layout
+layout {
+  gaps 8
+  center-focused-column "never"
+  always-center-single-column
+  blur {
+    on
+    passes 3
+    radius 6.0
+    noise 0.02
+  }
+  background-color "transparent"
+  struts {
+      left -6
+      right -6
+      top -6
+      bottom -8
+  }
+  focus-ring { off; }
+  border {
+      width 2
+      active-color "#89b4fa"
+      inactive-color "#665c54"
+      // active-gradient from="#f00f" to="#0f05" angle=45 in="oklch longer hue" // 渐变
+  }
+  insert-hint { color "rgb(127 200 255 / 50%)"; }
+  default-column-width { proportion 0.500000; }
+  preset-column-widths {
+      proportion 0.333333
+      proportion 0.500000
+      proportion 0.666667
+      proportion 1.000000
+  }
+  // empty-workspace-above-first // 始终在最开始添加一个空工作区，以及最后的空工作区
+}
+
+// Environment
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto" // for electron > 28
+    CLUTTER_BACKEND "wayland"
+    DISPLAY ":0"
+    GDK_BACKEND "wayland,x11"
+    MOZ_ENABLE_WAYLAND "1"
+    NIXOS_OZONE_WL "1"
+    // QT_STYLE_OVERRIDE "kvantum"
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    SDL_VIDEODRIVER "wayland"
+}
+
+// keybinds
+binds {
+    Mod+Return { spawn "kitty"; } // ghostty kitty foot
+    Mod+Shift+Return { spawn "kitty" "-T" "float-kitty"; }
+    Mod+D { spawn "rofi" "-show" "drun" "-modi" "drun,ssh,run,window"; }
+    Mod+Shift+D { spawn "qs" "-c" "Noctalia" "ipc" "call" "launcher" "toggle"; }
+    Mod+W { spawn-sh "loneros-theme-wall"; } // WallSelect
+    Mod+Shift+W { spawn-sh "loneros-theme-select"; }
+    Mod+Q { close-window; }
+    Mod+Shift+Q { close-window; }
+    Mod+P { spawn "hyprpicker"; }
+    Mod+Shift+P { spawn-sh "wshowkeys_toggle"; }
+    Mod+I { spawn "env" "XDG_CURRENT_DESKTOP=gnome" "gnome-control-center"; }
+    Mod+A repeat=false { toggle-overview; }
+    Ctrl+Alt+L { spawn "loginctl" "lock-session"; }
+    Mod+Shift+F12 { spawn-sh "PowerMenu"; }
+    Mod+Shift+N { spawn "qs" "-c" "Noctalia" "ipc" "call" "notifications" "toggleHistory"; }
+    Mod+Alt+C { spawn-sh "ClipManager"; }
+    Mod+Shift+C { spawn-sh "kitty --title 'Clock' rsclock -T -S -c"; }
+
+    // magnifier
+    Mod+Z { spawn "wooz"; }
+
+    // waybar
+    Mod+B { spawn "pkill" "-USR1" "waybar";}
+    Mod+Alt+B { spawn-sh "WaybarLayout"; }
+    Mod+Ctrl+B { spawn-sh "WaybarStyles"; }
+
+    // window
+    Mod+End { focus-column-last; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+C { center-window; }
+    Mod+Space { toggle-window-floating; }
+    Mod+Tab { switch-focus-between-floating-and-tiling; }
+
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // Mod+Home { focus-column-first; }
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-right; }
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-column-to-workspace-down; }
+    Mod+Shift+K { move-column-to-workspace-up; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Right { focus-column-right; }
+    Mod+Left { focus-column-left; }
+    Mod+Up { focus-workspace-up; }
+    Mod+Down { focus-workspace-down; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Up { move-column-to-workspace-up; }
+    Mod+Shift+Down { move-column-to-workspace-down; }
+
+    // screenshot
+    Mod+Print { screenshot-screen; }
+    Mod+Alt+Print { screenshot-window; }
+    Mod+Shift+Print { screenshot; }
+
+    // volume control
+    XF86AudioRaiseVolume {spawn "Volume" "--inc";}
+    Xf86AudioLowerVolume {spawn "Volume" "--dec";}
+    Xf86AudioMute {spawn "Volume" "--toggle";} // volume mute
+    Xf86AudioMicMute {spawn "Volume" "--toggle-mic";} // mic mute
+
+    // audio control
+    XF86AudioPlay { spawn "MediaCtrl" "--pause"; }
+    XF86AudioPause { spawn "MediaCtrl" "--pause"; }
+    XF86AudioPrev { spawn "MediaCtrl" "--prv"; }
+    XF86AudioNext { spawn "MediaCtrl" "--nxt"; }
+    XF86AudioStop { spawn "MediaCtrl" "--stop"; }
+
+    // brightness control
+    XF86MonBrightnessDown { spawn "Brightness" "--dec"; }
+    XF86MonBrightnessUp { spawn "Brightness" "--inc"; }
+}
+
+// Startup
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "DBUS_SESSION_BUS_ADDRESS" // D-Bus 服务环境
+spawn-at-startup "systemctl" "--user" "import-environment" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "DBUS_SESSION_BUS_ADDRESS" // systemd 的 user 服务
+// spawn-at-startup "xwayland-satellite" # Since: 25.08 Niri integrates with xwayland-satellite out of the box
+spawn-at-startup "Polkit-NixOS"
+spawn-at-startup "nm-applet" "--indicator"
+spawn-at-startup "hypridle"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "quickshell" "-c" "Noctalia" // Noctalia ja DankMaterialShell
+// spawn-at-startup "swaync"
+// spawn-at-startup "waybar"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "fcitx5"
+spawn-at-startup "xsettingsd"
+// spawn-at-startup "foots"
+// spawn-at-startup "gammastep" "-l" "31.1824:106.0919" "-t" "6500:3500" "-b" "1.0:0.8" "-g" "1.0:0.9:0.9"
+// spawn-at-startup "mihomo-party"
+// spawn-at-startup "qbittorrent"
+spawn-at-startup "nsticky"
+// spawn-at-startup "windows-niri" # 单一窗口始终居中
+spawn-sh-at-startup "$HOME/cps/start.sh"
+
+// Window Rules
+window-rule {
+    opacity 1.0 // 窗口透明度
+    draw-border-with-background false // 窗口边框是否与背景一起绘制
+    geometry-corner-radius 8.000000 8.000000 8.000000 8.000000 // 窗口的圆角半径
+    clip-to-geometry true // 窗口是否裁剪到几何形状
+}
+window-rule {
+    match app-id="^zen-twilight$"
+    open-maximized true
+}
+window-rule {
+    match app-id="org.telegram.desktop"
+    block-out-from "screencast"
+    open-maximized true
+}
+window-rule {
+    match app-id="app.drey.PaperPlane"
+    block-out-from "screencast"
+}
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    match title="^Picture in picture$"
+    match title="^Discord Popout$"
+    open-floating true
+    default-floating-position relative-to="top-right" x=32 y=32
+}
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-left"
+}
+window-rule {
+    match app-id="steam" title="Friends List"
+    open-floating true
+    max-width 380
+    max-height 690
+}
+window-rule {
+    match app-id="^(pwvucontrol)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(Volume Control)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(dialog)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(file_progress)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(confirm)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(download)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(error)" title=""
+    open-floating true
+}
+window-rule {
+    match app-id="^(notification)" title=""
+    open-floating true
+}
+window-rule {
+    match title="float-kitty"
+    open-floating true
+    default-column-width { fixed 960; }
+    default-window-height { fixed 500; }
+}
+window-rule {
+    match app-id="^nwg-look$"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 700; }
+}
+window-rule {
+    match app-id="^org.gnome.Loupe$"
+    open-floating true
+    default-column-width { fixed 1085; }
+    default-window-height { fixed 661; }
+}
+window-rule {
+    match app-id="^dropdown$"
+    open-floating true
+    default-floating-position x=0 y=0 relative-to="top"
+    default-window-height { proportion 0.5; }
+    default-column-width { proportion 0.8; }
+}
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+window-rule {
+    match title="wooz"
+    match app-id=r#"^dev\.negrel\.wooz$"#
+    open-floating true
+    open-fullscreen false
+}
+window-rule {
+    match title="xeyes"
+    open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 230; }
+}
+window-rule {
+    match title="Clock"
+    open-floating true
+    default-column-width { fixed 480; }
+    default-window-height { fixed 230; }
+}
+
+// Layer Rule
+layer-rule {
+  match namespace="swww-daemon"
+  place-within-backdrop true // 将表面放置在 Overview （概述 ） 和工作区之间可见的背景中
+}
+layer-rule {
+  match namespace="quickshell-overview"
+  place-within-backdrop true // 将表面放置在 Overview （概述 ） 和工作区之间可见的背景中
+}
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+layer-rule {
+    match namespace="^notifications$"
+    block-out-from "screencast" // Block out mako notifications from screencasts
+}
+layer-rule {
+    match namespace="waybar"
+    opacity 0.99
+    shadow {
+      off
+    }
+}
+
+
+// Animations
+animations {
+    slowdown 1.0  // 全局默认，不拖慢手势
+
+    workspace-switch {
+        spring damping-ratio=0.99 stiffness=750 epsilon=0.0001
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.99 stiffness=700 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 240
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 220
+        curve "ease-out-quad"
+    }
+    window-movement {
+        spring damping-ratio=0.85 stiffness=650 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=650 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.7 stiffness=700 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 260
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=0.95 stiffness=700 epsilon=0.0001
+    }
+}
+
+// Overview
+overview {
+    zoom 0.3
+    workspace-shadow {
+        off
+    }
+}
+
+// Disable the hot corners.
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// Cursor
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
+}
+
+hotkey-overlay { skip-at-startup; } // 禁用热键帮助
+
+
+// Events
+switch-events {
+    lid-close { spawn "notify-send" " The laptop lid is closed! "; }
+    lid-open { spawn "notify-send" " The laptop lid is open! "; }
+    tablet-mode-on { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
+    tablet-mode-off { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
+}

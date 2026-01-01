@@ -1,0 +1,39 @@
+screenshot-path "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png"
+prefer-no-csd // 应用程序省略其客户端装饰
+
+// Name workspaces
+workspace "stage" {
+    open-on-output "eDP-1"
+}
+
+// Overview
+overview {
+    zoom 0.3
+    workspace-shadow {
+        off
+    }
+}
+
+// Disable the hot corners.
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+// Cursor
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
+}
+
+hotkey-overlay { skip-at-startup; } // 禁用热键帮助
+
+
+// Events
+switch-events {
+    lid-close { spawn "notify-send" " The laptop lid is closed! "; }
+    lid-open { spawn "notify-send" " The laptop lid is open! "; }
+    tablet-mode-on { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
+    tablet-mode-off { spawn "bash" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
+}

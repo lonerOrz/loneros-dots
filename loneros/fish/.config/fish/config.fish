@@ -9,7 +9,8 @@ if status is-interactive
     # zoxide
     zoxide init fish | source
     # atuin
-    atuin init fish | source
+    # atuin init fish | source
+    atuin init fish --disable-up-arrow | sed "s/-k up/up/g" | source
     # todo-rs
     # td init fish | source
     # Commands to run in interactive sessions can go here
@@ -82,7 +83,6 @@ alias fox musicfox
 alias sw 'nh os switch ~/loneros-nixos'
 alias disk 'df -h | grep -vE "^tmpfs|^devtmpfs|^efivarfs|^/run" | awk "{print \$6, \$2, \$5, \$4, \$1}" | column -t'
 alias gc 'sudo nix-collect-garbage -d && sudo nix-store --gc'
-alias cll 'find ~/.config -type l ! -exec test -e {} \; -delete'
 alias py python
 alias code codium
 alias powerinfo 'upower -i /org/freedesktop/UPower/devices/battery_BAT0'
@@ -90,9 +90,17 @@ alias fontlist 'fc-list : family | sort | uniq'
 alias cpu_top 'ps aux --sort=-%cpu | head -n 10'
 alias npmi 'npm install -g --prefix=~/.npm'
 alias carm 'mpv av://v4l2:/dev/video0 --profile=low-latency --untimed --no-cache' # 使用mpv调用相机
-alias ff 'fastfetch'
+alias gft 'gitfetch --no-cache --no-language'
 alias lbin 'cd $HOME/.local/bin/'
+alias theme 'cd $HOME/.local/share/loneros/themes/'
+alias cps 'cd $HOME/cps/'
+alias backup 'cd $HOME/Downloads/tools/backup/'
+alias ff ' fastfetch -c ~/.config/fastfetch/config-art.jsonc'
+alias mutt neomutt
 
+function cll
+    find $argv -type l ! -exec test -e {} \; -delete
+end
 
 function gz
     for dir in (find . -maxdepth 1 -type d)
@@ -125,8 +133,14 @@ end
 
 # needed git gh fzf jq
 function pr
+    # 检查是否安装 gh
+    if not type -q gh
+        echo "❌ GitHub CLI (gh) not found. Please install it first."
+        return
+    end
+
     # 获取 open PR 列表
-    set prs (gh pr list --state open --json number,title --jq '.[] | "\(.number): \(.title)"')
+    set prs (gh pr list --state open --json number,title --jq '.[] | "\(.number): \(.title)"' 2>/dev/null)
 
     if test (count $prs) -eq 0
         echo "No open PRs found."
@@ -141,7 +155,9 @@ function pr
         return
     end
 
-    set pr_number (string split ":" $selected_pr)[1]
+    # 获取 PR 编号
+    set pr_number (string split ":" "$selected_pr")[1]
+    set pr_number (string trim "$pr_number")  # 去掉空格
 
     # 选择操作
     set action (printf "View Info\nClose & Delete Branch\nRerun CI" | fzf --prompt="Select action> ")
@@ -149,7 +165,12 @@ function pr
     switch $action
         case "View Info"
             # 获取 PR 信息
-            set pr_info (gh pr view $pr_number --json number,title,body,state,author,url,headRefName,baseRefName,createdAt,updatedAt)
+            set pr_info (gh pr view "$pr_number" --json number,title,body,state,author,url,headRefName,baseRefName,createdAt,updatedAt 2>/dev/null)
+            if test $status -ne 0 -o -z "$pr_info"
+                echo "❌ Failed to fetch PR info for #$pr_number (network timeout or API error)."
+                return
+            end
+
             echo $pr_info | jq -r '
                 "PR #\(.number): \(.title)",
                 "State: \(.state)",
@@ -163,14 +184,19 @@ function pr
                 "Body:\n\(.body)"'
 
             # 获取 CI 状态
-            set pr_branch (echo $pr_info | jq -r '.headRefName')
-            set runs (gh run list --branch $pr_branch --json databaseId,name,status,conclusion --jq '.[] | "\(.databaseId):\(.name):\(.status):\(.conclusion)"')
+            set pr_branch (echo "$pr_info" | jq -r '.headRefName')
+            if test -z "$pr_branch"
+                echo "⚠️  No head branch found for PR #$pr_number."
+                return
+            end
+
+            set runs (gh run list --branch "$pr_branch" --json databaseId,name,status,conclusion --jq '.[] | "\(.databaseId):\(.name):\(.status):\(.conclusion)"' 2>/dev/null)
 
             if test -n "$runs"
                 echo ""
                 echo "CI Runs for branch $pr_branch:"
                 for r in $runs
-                    set fields (string split ":" $r)
+                    set fields (string split ":" "$r")
                     set ci_id $fields[1]
                     set ci_name $fields[2]
                     set ci_status $fields[3]
@@ -187,22 +213,42 @@ function pr
             end
 
         case "Close & Delete Branch"
-            set pr_branch (gh pr view $pr_number --json headRefName --jq '.headRefName')
-            echo "Closing PR #$pr_number..."
-            gh pr close $pr_number
-            echo "Deleting remote branch $pr_branch..."
-            git push origin --delete $pr_branch
-
-        case "Rerun CI"
-            set pr_branch (gh pr view $pr_number --json headRefName --jq '.headRefName')
-            set runs (gh run list --branch $pr_branch --json databaseId,name,status,conclusion --jq '.[] | "\(.databaseId):\(.name):\(.status):\(.conclusion)"')
-
-            if test -z "$runs"
-                echo "No CI runs found for PR #$pr_number."
+            # 获取分支名
+            set pr_branch (gh pr view "$pr_number" --json headRefName --jq '.headRefName' 2>/dev/null)
+            if test -z "$pr_branch"
+                echo "❌ Failed to get branch name for PR #$pr_number."
                 return
             end
 
-            # 多选想 rerun 的 CI
+            echo "Closing PR #$pr_number..."
+            gh pr close "$pr_number"
+            if test $status -ne 0
+                echo "❌ Failed to close PR #$pr_number."
+                return
+            end
+
+            echo "Deleting remote branch $pr_branch..."
+            git push origin --delete "$pr_branch"
+            if test $status -ne 0
+                echo "⚠️  Failed to delete remote branch '$pr_branch'. It may already be deleted."
+            else
+                echo "✅ Deleted remote branch $pr_branch."
+            end
+
+        case "Rerun CI"
+            set pr_branch (gh pr view "$pr_number" --json headRefName --jq '.headRefName' 2>/dev/null)
+            if test -z "$pr_branch"
+                echo "❌ Failed to get branch name for PR #$pr_number."
+                return
+            end
+
+            set runs (gh run list --branch "$pr_branch" --json databaseId,name,status,conclusion --jq '.[] | "\(.databaseId):\(.name):\(.status):\(.conclusion)"' 2>/dev/null)
+            if test -z "$runs"
+                echo "No CI runs found for PR #$pr_number"
+                return
+            end
+
+            # 多选 rerun
             set selected_runs (printf "%s\n" $runs | fzf --multi --prompt="Select CI runs to rerun> ")
             if test -z "$selected_runs"
                 echo "No CI selected."
@@ -210,9 +256,9 @@ function pr
             end
 
             for r in $selected_runs
-                set ci_id (string split ":" $r)[1]
+                set ci_id (string split ":" "$r")[1]
                 echo "Rerunning CI run $ci_id..."
-                gh run rerun $ci_id
+                gh run rerun "$ci_id"
             end
 
         case "*"
@@ -254,4 +300,46 @@ function shebang
             end
         end
     end
+end
+
+function checkJson
+    set dir "."
+
+    # 如果传入目录参数，则使用指定目录
+    if test (count $argv) -gt 0
+        set dir $argv[1]
+    end
+
+    if not test -d $dir
+        echo "❌ Directory '$dir' does not exist."
+        return 1
+    end
+
+    set files (ls $dir/*.json 2>/dev/null)
+
+    if test (count $files) -eq 0
+        echo "ℹ No JSON files found in '$dir'."
+        return 0
+    end
+
+    set has_error 0
+
+    for f in $files
+        echo -n "Checking $f ... "
+
+        if jq empty $f > /dev/null 2>&1
+            echo "✔ valid"
+        else
+            echo "❌ INVALID JSON"
+            set has_error 1
+        end
+    end
+
+    if test $has_error -eq 0
+        echo "🎉 All JSON files are valid!"
+    else
+        echo "⚠ Some JSON files are invalid."
+    end
+
+    return $has_error
 end

@@ -1,7 +1,7 @@
 # shell-integration = fish
 
 # Font
-font-family = " Maple Mono NF CN ExtraBold"
+font-family = "Maple Mono NF CN Bold"
 # FiraCode Nerd Font Mono Bold
 # LXGW WenKai Mono Medium
 # Maple Mono NF CN ExtraBold Italic
@@ -19,11 +19,11 @@ adjust-cell-height = -10%
 # adjust-box-thickness = 1
 
 # Theme
-theme = "custom"
+theme = custom
 background-opacity = 0.7
 
 # shaders
-custom-shader = shaders/glow++.glsl
+# custom-shader = shaders/glow++.glsl
 # custom-shader = shaders/starfield-colors.glsl
 # custom-shader = shaders/bettercrt.glsl
 # custom-shader = shaders/cursor_smear_fade.glsl
@@ -31,6 +31,8 @@ custom-shader = shaders/glow++.glsl
 # custom-shader = shaders/cursor_blaze.glsl
 custom-shader = shaders/cursor_smear.glsl
 # custom-shader = shaders/cursor_blaze2.glsl
+# custom-shader = shaders/tesla_coil.glsl
+# custom-shader = shaders/glow.glsl
 
 cursor-color = #FFFFFF
 cursor-text = #000000
@@ -45,7 +47,6 @@ copy-on-select = false
 confirm-close-surface = false
 mouse-hide-while-typing = true
 
-window-theme = ghostty
 # 设置窗口左右和上下的内边距
 window-padding-x = 1
 window-padding-y = 1

@@ -31,13 +31,46 @@ window {
 
 /* ---- 主容器 ---- */
 mainbox {
-    children: [ "listview" ];
+    children: [ "inputbar", "listview" ];
     enabled: true;
     spacing: 10px;
     margin: 0px;
     padding: 20px;
     border-radius: 0px;
     background-color: transparent;
+}
+
+/* ---- 搜索框 (壁纸选择器) ---- */
+inputbar {
+    enabled:                     true;
+    spacing:                     0em;
+    padding:                     2em;
+    children:                    [ "icon-ib", "entry" ];
+    background-color:            transparent;
+}
+
+icon-ib {
+    enabled:                     true;
+    expand:                      false;
+    filename:                    "system-search";
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    padding:                     1em;
+    border-radius:               2em 0em 0em 2em;
+    text-color:                  @foreground;
+    background-color:            @background;
+}
+
+entry {
+    enabled:                     true;
+    border-radius:               0em 2em 2em 0em;
+    spacing:                     1em;
+    padding:                     1em;
+    background-color:            @background;
+    text-color:                  @foreground;
+    cursor:                      text;
+    placeholder:                 "  Search";
+    placeholder-color:           inherit;
 }
 
 /* ---- 列表视图 (壁纸选择器) ---- */

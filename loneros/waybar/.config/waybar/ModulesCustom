@@ -11,8 +11,9 @@
 	"format-alt-click": "click",
 	"interval": 3600,
 	"return-type": "json",
-	"exec": "$HOME/.config/hypr/UserScripts/Weather.py",
+	//"exec": "$HOME/.config/hypr/UserScripts/Weather.py",
 	//"exec": "$HOME/.config/hypr/UserScripts/Weather.sh",
+	"exec": "$HOME/.config/hypr/UserScripts/WeatherWrap.sh",
 	//"exec-if": "ping wttr.in -c1",
 	"tooltip": true,
 },
@@ -89,10 +90,10 @@
 },
 
 "custom/keyboard": {
-	"exec": "cat $HOME/.cache/kb_layout",
+	"exec": "$HOME/.config/hypr/scripts/KeyboardLayout.sh status",
 	"interval": 1,
 	"format": " {}",
-	"on-click": "$HOME/.config/hypr/scripts/SwitchKeyboardLayout.sh",
+	"on-click": "$HOME/.config/hypr/scripts/KeyboardLayout.sh switch",
 },
 
 "custom/light_dark": {
@@ -102,6 +103,19 @@
 	"on-click-middle": "$HOME/.config/hypr/UserScripts/WallpaperSelect.sh",
 	"tooltip": true,
 	"tooltip-format": "Left Click: Switch Dark-Light Themes\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Styles Menu",
+},
+
+// Night light (Hyprsunset)
+"custom/nightlight": {
+	"return-type": "json",
+	"exec": "$HOME/.config/hypr/scripts/Hyprsunset.sh status",
+	"interval": 3,
+	"format": "{text}",
+	"min-length": 2,
+	"on-click": "$HOME/.config/hypr/scripts/Hyprsunset.sh toggle",
+	"tooltip": true,
+	"tooltip-format": "Night light toggle",
+	"escape": false
 },
 
 "custom/lock": {

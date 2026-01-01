@@ -17,3 +17,15 @@
 
 [init]
   defaultBranch = main
+[lfs]
+  repositoryformatversion = 0
+[remote "origin"]
+	gh-resolved = base
+[branch "update-fish"]
+	remote = git@github.com:ddogfoodd/nixpkgs.git
+	pushRemote = git@github.com:ddogfoodd/nixpkgs.git
+	merge = refs/heads/update-fish
+[branch "npm-prefetch"]
+	remote = git@github.com:Mic92/nixpkgs.git
+	pushRemote = git@github.com:Mic92/nixpkgs.git
+	merge = refs/heads/npm-prefetch

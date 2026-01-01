@@ -1,60 +1,14 @@
-// sRGB linear -> nonlinear transform from https://bottosson.github.io/posts/colorwrong/
-float f(float x) {
-    if (x >= 0.0031308) {
-        return 1.055 * pow(x, 1.0 / 2.4) - 0.055;
-    } else {
-        return 12.92 * x;
-    }
-}
+// Animated Glow/Bloom shader for Ghostty terminal targeting #81A1C1 color text
+// Adapted from bloom shader to create an occasional sweeping shine effect on the specified color.
+// Original source: https://gist.github.com/qwerasd205/c3da6c610c8ffe17d6d2d3cc7068f17f
+// Credits: https://github.com/qwerasd205
+// This shader samples nearby pixels using a golden spiral pattern and adds a saturated bloom
+// only for pixels matching the target color #81A1C1 (with some tolerance).
+// The glow is modulated by a moving "shine" wave that sweeps horizontally across the screen
+// every ~2 seconds, creating an occasional highlight effect on the text.
 
-float f_inv(float x) {
-    if (x >= 0.04045) {
-        return pow((x + 0.055) / 1.055, 2.4);
-    } else {
-        return x / 12.92;
-    }
-}
-
-// Oklab <-> linear sRGB conversions from https://bottosson.github.io/posts/oklab/
-vec4 toOklab(vec4 rgb) {
-    vec3 c = vec3(f_inv(rgb.r), f_inv(rgb.g), f_inv(rgb.b));
-    float l = 0.4122214708 * c.r + 0.5363325363 * c.g + 0.0514459929 * c.b;
-    float m = 0.2119034982 * c.r + 0.6806995451 * c.g + 0.1073969566 * c.b;
-    float s = 0.0883024619 * c.r + 0.2817188376 * c.g + 0.6299787005 * c.b;
-    float l_ = pow(l, 1.0 / 3.0);
-    float m_ = pow(m, 1.0 / 3.0);
-    float s_ = pow(s, 1.0 / 3.0);
-    return vec4(
-        0.2104542553 * l_ + 0.7936177850 * m_ - 0.0040720468 * s_,
-        1.9779984951 * l_ - 2.4285922050 * m_ + 0.4505937099 * s_,
-        0.0259040371 * l_ + 0.7827717662 * m_ - 0.8086757660 * s_,
-        rgb.a
-    );
-}
-
-vec4 toRgb(vec4 oklab) {
-    vec3 c = oklab.rgb;
-    float l_ = c.r + 0.3963377774 * c.g + 0.2158037573 * c.b;
-    float m_ = c.r - 0.1055613458 * c.g - 0.0638541728 * c.b;
-    float s_ = c.r - 0.0894841775 * c.g - 1.2914855480 * c.b;
-    float l = l_ * l_ * l_;
-    float m = m_ * m_ * m_;
-    float s = s_ * s_ * s_;
-    vec3 linear_srgb = vec3(
-         4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,
-        -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,
-        -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s
-    );
-    return vec4(
-        clamp(f(linear_srgb.r), 0.0, 1.0),
-        clamp(f(linear_srgb.g), 0.0, 1.0),
-        clamp(f(linear_srgb.b), 0.0, 1.0),
-        oklab.a
-    );
-}
-
-// Bloom samples from https://gist.github.com/qwerasd205/c3da6c610c8ffe17d6d2d3cc7068f17f
-const vec3[24] samples = {
+// Golden spiral samples, [x, y, weight] where weight is inverse of distance.
+vec3 samples[24] = vec3[](
   vec3(0.1693761725038636, 0.9855514761735895, 1),
   vec3(-1.333070830962943, 0.4721463328627773, 0.7071067811865475),
   vec3(-0.8464394909806497, -1.51113870578065, 0.5773502691896258),
@@ -79,40 +33,53 @@ const vec3[24] samples = {
   vec3(3.8639122286635708, -2.6589814382925123, 0.21320071635561041),
   vec3(3.3486228404946234, 3.4331800232609, 0.20851441405707477),
   vec3(-2.8769733643574344, 3.9652268864187157, 0.20412414523193154)
-};
+);
 
-const float DIM_CUTOFF = 0.35;
-const float BRIGHT_CUTOFF = 0.65;
+float lum(vec4 c) {
+  return 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
+}
+
+vec3 adjustSaturation(vec3 color, float saturation) {
+  float luminance = dot(color, vec3(0.299, 0.587, 0.114));
+  return mix(vec3(luminance), color, saturation);
+}
+
+bool isTargetColor(vec3 rgb) {
+vec3 targetColor = vec3(193.0/255.0, 201.0/255.0, 247.0/255.0); // #c1c9f7
+
+  float threshold = 0.25; // Adjustable threshold for color similarity (Euclidean distance in RGB space)
+
+  float dist = length(rgb - targetColor);
+
+  return (dist < threshold);
+}
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-    vec2 uv = fragCoord.xy / iResolution.xy;
-    vec4 source = toOklab(texture(iChannel0, uv));
-    vec4 dest = source;
+  vec2 uv = fragCoord.xy / iResolution.xy;
+  vec4 color = texture(iChannel0, uv);
+  vec2 step = vec2(1.414) / iResolution.xy;
 
-    if (source.x > DIM_CUTOFF) {
-        dest.x *= 1.2;
-        // dest.x = 1.2;
-    } else {
-        vec2 step = vec2(1.414) / iResolution.xy;
-        vec3 glow = vec3(0.0);
-        for (int i = 0; i < 24; i++) {
-            vec3 s = samples[i];
-            float weight = s.z;
-            vec4 c = toOklab(texture(iChannel0, uv + s.xy * step));
-            if (c.x > DIM_CUTOFF) {
-                glow.yz += c.yz * weight * 0.1;
-                if (c.x <= BRIGHT_CUTOFF) {
-                    glow.x += c.x * weight * 0.025;
-                } else {
-                    glow.x += c.x * weight * 0.05;
-                }
-            }
-        }
-        // float lightness_diff = clamp(glow.x - dest.x, 0.0, 1.0);
-        // dest.x = lightness_diff;
-        // dest.yz = dest.yz * (1.0 - lightness_diff) + glow.yz * lightness_diff;
-        dest.xyz += glow.xyz;
+  float saturationBoost = 1.5; // Vibrant shine
+  float glowIntensity = 0.1; // Intensity for shine moments
+
+  // Animated sweep: A moving sine wave creates a shine that sweeps left-to-right every ~2 seconds
+  // Adjust 'sweepSpeed' to change frequency (lower = less often), 'waveFreq' for shine width
+  float sweepSpeed = 0.9; // Sweeps every 2π / speed ≈ 2 seconds per full cycle
+  float waveFreq = 20.0; // Higher = narrower shine
+  float t = iTime * sweepSpeed;
+  float shine = sin(t + uv.x * waveFreq);
+  shine = smoothstep(0.0, 1.0, (shine + 1.0) / 2.0); // Convert to 0-1 ramp
+  shine *= 0.8; // Scale down to keep it subtle even at peak
+
+  for (int i = 0; i < 24; i++) {
+    vec3 s = samples[i];
+    vec4 c = texture(iChannel0, uv + s.xy * step);
+    float l = lum(c);
+    if (isTargetColor(c.rgb) && l > 0.3) { // Original luminance threshold
+      vec3 saturatedBloom = adjustSaturation(c.rgb, saturationBoost);
+      // Modulate glow by the shine factor: zero most of the time, peaks during sweep
+      color += l * s.z * vec4(saturatedBloom, 1.0) * glowIntensity * shine;
     }
-
-    fragColor = toRgb(dest);
+  }
+  fragColor = color;
 }

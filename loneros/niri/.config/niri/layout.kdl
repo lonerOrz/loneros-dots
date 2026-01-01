@@ -1,0 +1,36 @@
+// Layout
+layout {
+  gaps 8
+  center-focused-column "never"
+  always-center-single-column
+  blur {
+    on
+    passes 3
+    radius 6.0
+    noise 0.03
+  }
+  background-color "transparent"
+  struts {
+      left -6
+      right -6
+      top -6
+      bottom -8
+  }
+  focus-ring { off; }
+  border {
+      on
+      width 2
+      active-color "#89b4fa"
+      inactive-color "#665c54"
+      // active-gradient from="#f00f" to="#0f05" angle=45 in="oklch longer hue" // 渐变
+  }
+  insert-hint { color "rgb(127 200 255 / 50%)"; }
+  default-column-width { proportion 0.500000; }
+  preset-column-widths {
+      proportion 0.333333
+      proportion 0.500000
+      proportion 0.666667
+      proportion 1.000000
+  }
+  // empty-workspace-above-first // 始终在最开始添加一个空工作区，以及最后的空工作区
+}

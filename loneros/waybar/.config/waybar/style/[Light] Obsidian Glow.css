@@ -121,7 +121,7 @@ tooltip label {
 #custom-weather.clearNight,
 #custom-weather.cloudyFoggyDay,
 #custom-weather.cloudyFoggyNight,
-#custom-weather.default,
+#custom-weather.default, 
 #custom-weather.rainyDay,
 #custom-weather.rainyNight,
 #custom-weather.severe,
@@ -189,15 +189,15 @@ tooltip label {
 
 #backlight-slider trough,
 #pulseaudio-slider trough {
-	min-width: 80px;
-	min-height: 5px;
+	min-width: 80px;  
+	min-height: 5px; 
 	border-radius: 5px;
 	background-color: grey;
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
-	min-height: 10px;
+	min-height: 10px; 
 	border-radius: 5px;
 	background-color: #ba5663;
 }

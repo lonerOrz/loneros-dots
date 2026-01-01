@@ -1,0 +1,23 @@
+// Startup
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "DBUS_SESSION_BUS_ADDRESS" // D-Bus 服务环境
+spawn-at-startup "systemctl" "--user" "import-environment" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "DBUS_SESSION_BUS_ADDRESS" // systemd 的 user 服务
+// spawn-at-startup "xwayland-satellite" # Since: 25.08 Niri integrates with xwayland-satellite out of the box
+spawn-at-startup "Polkit-NixOS"
+spawn-at-startup "nm-applet" "--indicator"
+spawn-at-startup "hypridle"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "quickshell" "-c" "noctalia-loner" // Noctalia ja DankMaterialShell
+// spawn-at-startup "swaync"
+// spawn-at-startup "waybar"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "fcitx5"
+spawn-at-startup "xsettingsd"
+spawn-at-startup "foots"
+// spawn-at-startup "gammastep" "-l" "31.1824:106.0919" "-t" "6500:3500" "-b" "1.0:0.8" "-g" "1.0:0.9:0.9"
+// spawn-at-startup "mihomo-party"
+// spawn-at-startup "qbittorrent"
+spawn-at-startup "nsticky"
+// spawn-at-startup "windows-niri" # 单一窗口始终居中
+spawn-sh-at-startup "$HOME/cps/start.sh"
+spawn-at-startup "udiskie"

@@ -34,11 +34,14 @@ palette = "dark16"
 threshold = 11
 
 [templates]
-cava.template = 'colors-cava'
-cava.target = '~/.config/cava/config'
+# cava.template = 'colors-cava'
+# cava.target = '~/.config/cava/config'
 
 hypr.template = 'colors-hyprland.conf'
 hypr.target = '~/.config/hypr/wallust/wallust-hyprland.conf'
+
+# niri.template = 'colors-niri.kdl'
+# niri.target = '~/.config/niri/theme.kdl'
 
 rofi.template = 'colors-rofi.rasi'
 rofi.target = '~/.config/rofi/wallust/colors-rofi.rasi'
@@ -55,8 +58,8 @@ kitty.target = '~/.config/kitty/kitty-colors.conf'
 ghostty.template = 'colors-ghostty'
 ghostty.target = '~/.config/ghostty/themes/custom'
 
-vesktop.template = 'colors-vesktop.theme.css'
-vesktop.target = '~/.config/vesktop/themes/custom.theme.css'
+# vesktop.template = 'colors-vesktop.theme.css'
+# vesktop.target = '~/.config/vesktop/themes/custom.theme.css'
 
 btop.template = 'colors-btop.theme'
 btop.target = '~/.config/btop/themes/custom.theme'

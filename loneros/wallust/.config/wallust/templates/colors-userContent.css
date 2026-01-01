@@ -63,6 +63,22 @@
     }
   }
 
+/* */
+@-moz-document url-prefix("about:config") {
+  :root {
+    background-color: {{background}} !important;
+    color: {{foreground}} !important;
+  }
+  td, tr {
+    background-color: {{background | lighten(0.1)}} !important;
+    color: {{foreground}} !important;
+  }
+  .button {
+    background-color: {{background | lighten(0.2)}} !important;
+    color: {{foreground}} !important;
+  }
+}
+
   /* 安全页面样式 */
   @-moz-document url-prefix("about:protections") {
     :root {

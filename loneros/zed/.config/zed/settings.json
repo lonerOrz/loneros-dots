@@ -1,7 +1,7 @@
 {
   "vim_mode": false,
   "icon_theme": "Catppuccin Mocha",
-  "theme": "Catppuccin Macchiato",
+  "theme": "Noctalia Dark",
   "features": {
     "edit_prediction_provider": "zed"
   },

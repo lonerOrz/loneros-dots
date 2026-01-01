@@ -1,0 +1,35 @@
+// Input
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            // options "esc:nocaps"
+            model ""
+            rules ""
+            // variant "intl"
+        }
+        repeat-delay 250
+        repeat-rate 25
+        track-layout "global"
+        numlock
+    }
+    touchpad {
+        tap // 点击即可点击
+        dwt // 键入时禁用
+        dwtp // 跟踪指向时禁用
+        natural-scroll // 反转滚动方向
+        accel-speed 0.000000 //指针加速速度
+        accel-profile "flat" // adaptive （默认）or flat （禁用指针加速）
+        scroll-method "two-finger" // 生成滚动事件而不是指针运动事件
+        click-method "button-areas" // button-areas or clickfinger
+        tap-button-map "left-right-middle"
+    }
+    mouse { accel-speed 0.000000; }
+    trackpoint { accel-speed 0.000000; }
+    trackball { accel-speed 0.000000; }
+    tablet
+    touch
+    warp-mouse-to-focus mode="center-xy-always" // 同时扭曲 X 和 Y 坐标，即使鼠标已经在新聚焦的窗口内
+    focus-follows-mouse max-scroll-amount="0%" // 选择设置最大滚动量 。然后，focus-follows-mouse 不会聚焦一个窗口，如果它会导致视图滚动超过设置的量。该值是工作区宽度的百分比
+    workspace-auto-back-and-forth
+}

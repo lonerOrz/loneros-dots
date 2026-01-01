@@ -1,0 +1,105 @@
+// keybinds
+binds {
+    Mod+Return { spawn "ghostty"; } // ghostty kitty foot
+    Mod+Shift+Return { spawn "kitty" "-T" "float-kitty"; }
+    Mod+D { spawn "rofi" "-show" "drun" "-modi" "drun,ssh,run,window"; }
+    Mod+Shift+D { spawn "qs" "-c" "Noctalia" "ipc" "call" "launcher" "toggle"; }
+    Mod+W { spawn-sh "loneros-theme-wall"; } // WallSelect
+    Mod+Shift+W { spawn-sh "loneros-theme-select"; }
+    Mod+Q { close-window; }
+    Mod+Shift+Q { close-window; }
+    Mod+P { spawn "hyprpicker"; }
+    Mod+Shift+P { spawn-sh "wshowkeys_toggle"; }
+    Mod+Ctrl+P { spawn-sh "nsticky toggle-active"; }
+    Mod+I { spawn "env" "XDG_CURRENT_DESKTOP=gnome" "gnome-control-center"; }
+    Mod+A repeat=false { toggle-overview; }
+    Ctrl+Alt+L { spawn "loginctl" "lock-session"; }
+    Mod+Shift+F12 { spawn-sh "PowerMenu"; }
+    Mod+Shift+N { spawn "qs" "-c" "Noctalia" "ipc" "call" "notifications" "toggleHistory"; }
+    Mod+Alt+C { spawn-sh "ClipManager"; }
+    Mod+Shift+C { spawn-sh "kitty --title 'Clock' rsclock -T -S -c"; }
+
+    // magnifier
+    Mod+Z { spawn "wooz"; }
+
+    // waybar
+    Mod+B { spawn "pkill" "-USR1" "waybar";}
+    Mod+Alt+B { spawn-sh "WaybarLayout"; }
+    Mod+Ctrl+B { spawn-sh "WaybarStyles"; }
+
+    // window
+    Mod+End { focus-column-last; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+C { center-window; }
+    Mod+Space { toggle-window-floating; }
+    Mod+Tab { switch-focus-between-floating-and-tiling; }
+
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    // Mod+Home { focus-column-first; }
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
+    Mod+L { focus-column-right; }
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-column-to-workspace-down; }
+    Mod+Shift+K { move-column-to-workspace-up; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Right { focus-column-right; }
+    Mod+Left { focus-column-left; }
+    Mod+Up { focus-workspace-up; }
+    Mod+Down { focus-workspace-down; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Up { move-column-to-workspace-up; }
+    Mod+Shift+Down { move-column-to-workspace-down; }
+
+    // screenshot
+    Mod+Print { screenshot-screen; }
+    Mod+Alt+Print { screenshot-window; }
+    Mod+Shift+Print { screenshot; }
+
+    // volume control
+    XF86AudioRaiseVolume {spawn "Volume" "--inc";}
+    Xf86AudioLowerVolume {spawn "Volume" "--dec";}
+    Xf86AudioMute {spawn "Volume" "--toggle";} // volume mute
+    Xf86AudioMicMute {spawn "Volume" "--toggle-mic";} // mic mute
+
+    // audio control
+    XF86AudioPlay { spawn "MediaCtrl" "--pause"; }
+    XF86AudioPause { spawn "MediaCtrl" "--pause"; }
+    XF86AudioPrev { spawn "MediaCtrl" "--prv"; }
+    XF86AudioNext { spawn "MediaCtrl" "--nxt"; }
+    XF86AudioStop { spawn "MediaCtrl" "--stop"; }
+
+    // brightness control
+    XF86MonBrightnessDown { spawn "Brightness" "--dec"; }
+    XF86MonBrightnessUp { spawn "Brightness" "--inc"; }
+}

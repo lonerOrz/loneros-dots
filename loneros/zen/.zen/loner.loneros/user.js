@@ -1,9 +1,9 @@
 // Fill SVG Color
 user_pref("svg.context-properties.content.enabled", true);
-// CSS's `:has()` selector 
+// CSS's `:has()` selector
 user_pref("layout.css.has-selector.enabled", true);
 
-user_pref("layout.css.devPixelsPerPx", "1.00");
+user_pref("layout.css.devPixelsPerPx", "1.0");
 // enable userChrome.css
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("font.name.serif.x-western", "JetBrains Mono"); // font
@@ -63,9 +63,23 @@ user_pref("privacy.trackingprotection.emailtracking.enabled", true);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("privacy.trackingprotection.socialtracking.enabled", true);
 // extension
-user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.addon@darkreader.org", true);
-user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.idcac-pub@guus.ninja", true);
-user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.screenshots@mozilla.org", true);
-user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.tridactyl.vim@cmcaine.co.uk", true);
-user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.uBlock0@raymondhill.net", true);
-
+user_pref(
+  "extensions.webextensions.ExtensionStorageIDB.migrated.addon@darkreader.org",
+  true,
+);
+user_pref(
+  "extensions.webextensions.ExtensionStorageIDB.migrated.idcac-pub@guus.ninja",
+  true,
+);
+user_pref(
+  "extensions.webextensions.ExtensionStorageIDB.migrated.screenshots@mozilla.org",
+  true,
+);
+user_pref(
+  "extensions.webextensions.ExtensionStorageIDB.migrated.tridactyl.vim@cmcaine.co.uk",
+  true,
+);
+user_pref(
+  "extensions.webextensions.ExtensionStorageIDB.migrated.uBlock0@raymondhill.net",
+  true,
+);

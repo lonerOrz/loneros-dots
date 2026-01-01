@@ -1,10 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ## /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # For Dark and Light switching
 # Note: Scripts are looking for keywords Light or Dark except for wallpapers as the are in a separate directories
 
 # Paths
-wallpaper_base_path="$HOME/Pictures/wallpapers/Dynamic-Wallpapers"
+PICTURES_DIR="$(xdg-user-dir PICTURES 2>/dev/null || echo "$HOME/Pictures")"
+wallpaper_base_path="$PICTURES_DIR/wallpapers/Dynamic-Wallpapers"
 dark_wallpapers="$wallpaper_base_path/Dark"
 light_wallpapers="$wallpaper_base_path/Light"
 hypr_config_path="$HOME/.config/hypr"

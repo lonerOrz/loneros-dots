@@ -14,5 +14,6 @@ services:
     dns:
       - 8.8.8.8 # Google DNS
       - 114.114.114.114
+    network_mode: "host"
     labels:
       - "io.containers.autoupdate=image"
