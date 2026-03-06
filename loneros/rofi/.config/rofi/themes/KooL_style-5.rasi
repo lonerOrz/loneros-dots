@@ -22,12 +22,6 @@ configuration {
 
 /* ---- Global Properties ---- */
 * {
-
-    background-alt:              @color1;
-    selected:                    @color12;
-    active:                      @color11;
-    urgent:                      red;
-
     text-selected:               @background;
     text-color:                  @foreground;
     border-color:                @selected;
@@ -42,7 +36,7 @@ window {
     y-offset:                   0px;
     spacing:                    0px;
     padding:                    1px;
-    margin:                     0px; 
+    margin:                     0px;
     border:                     2px;
     border-color:               @active-background;
     cursor:                     "default";
@@ -74,13 +68,14 @@ imagebox {
 /* ---- Listbox ---- */
 listbox {
     spacing:                    4px;
+    margin:                     8px 0px 0px 0px;
     orientation:                vertical;
     children:                   [ "message", "listview" ];
-	padding:					10px;
+    padding:					10px;
     border-radius:              12px;
     border:                     1px;
     border-color:               @active-background;
-	background-color:		    @background;
+    background-color:		    @background;
 }
 
 /* ---- Dummy ---- */
@@ -95,36 +90,42 @@ inputbar {
     spacing:                    10px;
     border-radius:              12px;
     border-color:               @foreground;
-	background-color:		    @background;
-    children:                   [ "mode-switcher", "textbox-prompt-colon", "entry" ];
+    background-color:		    @background;
+    children:                   [ "mode-switcher", "entry" ];
     border:                     1px;
     border-color:               @active-background;
 }
 
+
 textbox-prompt-colon {
-    enabled:                    true;
-	padding:					10px 0px 10px 10px;
-    expand:                     false;
-    str:                        "🐧";
-    text-color:                 inherit;
-	background-color:			transparent;
+    enabled:            true;
+    expand:             false;
+    str: "";
+    padding: 9px 12px 3px 12px;
+    min-height:         32px;
+    text-color:         inherit;
+    background-color:			transparent;
 }
+
 
 entry {
     enabled:                    true;
-	padding:					10px 0px 10px 0px;
+    padding:                    10px 12px;
     text-color:                 @foreground;
     cursor:                     text;
-    placeholder:                "  Search";
+    placeholder:                "   Search";
     placeholder-color:          inherit;
-	background-color:			@background;
+    background-color:           @background;
+    border-radius:              12px;
+    border:                     0px;
+    border-color:               @active-background;
 }
 
 /* ---- Mode Switcher ---- */
 mode-switcher{
     enabled:                    true;
     spacing:                    10px;
-    background-color:          	transparent;
+    background-color:           transparent;
     text-color:                 @foreground;
 }
 
@@ -134,7 +135,7 @@ button {
     background-color:          @background;
     text-color:                inherit;
     cursor:                    pointer;
-    border:                    1px;
+    border:                    0px;
     border-color:              @active-background;
 }
 
@@ -143,7 +144,7 @@ button selected {
     text-color:                @foreground;
     border:                    1px;
     border-color:              transparent;
-	
+
 }
 
 /* ---- Listview ---- */
@@ -167,12 +168,12 @@ listview {
 
 /* ---- Scrollbar ---- */
 scrollbar {
-  border:						0px;
-  border-radius:				10px;
-  background-color:				transparent;
-  handle-color: 				@active;
-  handle-width: 				2px ;
-  padding:      				0;
+  border:               0px;
+  border-radius:        10px;
+  background-color:     transparent;
+  handle-color:         @active;
+  handle-width:         2px ;
+  padding:              0;
 }
 
 /* ---- Element ---- */
@@ -181,7 +182,7 @@ element {
     padding:                    12px;
     margin:                     2px;
     cursor:                     pointer;
-    background-color:         	transparent;
+    background-color:           transparent;
     border-radius:              12px;
     border:                     0px;
 }

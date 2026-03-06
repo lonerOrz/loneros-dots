@@ -65,7 +65,7 @@ inputbar {
     border-radius:               18px;
     border-color: 		         var(border-highlight);
     border:			             1px;
-    background-color:            @background-alt;
+    background-color:            @background-solid;
     text-color:                  @selected;
     children:                    [ "textbox-prompt-colon", "entry" ];
 }
@@ -130,7 +130,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     5px;
     margin:                      0px;
     padding:                     0px;
@@ -145,7 +145,7 @@ scrollbar {
     border-radius:               10px;
     border-color: 		         var(border-highlight);
     border:			             1px;
-    background-color:            @background-alt;
+    background-color:            @background;
 }
 
 /* Elements */
@@ -183,14 +183,14 @@ element selected.normal {
 }
 
 element normal.urgent {
-    background-color:            var(background-alt);
+    background-color:            var(background);
     text-color:                  var(urgent);
     border-color:		         var(border-highlight);
     border:			             1px;
 }
 
 element alternate.urgent {
-    background-color:            var(background-alt);
+    background-color:            var(background);
     text-color:                  var(urgent);
     border-color:		         var(border-highlight);
     border:			             1px;
@@ -202,17 +202,17 @@ element selected.urgent {
 }
 
 element normal.active {
-    background-color:            var(background-alt);
+    background-color:            var(background);
     text-color:                  var(active);
     border-color:		         var(border-highlight);
     border:			             1px;
 }
 
 element alternate.active {
-    background-color:            var(background-alt);
+    background-color:            var(background);
     text-color:                  var(active);
     border-color:		         var(border-highlight);
-    border:			             1px;  
+    border:			             1px;
 }
 
 element selected.active {
@@ -255,9 +255,9 @@ button {
     padding:                     0px 20px 0px 20px;
     margin:                      0px;
     border-radius:               8px;
-    //border-color:		         var(border-highlight);
-    //border:			             1px;
-    background-color:            @background-alt;
+    border-color:		            var(border-highlight);
+    border:			                0px;
+    background-color:            @background-solid;
     text-color:                  inherit;
     vertical-align:              0.5em;
     horizontal-align:            0.0;
@@ -282,7 +282,7 @@ message {
 textbox {
     padding:                     12px;
     border-radius:               8px;
-    background-color:            @background-alt;
+    background-color:            @background-solid;
     text-color:                  @selected;
     vertical-align:              0.5;
     horizontal-align:            0.0;

@@ -56,9 +56,9 @@ set -gx PATH $GOPATH/bin $PATH
 set -gx GOPATH $HOME/.config/go $GOPATH
 
 # gitconfig for archlinux
-set -gx GIT_CONFIG ~/.config/git/config
+set -gx GIT_CONFIG_GLOBAL ~/.config/git/config
 set -x GPG_TTY (tty)
-# set -gx GITHUB_TOKEN (cat ~/.config/fish/.github_token)
+set -gx GITHUB_TOKEN (cat ~/.config/fish/.github_token)
 
 # Custom aliases
 alias ls 'eza -a --icons'
@@ -91,12 +91,12 @@ alias cpu_top 'ps aux --sort=-%cpu | head -n 10'
 alias npmi 'npm install -g --prefix=~/.npm'
 alias carm 'mpv av://v4l2:/dev/video0 --profile=low-latency --untimed --no-cache' # 使用mpv调用相机
 alias gft 'gitfetch --no-cache --no-language'
-alias lbin 'cd $HOME/.local/bin/'
 alias theme 'cd $HOME/.local/share/loneros/themes/'
 alias cps 'cd $HOME/cps/'
 alias backup 'cd $HOME/Downloads/tools/backup/'
 alias ff ' fastfetch -c ~/.config/fastfetch/config-art.jsonc'
 alias mutt neomutt
+alias em 'nix run nixpkgs#emacs-pgtk --'
 
 function cll
     find $argv -type l ! -exec test -e {} \; -delete
@@ -343,3 +343,6 @@ function checkJson
 
     return $has_error
 end
+
+# opencode
+fish_add_path /home/loner/.opencode/bin

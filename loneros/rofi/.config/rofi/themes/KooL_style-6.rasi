@@ -22,12 +22,6 @@ configuration {
 
 /* ---- Global Properties ---- */
 * {
-
-    background-alt:              @color1;
-    selected:                    @color12;
-    active:                      @color11;
-    urgent:                      red;
-
     text-selected:               @background;
     text-color:                  @foreground;
     border-color:                @selected;
@@ -106,7 +100,7 @@ listview {
     layout:                      vertical;
     reverse:                     false;
     fixed-height:                true;
-    fixed-columns:               true;    
+    fixed-columns:               true;
     spacing:                     10px;
     padding:					 10px;
     background-color:            transparent;
@@ -171,12 +165,12 @@ element normal.urgent {
 
 element-text selected,
 element normal.active {
-    background-color:            @active;
+    background-color:            @selected;
     text-color:                  @foreground;
 }
 
 element selected.normal {
-    background-color:            @color11;
+    background-color:            @selected;
     text-color:                  @text-selected;
 }
 element selected.urgent {

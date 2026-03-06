@@ -2,8 +2,8 @@
 
 -- 边框
 -- require("full-border"):setup({
---   -- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
---   type = ui.Border.ROUNDED,
+-- 	-- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
+-- 	type = ui.Border.ROUNDED,
 -- })
 
 -- git 状态提示

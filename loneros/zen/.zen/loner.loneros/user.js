@@ -63,23 +63,8 @@ user_pref("privacy.trackingprotection.emailtracking.enabled", true);
 user_pref("privacy.trackingprotection.enabled", true);
 user_pref("privacy.trackingprotection.socialtracking.enabled", true);
 // extension
-user_pref(
-  "extensions.webextensions.ExtensionStorageIDB.migrated.addon@darkreader.org",
-  true,
-);
-user_pref(
-  "extensions.webextensions.ExtensionStorageIDB.migrated.idcac-pub@guus.ninja",
-  true,
-);
-user_pref(
-  "extensions.webextensions.ExtensionStorageIDB.migrated.screenshots@mozilla.org",
-  true,
-);
-user_pref(
-  "extensions.webextensions.ExtensionStorageIDB.migrated.tridactyl.vim@cmcaine.co.uk",
-  true,
-);
-user_pref(
-  "extensions.webextensions.ExtensionStorageIDB.migrated.uBlock0@raymondhill.net",
-  true,
-);
+user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.addon@darkreader.org", true);
+user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.idcac-pub@guus.ninja", true);
+user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.screenshots@mozilla.org", true);
+user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.tridactyl.vim@cmcaine.co.uk", true);
+user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.uBlock0@raymondhill.net", true);

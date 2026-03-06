@@ -14,7 +14,7 @@ configuration {
     window-format:              "{w} · {c} · {t}";
     hover-select:               true;
     me-select-entry:            "MouseSecondary";
-    me-accept-entry:            "MousePrimary";    
+    me-accept-entry:            "MousePrimary";
 }
 
 /* ---- Load wallust colors ---- */
@@ -22,7 +22,6 @@ configuration {
 
 /* ---- Global Properties ---- */
 * {
-
     border-width: 2px;
     border-radius: 12px;
 }
@@ -37,7 +36,7 @@ window {
     spacing:                     0em;
     padding:                     0em;
     border:                      @border-width;
-    border-color:                @color12;
+    border-color:                @border-color;
     border-radius:               @border-radius;
     background-color:            @background;
 }
@@ -50,7 +49,6 @@ mainbox {
     children:                    [ "inputbar" , "mode-switcher", "message", "listbox" ];
     background-color:            transparent;
 }
-
 
 /* ---- Inputbar ---- */
 inputbar {
@@ -81,7 +79,7 @@ entry {
     text-color:                  @foreground;
     cursor:                      text;
     placeholder:                 "  Search";
-    placeholder-color:           inherit;
+    placeholder-color:           @foreground;
 }
 
 /* ---- Listbox ---- */
@@ -111,7 +109,6 @@ listview {
     background-color:            transparent;
 }
 
-
 /* ---- Mode Switcher ---- */
 mode-switcher {
     orientation:                 horizontal;
@@ -125,24 +122,23 @@ mode-switcher {
 button {
     cursor:                      pointer;
     border-radius:               2em;
-    background-color:            @background;
+    background-color:            @background-alt;
     text-color:                  @foreground;
-	padding: 0.4em;
+    padding:                     0.4em;
 }
 
 button selected {
-    background-color:            @color12;
+    background-color:            @selected;
     text-color:                  @foreground;
 }
 
 /* ---- Scrollbar ---- */
 scrollbar {
-    border:       				0px;
-    handle-color: 				@color11;
-    handle-width: 				2px ;
-    padding:      				0;
+    border:                      0px;
+    handle-color:                @border-highlight;
+    handle-width:                2px;
+    padding:                     0;
 }
-
 
 /* ---- Elements ---- */
 element {
@@ -156,7 +152,7 @@ element {
 
 element-text selected,
 element selected.normal {
-    background-color:            @color11;
+    background-color:            @selected;
     text-color:                  @foreground;
     border-radius:               1.5em;
 }
@@ -168,22 +164,22 @@ element normal.normal {
 
 element normal.urgent {
     background-color:            inherit;
-    text-color:                  @foreground;
+    text-color:                  @urgent;
 }
 
 element normal.active {
     background-color:            inherit;
-    text-color:                  @foreground;
+    text-color:                  @active;
 }
 
 element selected.urgent {
     background-color:            inherit;
-    text-color:                  @foreground;
+    text-color:                  @urgent;
 }
 
 element selected.active {
     background-color:            inherit;
-    text-color:                  @foreground;
+    text-color:                  @active;
 }
 
 element alternate.normal {
@@ -193,12 +189,12 @@ element alternate.normal {
 
 element alternate.urgent {
     background-color:            inherit;
-    text-color:                  @foreground;
+    text-color:                  @urgent;
 }
 
 element alternate.active {
     background-color:            inherit;
-    text-color:                  @foreground;
+    text-color:                  @active;
 }
 
 element-icon {
@@ -221,18 +217,20 @@ message {
     background-color:            transparent;
     border:                      0px;
 }
+
 textbox {
-	margin:						 12px;
+    margin:                      12px;
     padding:                     12px;
     border-radius:               @border-radius;
-    background-color:            @color12;
+    background-color:            @background-alt;
     text-color:                  @foreground;
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }
+
 error-message {
     padding:                     0px;
     border-radius:               @border-radius;
     background-color:            @background;
-    text-color:                  @foreground;
+    text-color:                  @urgent;
 }

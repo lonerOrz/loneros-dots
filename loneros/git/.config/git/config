@@ -2,15 +2,12 @@
   name = loner
   email = 2788892716@qq.com
   signingkey = BF57164EB71B66AF
-
-[commit]
-  gpgsign = true
-
 [gpg]
   format = openpgp
 
 [core]
   sshCommand = "ssh -i ~/.ssh/id_ed25519"
+	autocrlf = false
 
 [color]
   ui = auto
@@ -18,14 +15,4 @@
 [init]
   defaultBranch = main
 [lfs]
-  repositoryformatversion = 0
-[remote "origin"]
-	gh-resolved = base
-[branch "update-fish"]
-	remote = git@github.com:ddogfoodd/nixpkgs.git
-	pushRemote = git@github.com:ddogfoodd/nixpkgs.git
-	merge = refs/heads/update-fish
-[branch "npm-prefetch"]
-	remote = git@github.com:Mic92/nixpkgs.git
-	pushRemote = git@github.com:Mic92/nixpkgs.git
-	merge = refs/heads/npm-prefetch
+	repositoryformatversion = 0

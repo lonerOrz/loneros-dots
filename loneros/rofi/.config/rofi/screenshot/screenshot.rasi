@@ -13,7 +13,7 @@ configuration {
     font-bold:                     "Iosevka Nerd Font Bold 11";
     font-extrabold:                "Iosevka Nerd Font Extrabold 11";
     font-black:                    "Iosevka Nerd Font Heavy 11";
-}  
+}
 
 /*****----- Main Window -----*****/
 window {
@@ -57,12 +57,12 @@ inputbar {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "";
+    str:                         "󰹑  Screenshot";
     spacing:                     0px;
     border-radius:               60px;
     padding:                     4px 6px;
     background-color:            transparent;
-    text-color:                  @selected-tinted;
+    text-color:                  @selected;
     font:                        var(font-black);
 }
 
@@ -73,8 +73,8 @@ message {
     padding:                     10px;
     border-radius:               6px;
     border-color: 		         @border-highlight;
-    border:			             1px;
-    background-color:            @background-alt;
+    border:			             0px;
+    background-color:            @background-solid;
 }
 textbox {
     background-color:            transparent;
@@ -92,7 +92,7 @@ listview {
     cycle:                       true;
     scrollbar:                   false;
     layout:                      vertical;
-    
+
     spacing:                     10px;
     background-color:            transparent;
     cursor:                      "default";
@@ -101,16 +101,16 @@ listview {
 /*****----- Elements -----*****/
 element {
     enabled:                     true;
-    padding:                     10px 10px 20px 10px;
+    padding:                     16px;
     border-radius:               6px;
-    background-color:            @background-alt;
+    background-color:            @background-solid;
     text-color:                  @selected;
     cursor:                      pointer;
     border-color:                @border-highlight;
-    border:                      1px;
+    border:                      0px;
 }
 element-text {
-    font:                        "feather 18";
+    font:                        @font;
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;

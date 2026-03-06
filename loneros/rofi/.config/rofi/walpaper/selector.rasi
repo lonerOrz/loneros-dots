@@ -58,7 +58,7 @@ icon-ib {
     padding:                     1em;
     border-radius:               2em 0em 0em 2em;
     text-color:                  @foreground;
-    background-color:            @background;
+    background-color:            @background-solid;
 }
 
 entry {
